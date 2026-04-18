@@ -2382,11 +2382,33 @@ input[type='checkbox'] {
 }
 
 @media screen and (min-width: 990px) {
+  /* Desktop: enforce three-column grid so navigation sits perfectly centered */
   .header {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     grid-template-areas: 'heading navigation icons';
+    align-items: center;
   }
 
+  /* Ensure header pieces align to their column edges */
+  .header__heading {
+    grid-area: heading;
+    justify-self: start;
+  }
+
+  .header__inline-menu {
+    grid-area: navigation;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    width: auto;
+  }
+
+  .header__icons {
+    grid-area: icons;
+    justify-self: end;
+  }
+
+  /* Preserve legacy variants that change template areas for other header layouts */
   .header--top-left,
   .header--middle-left:not(.header--has-menu) {
     grid-template-areas:
@@ -2406,17 +2428,6 @@ input[type='checkbox'] {
     grid-template-areas: 'heading navigation icons';
     grid-template-columns: auto auto 1fr;
     column-gap: 2rem;
-  }
-
-  .header--middle-center:not(.drawer-menu) {
-    grid-template-areas: 'heading navigation icons';
-    grid-template-columns: auto 1fr auto;
-    column-gap: 2rem;
-    justify-items: center;
-  }
-
-  .header--middle-center a.header__heading-link {
-    text-align: center;
   }
 
   .header--top-center {
@@ -2460,6 +2471,8 @@ input[type='checkbox'] {
   text-decoration: none;
   word-break: break-word;
 }
+
+/* (Removed - moved to section-specific conditional styles in sections/header.liquid) */
 
 .header__heading-link:hover .h2 {
   color: rgb(var(--color-foreground));

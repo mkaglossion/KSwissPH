@@ -37,12 +37,16 @@ class HeaderMenu extends DetailsDisclosure {
     super();
     this.header = document.querySelector('.header-wrapper');
     this.hoverTimeout = null;
-    
-    // Add hover listeners for desktop
-    if (window.innerWidth >= 990) {
-      this.addEventListener('mouseenter', this.onHoverIn.bind(this));
-      this.addEventListener('mouseleave', this.onHoverOut.bind(this));
-    }
+    this._onResize = this._onResize.bind(this);
+    this._boundHoverIn = null;
+    this._boundHoverOut = null;
+    this._hasHover = false;
+
+    // Initialize hover behavior based on current width
+    if (window.innerWidth >= 990) this._bindHover();
+
+    // Keep hover behavior responsive to viewport changes
+    window.addEventListener('resize', this._onResize);
   }
 
   onHoverIn() {
@@ -63,6 +67,32 @@ class HeaderMenu extends DetailsDisclosure {
     }, 200);
   }
 
+  _bindHover() {
+    if (this._hasHover) return;
+    this._boundHoverIn = this.onHoverIn.bind(this);
+    this._boundHoverOut = this.onHoverOut.bind(this);
+    this.addEventListener('mouseenter', this._boundHoverIn);
+    this.addEventListener('mouseleave', this._boundHoverOut);
+    this._hasHover = true;
+  }
+
+  _unbindHover() {
+    if (!this._hasHover) return;
+    this.removeEventListener('mouseenter', this._boundHoverIn);
+    this.removeEventListener('mouseleave', this._boundHoverOut);
+    this._boundHoverIn = null;
+    this._boundHoverOut = null;
+    this._hasHover = false;
+  }
+
+  _onResize() {
+    if (window.innerWidth >= 990) {
+      this._bindHover();
+    } else {
+      this._unbindHover();
+    }
+  }
+
   onToggle() {
     if (!this.header) return;
     this.header.preventHide = this.mainDetailsToggle.open;
@@ -73,6 +103,14 @@ class HeaderMenu extends DetailsDisclosure {
       `${Math.floor(this.header.getBoundingClientRect().bottom)}px`
     );
   }
+}
+
+  disconnectedCallback() {
+    // Clean up listeners
+    this._unbindHover();
+    window.removeEventListener('resize', this._onResize);
+  }
+
 }
 
 customElements.define('header-menu', HeaderMenu);

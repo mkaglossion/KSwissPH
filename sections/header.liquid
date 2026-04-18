@@ -227,6 +227,31 @@
       max-width: 110px;
     }
   }
+  {%- if section.settings.ultra_compact_header -%}
+    .header {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .header-wrapper.header-full-width .header {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .header__inline-menu,
+    .list-menu--inline {
+      justify-content: center !important;
+      margin: 0 auto !important;
+    }
+
+    .header__heading {
+      justify-self: center !important;
+    }
+
+    .header__icons {
+      justify-self: end !important;
+    }
+  {%- endif -%}
 </style>
 
 {%- style -%}
@@ -799,6 +824,12 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "ultra_compact_header",
+      "default": false,
+      "label": "Ultra-compact header (override top/bottom padding)"
     },
     {
       "type": "range",
