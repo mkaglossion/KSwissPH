@@ -244,7 +244,7 @@
 
   @media screen and (min-width: 990px) {
     .header {
-      padding: {{ section.settings.padding_top }}px 3rem {{ section.settings.padding_bottom }}px 3rem;
+      padding: 2px 3rem !important;
     }
   }
 {%- endstyle -%}
@@ -796,22 +796,22 @@
     {
       "type": "range",
       "id": "padding_top",
-      "min": 8,
-      "max": 24,
-      "step": 2,
+      "min": 4,
+      "max": 20,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 12
+      "default": 8
     },
     {
       "type": "range",
       "id": "padding_bottom",
-      "min": 8,
-      "max": 24,
-      "step": 2,
+      "min": 4,
+      "max": 20,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 12
+      "default": 8
     }
   ],
   "blocks": [
