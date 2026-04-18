@@ -50,6 +50,39 @@
   .collection-list__item .card-wrapper:hover .card__media .media {
     transform: scale(1.05);
   }
+
+  /* Section-scoped grid spacing to match global design and give
+     comfortable gaps between collection cards. These override the
+     global grid variables only for this section. */
+  .collection-list-wrapper .grid {
+    --grid-mobile-horizontal-spacing: 24px;
+    --grid-mobile-vertical-spacing: 24px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .collection-list-wrapper .grid {
+      --grid-desktop-horizontal-spacing: 48px;
+      --grid-desktop-vertical-spacing: 48px;
+    }
+  }
+
+  /* Center the collection card heading and apply global-like styling */
+  .collection-list__item .card__heading,
+  .collection-list__item .card__heading a {
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    color: inherit;
+  }
+
+  /* Remove small internal card paddings for a cleaner tile look */
+  .collection-list__item .card-wrapper,
+  .collection-list__item .card {
+    padding: 0;
+    margin: 0;
+  }
 </style>
 
 {%- style -%}
