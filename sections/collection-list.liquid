@@ -53,13 +53,20 @@
 </style>
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
+  /* Ensure top/bottom padding always applies to the outer wrapper,
+     including when `enable_full_width` is toggled. This keeps width
+     changes separate from vertical spacing. */
+  .section-{{ section.id }}-padding,
+  .collection-list-wrapper.section-{{ section.id }}-padding,
+  .collection-list-wrapper.full-width.section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
+    .section-{{ section.id }}-padding,
+    .collection-list-wrapper.section-{{ section.id }}-padding,
+    .collection-list-wrapper.full-width.section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
