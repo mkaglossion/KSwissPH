@@ -227,58 +227,66 @@
       max-width: 110px;
     }
   }
+</style>
+
+{%- style -%}
   {%- if section.settings.ultra_compact_header -%}
     .header {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-    }
-
-    .header-wrapper.header-full-width .header {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
+      padding: 0px 1.5rem;
     }
 
     .header__inline-menu,
     .list-menu--inline {
-      justify-content: center !important;
-      margin: 0 auto !important;
+      justify-content: center;
+      margin: 0 auto;
     }
 
-    .header__heading {
-      justify-self: center !important;
+    .section-header {
+      position: sticky;
+      margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
     }
 
-    .header__icons {
-      justify-self: end !important;
+    @media screen and (min-width: 750px) {
+      .section-header {
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+      
+      .header {
+        padding: 0px 2rem;
+      }
+    }
+
+    @media screen and (min-width: 990px) {
+      .header {
+        padding: 0px 2.5rem !important;
+      }
+    }
+  {%- else -%}
+    .header {
+      padding: {{ section.settings.padding_top }}px 1.5rem {{ section.settings.padding_bottom }}px 1.5rem;
+    }
+
+    .section-header {
+      position: sticky;
+      margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-header {
+        margin-bottom: {{ section.settings.margin_bottom }}px;
+      }
+      
+      .header {
+        padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px 2rem;
+      }
+    }
+
+    @media screen and (min-width: 990px) {
+      .header {
+        padding: 2px 2.5rem !important;
+      }
     }
   {%- endif -%}
-</style>
-
-{%- style -%}
-  .header {
-    padding: 0px 1.5rem;
-  }
-
-  .section-header {
-    position: sticky;
-    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-header {
-      margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
-    
-    .header {
-      padding: 0px 2rem;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .header {
-      padding: 0px 2.5rem !important;
-    }
-  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -812,6 +820,13 @@
       "content": "t:sections.all.spacing"
     },
     {
+      "type": "checkbox",
+      "id": "ultra_compact_header",
+      "default": false,
+      "label": "Ultra-compact header",
+      "info": "When enabled, header top/bottom padding will be minimized and navigation will be centered"
+    },
+    {
       "type": "range",
       "id": "margin_bottom",
       "min": 0,
@@ -824,12 +839,6 @@
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "checkbox",
-      "id": "ultra_compact_header",
-      "default": false,
-      "label": "Ultra-compact header (override top/bottom padding)"
     },
     {
       "type": "range",

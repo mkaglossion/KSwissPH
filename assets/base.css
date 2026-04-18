@@ -2472,7 +2472,7 @@ input[type='checkbox'] {
   word-break: break-word;
 }
 
-/* (Removed - moved to section-specific conditional styles in sections/header.liquid) */
+/* (Compact header behavior moved to section styles when enabled) */
 
 .header__heading-link:hover .h2 {
   color: rgb(var(--color-foreground));
