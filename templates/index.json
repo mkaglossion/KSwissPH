@@ -195,6 +195,87 @@
         "padding_bottom": 36
       }
     },
+    "featured_collection_ay7ytH": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "all-new-arrivals",
+        "products_to_show": 5,
+        "title": "<strong>FRESH PICKS</strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_kgcex9": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_JapKXE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_iqPx83": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_JapKXE",
+        "column_iqPx83"
+      ],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>FEATURED</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collection_list_zF4DKX": {
       "type": "collection-list",
       "blocks": {
@@ -236,47 +317,17 @@
         "featured_collection_LkRBcp",
         "featured_collection_8d3jhc"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "",
+        "title": "<strong>SPOTLIGHT</strong>",
         "heading_size": "h1",
         "image_ratio": "portrait",
         "columns_desktop": 5,
         "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_ay7ytH": {
-      "type": "featured-collection",
-      "custom_css": [
-        "h2 {display: block; text-align: center;}"
-      ],
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "collection": "all-new-arrivals",
-        "products_to_show": 5,
-        "title": "<strong>FRESH PICKS</strong>",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 5,
-        "enable_desktop_slider": false,
-        "full_width": true,
-        "show_view_all": false,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 36,
@@ -386,57 +437,9 @@
         "show_text_below": false
       }
     },
-    "multicolumn_kgcex9": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_JapKXE": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_iqPx83": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_JapKXE",
-        "column_iqPx83"
-      ],
-      "custom_css": [
-        "h2 {text-align: center; width: 100%;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "<strong>FEATURED</strong>",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection_hqiVgH": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2 {display: block; text-align: center;}"
       ],
@@ -473,11 +476,11 @@
     "image_banner_fTQr8y",
     "image_banner",
     "featured_collection",
-    "collection_list_zF4DKX",
-    "featured_collection_ay7ytH",
     "multicolumn_fbNdPX",
-    "image_banner_htg8Pq",
+    "featured_collection_ay7ytH",
     "multicolumn_kgcex9",
+    "collection_list_zF4DKX",
+    "image_banner_htg8Pq",
     "featured_collection_hqiVgH"
   ]
 }
