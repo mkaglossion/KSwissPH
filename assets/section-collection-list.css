@@ -1,6 +1,15 @@
+.collection-list-wrapper {
+  width: 100%;
+}
+
 .collection-list {
   margin-top: 0;
   margin-bottom: 0;
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .collection-list-title {
@@ -8,9 +17,16 @@
 }
 
 @media screen and (max-width: 749px) {
+  .collection-list {
+    column-gap: 1rem;
+    row-gap: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .collection-list:not(.slider) {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .section-collection-list .page-width {
@@ -18,15 +34,43 @@
     padding-right: 0;
   }
 
-  .section-collection-list .collection-list:not(.slider) {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  .section-collection-list .collection-list-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px) {
+  .collection-list {
+    column-gap: 1.5rem;
+    row-gap: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .collection-list {
+    column-gap: 1.5rem;
+    row-gap: 2rem;
   }
 }
 
 .collection-list__item:only-child {
   max-width: 100%;
   width: 100%;
+}
+
+.collection-list__item {
+  min-width: 0;
+  /* 5 column layout */
+  flex-basis: calc(20% - 1.2rem);
+  max-width: calc(20% - 1.2rem);
+}
+
+@media screen and (max-width: 1024px) {
+  .collection-list__item {
+    flex-basis: auto;
+    max-width: none;
+  }
 }
 
 @media screen and (max-width: 749px) {
@@ -58,4 +102,32 @@
 
 .collection-list-view-all {
   margin-top: 2rem;
+}
+
+/* Override base grid classes for 5-column layout */
+@media screen and (min-width: 1025px) {
+  .grid--5-col-desktop.collection-list .collection-list__item {
+    flex-basis: calc(20% - 1.2rem) !important;
+    max-width: calc(20% - 1.2rem) !important;
+    width: auto !important;
+  }
+}
+
+/* 4 column fallback */
+@media screen and (min-width: 750px) and (max-width: 1024px) {
+  .grid--5-col-desktop.collection-list .collection-list__item {
+    flex-basis: calc(25% - 1.125rem) !important;
+    max-width: calc(25% - 1.125rem) !important;
+    width: auto !important;
+  }
+}
+
+/* 1 column mobile */
+@media screen and (max-width: 749px) {
+  .grid--1-col-tablet-down.collection-list .collection-list__item,
+  .collection-list .collection-list__item {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
