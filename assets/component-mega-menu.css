@@ -142,12 +142,14 @@
 
 .mega-menu__link--active {
   color: rgb(var(--color-foreground));
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
   font-weight: 400;
 }
 
 .mega-menu__link--active:hover {
   font-weight: 400;
+  text-decoration: underline;
 }
 
 /* Submenu styling */
