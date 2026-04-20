@@ -227,6 +227,84 @@
       max-width: 110px;
     }
   }
+
+  /* ============================================ */
+  /* APP BLOCK RESPONSIVE FIX */
+  /* ============================================ */
+  .header__icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  .header__icons > * {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .desktop-localization-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-shrink: 0;
+  }
+
+  .header__icons [role="region"],
+  .header__icons [style*="display"],
+  .header__icons app-bridge-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Ensure app block doesn't expand */
+  .header__icons > div:not(.desktop-localization-wrapper) {
+    flex-shrink: 0;
+  }
+
+  /* Shoplist Wishlist App Styling */
+  .header__icons .swym-header-icon-wrapper,
+  .header__icons .swym-advanced-header-icon,
+  .header__icons [class*="swym"] {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__icons .swym-header-icon-html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header__icons .swym-header-icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .header__icons {
+      gap: 0.3rem;
+    }
+
+    .desktop-localization-wrapper {
+      gap: 0.2rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .header__icons {
+      gap: 0.2rem;
+    }
+
+    .desktop-localization-wrapper {
+      gap: 0.1rem;
+    }
+  }
 </style>
 
 {%- style -%}

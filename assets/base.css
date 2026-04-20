@@ -4931,3 +4931,8 @@ details-disclosure > details {
   pointer-events: auto;
 }
 
+/* Custom product card media */
+.custom-plp-card__media {
+  background-color: transparent;
+}
+
