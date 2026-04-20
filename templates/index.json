@@ -1,1 +1,350 @@
-{"sections":{"slideshow_PVnQf3":{"type":"slideshow","blocks":{"slide_DMjbd3":{"type":"slide","settings":{"desktop_image":"shopify:\/\/shop_images\/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg","mobile_image":"shopify:\/\/shop_images\/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg","slideshow_link":"shopify:\/\/collections\/sale-1","image_overlay_opacity":0,"heading":"","heading_size":"h1","subheading":"","button_label":"","button_link":"","button_style_secondary":false,"show_text_box":false,"box_align":"middle-center","text_alignment":"center","text_alignment_mobile":"center","color_scheme":"scheme-1"}},"slide_W3HrJD":{"type":"slide","settings":{"desktop_image":"shopify:\/\/shop_images\/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg","mobile_image":"shopify:\/\/shop_images\/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg","slideshow_link":"shopify:\/\/collections\/avenue-collection","image_overlay_opacity":0,"heading":"","heading_size":"h2","subheading":"","button_label":"","button_link":"","button_style_secondary":false,"show_text_box":false,"box_align":"middle-center","text_alignment":"center","text_alignment_mobile":"center","color_scheme":""}}},"block_order":["slide_DMjbd3","slide_W3HrJD"],"name":"t:sections.slideshow.presets.name","settings":{"layout":"full_bleed","slide_height":"medium","slider_visual":"dots","auto_rotate":false,"change_slides_speed":5,"image_behavior":"none","show_text_below":false,"accessibility_info":""}},"image_banner":{"type":"image-banner","blocks":{"heading":{"type":"heading","settings":{"heading":"","heading_size":"h0"}},"button":{"type":"buttons","settings":{"button_label_1":"","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":true,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading","button"],"disabled":true,"settings":{"image":"shopify:\/\/shop_images\/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg","image_mobile":"shopify:\/\/shop_images\/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg","banner_link":"shopify:\/\/collections\/avenue-collection","image_overlay_opacity":0,"image_height":"medium","image_behavior":"none","desktop_content_position":"bottom-center","desktop_content_alignment":"center","show_text_box":false,"color_scheme":"scheme-3","mobile_content_alignment":"center","show_text_below":false}},"collection_list_9EdQ3M":{"type":"collection-list","blocks":{"featured_collection_M4p7FC":{"type":"featured_collection","settings":{"collection":"lifestyle-all"}},"featured_collection_8MX479":{"type":"featured_collection","settings":{"collection":"mens-active-training"}},"featured_collection_m9kBPL":{"type":"featured_collection","settings":{"collection":"tennis-all"}},"featured_collection_RjyqdJ":{"type":"featured_collection","settings":{"collection":"pickleball-1"}},"featured_collection_bwyMix":{"type":"featured_collection","settings":{"collection":"padel"}}},"block_order":["featured_collection_M4p7FC","featured_collection_8MX479","featured_collection_m9kBPL","featured_collection_RjyqdJ","featured_collection_bwyMix"],"custom_css":[],"name":"t:sections.collection-list.presets.name","settings":{"enable_full_width":true,"title":"","heading_size":"h1","image_ratio":"portrait","columns_desktop":5,"color_scheme":"","show_view_all":false,"columns_mobile":"1","swipe_on_mobile":true,"padding_top":36,"padding_bottom":36}},"multicolumn_CGgrLR":{"type":"multicolumn","blocks":{"column_kETUBP":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg","title":"","text":"","link":"shopify:\/\/collections\/lifestyle-all","link_label":""}},"column_mAaMPb":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg","title":"","text":"","link":"shopify:\/\/collections\/performance-shoes-men","link_label":""}}},"block_order":["column_kETUBP","column_mAaMPb"],"custom_css":["h2 {display: block; text-align: center;}"],"name":"t:sections.multicolumn.presets.name","settings":{"title":"<strong>SHOP BY CATEGORY<\/strong>","heading_size":"h1","image_width":"full","image_ratio":"portrait","button_label":"","button_link":"","columns_desktop":2,"column_alignment":"left","background_style":"none","color_scheme":"","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"featured_collection":{"type":"featured-collection","custom_css":["h2 {display: block; text-align: center;}"],"settings":{"collection":"new-arrivals","products_to_show":5,"title":"<strong>FRESH PICKS<\/strong>","heading_size":"h1","description":"","show_description":false,"description_style":"body","columns_desktop":5,"enable_desktop_slider":false,"full_width":true,"show_view_all":false,"view_all_style":"solid","color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"1","swipe_on_mobile":true,"padding_top":44,"padding_bottom":36}},"multicolumn_ThqdPp":{"type":"multicolumn","blocks":{"column_mgUmgD":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg","title":"","text":"","link":"shopify:\/\/collections\/classic-vn-shoes","link_label":""}},"column_LPpRNM":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg","title":"","text":"","link":"shopify:\/\/collections\/avenue-shoes","link_label":""}}},"block_order":["column_mgUmgD","column_LPpRNM"],"custom_css":["h2 {display: block; text-align: center;}"],"name":"t:sections.multicolumn.presets.name","settings":{"title":"<strong>FEATURED<\/strong>","heading_size":"h1","image_width":"full","image_ratio":"adapt","button_label":"","button_link":"","columns_desktop":2,"column_alignment":"left","background_style":"none","color_scheme":"","columns_mobile":"1","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"image_banner_NkLtfh":{"type":"image-banner","blocks":{"heading_qBkX8P":{"type":"heading","settings":{"heading":"","heading_size":"h0"}},"buttons_F9RjBc":{"type":"buttons","settings":{"button_label_1":"","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":true,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_qBkX8P","buttons_F9RjBc"],"settings":{"image":"shopify:\/\/shop_images\/Best_Seller_Banner.jpg","banner_link":"shopify:\/\/collections\/best-seller-classic-vn-shoes","image_overlay_opacity":0,"image_height":"adapt","image_behavior":"none","desktop_content_position":"bottom-center","desktop_content_alignment":"center","show_text_box":false,"color_scheme":"scheme-3","mobile_content_alignment":"center","show_text_below":false}}},"order":["slideshow_PVnQf3","image_banner","collection_list_9EdQ3M","multicolumn_CGgrLR","featured_collection","multicolumn_ThqdPp","image_banner_NkLtfh"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_PVnQf3": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_DMjbd3": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
+            "slideshow_link": "shopify://collections/sale-1",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_W3HrJD": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
+            "slideshow_link": "shopify://collections/avenue-collection",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h2",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_DMjbd3",
+        "slide_W3HrJD"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": ""
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
+        "banner_link": "shopify://collections/avenue-collection",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "collection_list_9EdQ3M": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_M4p7FC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lifestyle-all"
+          }
+        },
+        "featured_collection_8MX479": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens-active-training"
+          }
+        },
+        "featured_collection_m9kBPL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tennis-all"
+          }
+        },
+        "featured_collection_RjyqdJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pickleball-1"
+          }
+        },
+        "featured_collection_bwyMix": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "padel"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_M4p7FC",
+        "featured_collection_8MX479",
+        "featured_collection_m9kBPL",
+        "featured_collection_RjyqdJ",
+        "featured_collection_bwyMix"
+      ],
+      "custom_css": [],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "enable_full_width": false,
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_CGgrLR": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_kETUBP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/lifestyle-all",
+            "link_label": ""
+          }
+        },
+        "column_mAaMPb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/performance-shoes-men",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_kETUBP",
+        "column_mAaMPb"
+      ],
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>SHOP BY CATEGORY</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
+      ],
+      "settings": {
+        "collection": "new-arrivals",
+        "products_to_show": 5,
+        "title": "<strong>FRESH PICKS</strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_ThqdPp": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_mgUmgD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg",
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/classic-vn-shoes",
+            "link_label": ""
+          }
+        },
+        "column_LPpRNM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg",
+            "title": "",
+            "text": "",
+            "link": "shopify://collections/avenue-shoes",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_mgUmgD",
+        "column_LPpRNM"
+      ],
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>FEATURED</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_NkLtfh": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_qBkX8P": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h0"
+          }
+        },
+        "buttons_F9RjBc": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_qBkX8P",
+        "buttons_F9RjBc"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Best_Seller_Banner.jpg",
+        "banner_link": "shopify://collections/best-seller-classic-vn-shoes",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    }
+  },
+  "order": [
+    "slideshow_PVnQf3",
+    "image_banner",
+    "collection_list_9EdQ3M",
+    "multicolumn_CGgrLR",
+    "featured_collection",
+    "multicolumn_ThqdPp",
+    "image_banner_NkLtfh"
+  ]
+}
