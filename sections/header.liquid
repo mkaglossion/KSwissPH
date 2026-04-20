@@ -59,7 +59,6 @@
     display: flex;
     align-items: center;
     line-height: calc(1 + 0.3 / var(--font-body-scale));
-    color: rgb(var(--color-foreground));
   }
 
   .list-menu__item--link {
@@ -67,7 +66,6 @@
     padding-bottom: 1rem;
     padding-top: 1rem;
     line-height: calc(1 + 0.8 / var(--font-body-scale));
-    color: rgb(var(--color-foreground));
   }
 
   @media screen and (min-width: 750px) {
@@ -125,82 +123,6 @@
   }
 
   /* ============================================ */
-  /* CONSISTENT TEXT COLOR - ALL HEADER ELEMENTS */
-  /* ============================================ */
-  .header,
-  .header__heading-link,
-  .header__menu-item,
-  .list-menu__item,
-  .list-menu__item--link,
-  .header__active-menu-item,
-  summary.header__menu-item,
-  a.header__menu-item {
-    color: rgb(var(--color-foreground)) !important;
-  }
-  
-  .header__submenu .header__menu-item {
-    color: rgb(var(--color-foreground)) !important;
-  }
-
-  /* ============================================ */
-  /* MENU DRAWER Z-INDEX & OVERLAY FIX */
-  /* ============================================ */
-  .menu-drawer-container {
-    z-index: 100 !important;
-  }
-  
-  .menu-drawer {
-    z-index: 100 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-  }
-  
-  /* Prevent scrolling when menu open */
-  body.overflow-hidden {
-    overflow: hidden !important;
-  }
-
-  /* ============================================ */
-  /* ACTIVE MENU ITEM UNDERLINE - COMPREHENSIVE */
-  /* ============================================ */
-  
-  /* Parent menu items with active children */
-  .header__active-menu-item {
-    text-decoration: underline !important;
-    text-underline-offset: 0.3rem;
-    font-weight: inherit;
-  }
-  
-  /* Submenu items that are current page */
-  .list-menu__item--active,
-  .header__submenu .list-menu__item--active {
-    text-decoration: underline !important;
-    text-underline-offset: 0.3rem;
-  }
-  
-  /* Mega menu active links */
-  .mega-menu__link--active {
-    text-decoration: underline !important;
-    text-underline-offset: 0.3rem;
-    font-weight: inherit;
-  }
-  
-  /* Parent menu summary when dropdown is open */
-  details[open] > .header__menu-item {
-    text-decoration: underline !important;
-  }
-  
-  /* Ensure all active states have proper color */
-  .header__active-menu-item,
-  .list-menu__item--active,
-  .mega-menu__link--active {
-    color: rgb(var(--color-foreground)) !important;
-  }
-
-  /* ============================================ */
   /* WHITE BACKGROUND FOR HEADER */
   /* ============================================ */
   .header-wrapper {
@@ -226,42 +148,17 @@
   }
 
   /* ============================================ */
-  /* BADGE STYLING & POSITIONING */
+  /* HIDE SALE BADGE IN MOBILE MENU ONLY */
   /* ============================================ */
-  
-  /* Ensure card badges display properly */
-  .card__badge {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 2;
-  }
-
-  .badge {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  /* Hide badges ONLY inside menu drawer */
-  .menu-drawer .badge,
-  .menu-drawer [id*="Badge"],
-  .menu-drawer [id*="SaleBadge"],
-  .menu-drawer [id*="NewBadge"],
-  .menu-drawer [id*="SoldOutBadge"],
-  .menu-drawer .card__badge {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-
-  /* Ensure cart count bubble always visible */
-  .header__icon--cart .cart-count-bubble,
-  .cart-count-bubble {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 10 !important;
+  @media screen and (max-width: 989px) {
+    .menu-drawer .badge,
+    .menu-drawer [id*="Badge"],
+    .menu-drawer [id*="SaleBadge"],
+    .menu-drawer [id*="NewBadge"],
+    .menu-drawer [id*="SoldOutBadge"],
+    .menu-drawer .card__badge {
+      display: none !important;
+    }
   }
 
   /* ============================================ */
@@ -343,7 +240,6 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'header-badge-manager.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks

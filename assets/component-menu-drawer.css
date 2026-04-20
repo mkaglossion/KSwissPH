@@ -5,16 +5,17 @@
 .js menu-drawer > details > summary::before,
 .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
   content: '';
-  position: fixed;
+  position: absolute;
   cursor: default;
   width: 100%;
-  height: 100vh;
-  top: 0;
+  height: calc(100vh - 100%);
+  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  top: 100%;
   left: 0;
   background: rgba(var(--color-foreground), 0.5);
   opacity: 0;
   visibility: hidden;
-  z-index: 99;
+  z-index: 2;
   transition: opacity 0s, visibility 0s;
 }
 
@@ -25,18 +26,16 @@ menu-drawer > details[open] > summary::before {
 }
 
 .menu-drawer {
-  position: fixed;
+  position: absolute;
   transform: translateX(-100%);
   visibility: hidden;
-  z-index: 100;
+  z-index: 3;
   left: 0;
-  top: 0;
+  top: 100%;
   width: 100%;
-  height: 100vh;
   padding: 0;
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
-  overflow-y: auto;
   filter: drop-shadow(
     var(--drawer-shadow-horizontal-offset) var(--drawer-shadow-vertical-offset) var(--drawer-shadow-blur-radius)
       rgba(var(--color-shadow), var(--drawer-shadow-opacity))
@@ -49,7 +48,6 @@ menu-drawer > details[open] > summary::before {
 }
 
 .js details[open] > .menu-drawer,
-.menu-drawer[open],
 .js details[open] > .menu-drawer__submenu {
   transition: transform var(--duration-default) ease, visibility var(--duration-default) ease;
 }
