@@ -1,373 +1,766 @@
-// custom-card.js
-// Size and Color Rail Functions for Product Cards
+document.addEventListener('click', function (e) {
+  const sizeBtn = e.target.closest('.variant-btn');
+  const swatchBtn = e.target.closest('.card-swatch');
+  const arrowBtn = e.target.closest('.quick_atc_arrow');
+  const colorArrowBtn = e.target.closest('.color_swatch_arrow');
 
-// ============================================
-// MAIN INITIALIZATION
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-  initAllRails();
-});
+  if (arrowBtn) {
+    const wrap = arrowBtn.closest('.quick_atc_wrap');
+    const rail = wrap ? wrap.querySelector('.quick_atc_box') : null;
+    if (!rail) return;
 
-document.addEventListener('shopify:section:load', function(event) {
-  initAllRails(event.target);
-});
+    const amount = Math.max(rail.clientWidth * 0.8, 140);
+    const direction = arrowBtn.classList.contains('quick_atc_arrow--next') ? 1 : -1;
 
-function initAllRails(scope) {
-  scope = scope || document;
-  initSizeRails(scope);
-  initColorRails(scope);
-}
-
-// ============================================
-// SIZE RAIL FUNCTIONS
-// ============================================
-function initSizeRails(scope) {
-  var sizeBoxes = scope.querySelectorAll('.quick_atc_box');
-  for (var i = 0; i < sizeBoxes.length; i++) {
-    var rail = sizeBoxes[i];
-    if (rail.dataset.initialized === 'true') continue;
-    rail.dataset.initialized = 'true';
-    
-    ensureSizeRailArrows(rail);
-    bindSizeRailDrag(rail);
-    updateSizeRailIndicator(rail);
-    
-    rail.addEventListener('scroll', function() {
-      updateSizeRailIndicator(this);
+    rail.scrollBy({
+      left: amount * direction,
+      behavior: 'smooth'
     });
-  }
-}
 
-function ensureSizeRailArrows(rail) {
-  var wrap = rail.closest('.quick_atc_wrap');
-  if (!wrap) return;
-  if (wrap.querySelector('.quick_atc_arrow')) return;
-  
-  var prev = document.createElement('button');
-  prev.type = 'button';
-  prev.className = 'quick_atc_arrow quick_atc_arrow--prev';
-  prev.setAttribute('aria-label', 'Scroll left');
-  prev.innerHTML = '<svg viewBox="0 0 10 10" fill="currentColor"><path d="M6.8 1.5 2.8 5l4 3.5V1.5Z"></path></svg>';
-  
-  var next = document.createElement('button');
-  next.type = 'button';
-  next.className = 'quick_atc_arrow quick_atc_arrow--next';
-  next.setAttribute('aria-label', 'Scroll right');
-  next.innerHTML = '<svg viewBox="0 0 10 10" fill="currentColor"><path d="M3.2 1.5 7.2 5l-4 3.5V1.5Z"></path></svg>';
-  
-  wrap.appendChild(prev);
-  wrap.appendChild(next);
-  
-  prev.addEventListener('click', function(e) {
-    e.stopPropagation();
-    rail.scrollBy({ left: -Math.max(rail.clientWidth * 0.7, 120), behavior: 'smooth' });
-  });
-  
-  next.addEventListener('click', function(e) {
-    e.stopPropagation();
-    rail.scrollBy({ left: Math.max(rail.clientWidth * 0.7, 120), behavior: 'smooth' });
-  });
-}
-
-function bindSizeRailDrag(rail) {
-  if (rail.dataset.dragBound === 'true') return;
-  rail.dataset.dragBound = 'true';
-  
-  var isDown = false;
-  var startX = 0;
-  var scrollLeft = 0;
-  var moved = false;
-  
-  rail.addEventListener('mousedown', function(e) {
-    isDown = true;
-    moved = false;
-    rail.style.cursor = 'grabbing';
-    startX = e.pageX - rail.offsetLeft;
-    scrollLeft = rail.scrollLeft;
-    e.preventDefault();
-  });
-  
-  rail.addEventListener('mouseleave', function() {
-    isDown = false;
-    rail.style.cursor = 'grab';
-  });
-  
-  rail.addEventListener('mouseup', function() {
-    isDown = false;
-    rail.style.cursor = 'grab';
-  });
-  
-  rail.addEventListener('mousemove', function(e) {
-    if (!isDown) return;
-    e.preventDefault();
-    var x = e.pageX - rail.offsetLeft;
-    var walk = (x - startX) * 1.5;
-    if (Math.abs(walk) > 3) moved = true;
-    rail.scrollLeft = scrollLeft - walk;
-    updateSizeRailIndicator(rail);
-  });
-  
-  rail.style.cursor = 'grab';
-}
-
-function updateSizeRailIndicator(rail) {
-  var wrap = rail.closest('.quick_atc_wrap');
-  if (!wrap) return;
-  
-  var maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
-  var hasOverflow = maxScroll > 2;
-  
-  if (hasOverflow) {
-    wrap.classList.add('has-overflow');
-  } else {
-    wrap.classList.remove('has-overflow');
-  }
-  
-  if (!hasOverflow) {
-    wrap.style.setProperty('--scroll-thumb-width', '0px');
-    wrap.style.setProperty('--scroll-thumb-x', '0px');
     return;
   }
-  
-  var trackInset = window.innerWidth < 750 ? 32 : 36;
-  var trackWidth = Math.max(rail.clientWidth - trackInset, 0);
-  var visibleRatio = rail.clientWidth / rail.scrollWidth;
-  var thumbWidth = Math.max(trackWidth * visibleRatio, 42);
-  var maxThumbX = Math.max(trackWidth - thumbWidth, 0);
-  var scrollRatio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
-  var thumbX = maxThumbX * scrollRatio;
-  
-  wrap.style.setProperty('--scroll-thumb-width', thumbWidth + 'px');
-  wrap.style.setProperty('--scroll-thumb-x', thumbX + 'px');
-  
-  var prev = wrap.querySelector('.quick_atc_arrow--prev');
-  var next = wrap.querySelector('.quick_atc_arrow--next');
-  if (prev) prev.disabled = rail.scrollLeft <= 1;
-  if (next) next.disabled = rail.scrollLeft >= maxScroll - 1;
-}
 
-// ============================================
-// COLOR RAIL FUNCTIONS
-// ============================================
-function initColorRails(scope) {
-  var colorBoxes = scope.querySelectorAll('.color_swatch_box');
-  for (var i = 0; i < colorBoxes.length; i++) {
-    var rail = colorBoxes[i];
-    if (rail.dataset.initialized === 'true') continue;
-    rail.dataset.initialized = 'true';
-    
-    ensureColorRailArrows(rail);
-    bindColorRailDrag(rail);
-    updateColorRailIndicator(rail);
-    
-    rail.addEventListener('scroll', function() {
-      updateColorRailIndicator(this);
+  if (colorArrowBtn) {
+    const wrap = colorArrowBtn.closest('.color_swatch_wrap');
+    const rail = wrap ? wrap.querySelector('.color_swatch_box') : null;
+    if (!rail) return;
+
+    const amount = Math.max(rail.clientWidth * 0.8, 140);
+    const direction = colorArrowBtn.classList.contains('color_swatch_arrow--next') ? 1 : -1;
+
+    rail.scrollBy({
+      left: amount * direction,
+      behavior: 'smooth'
     });
-  }
-}
 
-function ensureColorRailArrows(rail) {
-  var wrap = rail.closest('.color_swatch_wrap');
-  if (!wrap) return;
-  if (wrap.querySelector('.color_swatch_arrow')) return;
-  
-  var prev = document.createElement('button');
-  prev.type = 'button';
-  prev.className = 'color_swatch_arrow color_swatch_arrow--prev';
-  prev.setAttribute('aria-label', 'Scroll left');
-  prev.innerHTML = '<svg viewBox="0 0 10 10" fill="currentColor"><path d="M6.8 1.5 2.8 5l4 3.5V1.5Z"></path></svg>';
-  
-  var next = document.createElement('button');
-  next.type = 'button';
-  next.className = 'color_swatch_arrow color_swatch_arrow--next';
-  next.setAttribute('aria-label', 'Scroll right');
-  next.innerHTML = '<svg viewBox="0 0 10 10" fill="currentColor"><path d="M3.2 1.5 7.2 5l-4 3.5V1.5Z"></path></svg>';
-  
-  wrap.appendChild(prev);
-  wrap.appendChild(next);
-  
-  prev.addEventListener('click', function(e) {
-    e.stopPropagation();
-    rail.scrollBy({ left: -Math.max(rail.clientWidth * 0.7, 120), behavior: 'smooth' });
-  });
-  
-  next.addEventListener('click', function(e) {
-    e.stopPropagation();
-    rail.scrollBy({ left: Math.max(rail.clientWidth * 0.7, 120), behavior: 'smooth' });
-  });
-}
-
-function bindColorRailDrag(rail) {
-  if (rail.dataset.dragBound === 'true') return;
-  rail.dataset.dragBound = 'true';
-  
-  var isDown = false;
-  var startX = 0;
-  var scrollLeft = 0;
-  var moved = false;
-  
-  rail.addEventListener('mousedown', function(e) {
-    isDown = true;
-    moved = false;
-    rail.style.cursor = 'grabbing';
-    startX = e.pageX - rail.offsetLeft;
-    scrollLeft = rail.scrollLeft;
-    e.preventDefault();
-  });
-  
-  rail.addEventListener('mouseleave', function() {
-    isDown = false;
-    rail.style.cursor = 'grab';
-  });
-  
-  rail.addEventListener('mouseup', function() {
-    isDown = false;
-    rail.style.cursor = 'grab';
-  });
-  
-  rail.addEventListener('mousemove', function(e) {
-    if (!isDown) return;
-    e.preventDefault();
-    var x = e.pageX - rail.offsetLeft;
-    var walk = (x - startX) * 1.5;
-    if (Math.abs(walk) > 3) moved = true;
-    rail.scrollLeft = scrollLeft - walk;
-    updateColorRailIndicator(rail);
-  });
-  
-  rail.style.cursor = 'grab';
-}
-
-function updateColorRailIndicator(rail) {
-  var wrap = rail.closest('.color_swatch_wrap');
-  if (!wrap) return;
-  
-  var maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
-  var hasOverflow = maxScroll > 2;
-  
-  if (hasOverflow) {
-    wrap.classList.add('has-overflow');
-  } else {
-    wrap.classList.remove('has-overflow');
-  }
-  
-  if (!hasOverflow) {
-    wrap.style.setProperty('--swatch-thumb-width', '0px');
-    wrap.style.setProperty('--swatch-thumb-x', '0px');
     return;
   }
-  
-  var trackInset = window.innerWidth < 750 ? 36 : 40;
-  var trackWidth = Math.max(rail.clientWidth - trackInset, 0);
-  var visibleRatio = rail.clientWidth / rail.scrollWidth;
-  var thumbWidth = Math.max(trackWidth * visibleRatio, 42);
-  var maxThumbX = Math.max(trackWidth - thumbWidth, 0);
-  var scrollRatio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
-  var thumbX = maxThumbX * scrollRatio;
-  
-  wrap.style.setProperty('--swatch-thumb-width', thumbWidth + 'px');
-  wrap.style.setProperty('--swatch-thumb-x', thumbX + 'px');
-  
-  var prev = wrap.querySelector('.color_swatch_arrow--prev');
-  var next = wrap.querySelector('.color_swatch_arrow--next');
-  if (prev) prev.disabled = rail.scrollLeft <= 1;
-  if (next) next.disabled = rail.scrollLeft >= maxScroll - 1;
-}
 
-// ============================================
-// VARIANT BUTTON CLICK HANDLERS
-// ============================================
-document.addEventListener('click', function(e) {
-  // Size variant button handler
-  var sizeBtn = e.target.closest('.variant-btn');
-  if (sizeBtn && !sizeBtn.disabled) {
-    e.preventDefault();
-    
-    var card = sizeBtn.closest('.custom-plp-card');
-    if (!card) return;
-    
-    var btns = card.querySelectorAll('.variant-btn');
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].classList.remove('is-active', 'active');
-    }
+  if (sizeBtn) {
+    const card = sizeBtn.closest('.custom-plp-card');
+    if (!card || sizeBtn.disabled || sizeBtn.hidden) return;
+
+    card.querySelectorAll('.variant-btn').forEach((btn) => {
+      btn.classList.remove('is-active', 'active');
+    });
+
     sizeBtn.classList.add('is-active', 'active');
-    
-    var variantId = sizeBtn.dataset.variantId;
-    var variantInput = card.querySelector('.product-variant-id');
+
+    const variantId = sizeBtn.dataset.variantId;
+    const variantInput = card.querySelector('.product-variant-id');
+
     if (variantInput && variantId) {
       variantInput.value = variantId;
+      variantInput.disabled = false;
     }
+
+    card.dataset.selectedVariantId = variantId;
     return;
   }
-  
-  // Color swatch handler
-  var swatchBtn = e.target.closest('.card-swatch');
+
   if (swatchBtn) {
-    e.preventDefault();
-    
-    var url = swatchBtn.dataset.url;
-    if (url) {
-      window.location.href = url;
+    const productUrl = swatchBtn.dataset.url;
+    if (productUrl) {
+      window.location.href = productUrl;
       return;
     }
-    
-    var card = swatchBtn.closest('.custom-plp-card');
+
+    const card = swatchBtn.closest('.custom-plp-card');
     if (!card) return;
-    
-    var swatches = card.querySelectorAll('.card-swatch');
-    for (var i = 0; i < swatches.length; i++) {
-      swatches[i].classList.remove('is-active', 'active');
-    }
+
+    const newImage = swatchBtn.dataset.image;
+    const colorName = swatchBtn.dataset.colorName;
+    const variantId = swatchBtn.dataset.variantId;
+
+    card.querySelectorAll('.card-swatch').forEach((btn) => {
+      btn.classList.remove('is-active', 'active');
+    });
+
     swatchBtn.classList.add('is-active', 'active');
-    
-    var newImage = swatchBtn.dataset.image;
-    var mainImg = card.querySelector('.custom-plp-card__main-image.primary-image');
+
+    const mainImg = card.querySelector('.custom-plp-card__main-image.primary-image');
+    const hoverImg = card.querySelector('.custom-plp-card__main-image.hover-image');
+
     if (mainImg && newImage) {
       mainImg.src = newImage;
       mainImg.srcset = '';
     }
-    
-    var colorName = swatchBtn.dataset.colorName;
-    var colorText = card.querySelector('.active-color-name');
+
+    if (hoverImg && newImage) {
+      hoverImg.src = newImage;
+      hoverImg.srcset = '';
+    }
+
+    const colorText = card.querySelector('.active-color-name');
     if (colorText && colorName) {
       colorText.textContent = colorName;
     }
-    
-    var allSizeBtns = card.querySelectorAll('.variant-btn');
-    var firstAvailable = null;
-    
-    for (var i = 0; i < allSizeBtns.length; i++) {
-      var btn = allSizeBtns[i];
-      var btnColor = btn.dataset.color || '';
+
+    const allSizeBtns = card.querySelectorAll('.variant-btn');
+    let firstAvailableBtn = null;
+
+    allSizeBtns.forEach((btn) => {
+      const btnColor = btn.dataset.color || '';
+
       if (!colorName || btnColor === colorName) {
         btn.hidden = false;
-        if (!btn.disabled && !firstAvailable) {
-          firstAvailable = btn;
+
+        if (!btn.disabled && !firstAvailableBtn) {
+          firstAvailableBtn = btn;
         }
       } else {
         btn.hidden = true;
         btn.classList.remove('is-active', 'active');
       }
-    }
-    
-    var variantInput = card.querySelector('.product-variant-id');
-    if (firstAvailable) {
-      firstAvailable.classList.add('is-active', 'active');
+    });
+
+    const variantInput = card.querySelector('.product-variant-id');
+    const atcBtn = card.querySelector('.custom-plp-card__atc');
+
+    if (firstAvailableBtn) {
+      firstAvailableBtn.classList.add('is-active', 'active');
+
       if (variantInput) {
-        variantInput.value = firstAvailable.dataset.variantId;
+        variantInput.value = firstAvailableBtn.dataset.variantId;
+        variantInput.disabled = false;
+      }
+
+      if (atcBtn) {
+        atcBtn.disabled = false;
+      }
+
+      card.dataset.selectedVariantId = firstAvailableBtn.dataset.variantId;
+    } else if (variantId) {
+      if (variantInput) {
+        variantInput.value = variantId;
+        variantInput.disabled = false;
+      }
+
+      if (atcBtn) {
+        atcBtn.disabled = false;
+      }
+
+      card.dataset.selectedVariantId = variantId;
+    } else {
+      if (variantInput) {
+        variantInput.disabled = true;
+      }
+
+      if (atcBtn) {
+        atcBtn.disabled = true;
       }
     }
+
+    initScrollIndicators(card);
+    initColorRails(card);
+
+    requestAnimationFrame(() => {
+      initScrollIndicators(card);
+      initColorRails(card);
+    });
   }
 });
 
-// Force resize handler
-window.addEventListener('resize', function() {
-  setTimeout(function() {
-    document.querySelectorAll('.quick_atc_box').forEach(function(rail) {
-      updateSizeRailIndicator(rail);
+/* =========================
+   SIZE RAIL
+   ========================= */
+
+function ensureRailArrows(rail) {
+  const wrap = rail.closest('.quick_atc_wrap');
+  if (!wrap || wrap.dataset.arrowsBound === 'true') return;
+
+  wrap.dataset.arrowsBound = 'true';
+
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'quick_atc_arrow quick_atc_arrow--prev';
+  prev.setAttribute('aria-label', 'Scroll left');
+  prev.innerHTML = `
+    <svg viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+      <path d="M6.8 1.5 2.8 5l4 3.5V1.5Z"></path>
+    </svg>
+  `;
+
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'quick_atc_arrow quick_atc_arrow--next';
+  next.setAttribute('aria-label', 'Scroll right');
+  next.innerHTML = `
+    <svg viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+      <path d="M3.2 1.5 7.2 5l-4 3.5V1.5Z"></path>
+    </svg>
+  `;
+
+  wrap.appendChild(prev);
+  wrap.appendChild(next);
+}
+
+function updateRailArrows(rail) {
+  const wrap = rail.closest('.quick_atc_wrap');
+  if (!wrap) return;
+
+  const prev = wrap.querySelector('.quick_atc_arrow--prev');
+  const next = wrap.querySelector('.quick_atc_arrow--next');
+  if (!prev || !next) return;
+
+  const maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
+  const atStart = rail.scrollLeft <= 1;
+  const atEnd = rail.scrollLeft >= maxScroll - 1;
+
+  prev.disabled = atStart;
+  next.disabled = atEnd;
+}
+
+function updateScrollIndicator(rail) {
+  const wrap = rail.closest('.quick_atc_wrap');
+  if (!wrap) return;
+
+  const maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
+  const hasOverflow = maxScroll > 2;
+
+  wrap.classList.toggle('has-overflow', hasOverflow);
+
+  if (!hasOverflow) {
+    wrap.style.setProperty('--scroll-thumb-width', '0px');
+    wrap.style.setProperty('--scroll-thumb-x', '0px');
+    updateRailArrows(rail);
+    return;
+  }
+
+  const trackInset = window.innerWidth < 750 ? 32 : 36;
+  const trackWidth = Math.max(rail.clientWidth - trackInset, 0);
+  const visibleRatio = rail.clientWidth / rail.scrollWidth;
+  const thumbWidth = Math.max(trackWidth * visibleRatio, 42);
+  const maxThumbX = Math.max(trackWidth - thumbWidth, 0);
+  const scrollRatio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
+  const thumbX = maxThumbX * scrollRatio;
+
+  wrap.style.setProperty('--scroll-thumb-width', thumbWidth + 'px');
+  wrap.style.setProperty('--scroll-thumb-x', thumbX + 'px');
+
+  updateRailArrows(rail);
+}
+
+function bindDragScroll(rail) {
+  if (rail.dataset.dragBound === 'true') return;
+  rail.dataset.dragBound = 'true';
+
+  let isPointerDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let moved = false;
+  let pointerId = null;
+
+  const start = (clientX) => {
+    isPointerDown = true;
+    moved = false;
+    rail.classList.add('is-dragging');
+    startX = clientX;
+    scrollLeft = rail.scrollLeft;
+  };
+
+  const move = (clientX) => {
+    if (!isPointerDown) return;
+    const walk = (clientX - startX) * 1.15;
+    if (Math.abs(walk) > 3) moved = true;
+    rail.scrollLeft = scrollLeft - walk;
+    updateScrollIndicator(rail);
+  };
+
+  const end = () => {
+    isPointerDown = false;
+    rail.classList.remove('is-dragging');
+    pointerId = null;
+  };
+
+  // Prefer Pointer Events for unified pointer handling
+  if (window.PointerEvent) {
+    rail.addEventListener('pointerdown', (e) => {
+      if (e.button && e.button !== 0) return;
+      pointerId = e.pointerId;
+      try {
+        rail.setPointerCapture && rail.setPointerCapture(e.pointerId);
+      } catch (err) {}
+      start(e.clientX);
     });
-    document.querySelectorAll('.color_swatch_box').forEach(function(rail) {
-      updateColorRailIndicator(rail);
+
+    rail.addEventListener('pointermove', (e) => {
+      if (!isPointerDown) return;
+      e.preventDefault();
+      move(e.clientX);
     });
-  }, 100);
+
+    rail.addEventListener('pointerup', (e) => {
+      if (pointerId === e.pointerId) {
+        try {
+          rail.releasePointerCapture && rail.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+        end();
+      }
+    });
+
+    rail.addEventListener('pointercancel', end);
+  } else {
+    // Fallback for older browsers
+    rail.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      start(e.pageX);
+    });
+
+    rail.addEventListener('mousemove', (e) => {
+      if (!isPointerDown) return;
+      e.preventDefault();
+      move(e.pageX);
+    });
+
+    rail.addEventListener('mouseleave', end);
+
+    rail.addEventListener(
+      'touchstart',
+      (e) => {
+        if (!e.touches.length) return;
+        start(e.touches[0].pageX);
+      },
+      { passive: true }
+    );
+
+    rail.addEventListener(
+      'touchmove',
+      (e) => {
+        if (!isPointerDown || !e.touches.length) return;
+        move(e.touches[0].pageX);
+      },
+      { passive: true }
+    );
+
+    rail.addEventListener('touchend', end);
+  }
+
+  rail.addEventListener('scroll', () => updateScrollIndicator(rail));
+
+  // Prevent click if dragging happened
+  rail.querySelectorAll('.variant-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  // Keyboard support for accessibility
+  if (!rail.hasAttribute('tabindex')) rail.tabIndex = 0;
+  rail.addEventListener('keydown', (e) => {
+    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'];
+    if (!keys.includes(e.key)) return;
+    let amount = 0;
+    if (e.key === 'ArrowLeft') amount = -Math.max(rail.clientWidth * 0.5, 80);
+    if (e.key === 'ArrowRight') amount = Math.max(rail.clientWidth * 0.5, 80);
+    if (e.key === 'PageUp') amount = -rail.clientWidth;
+    if (e.key === 'PageDown') amount = rail.clientWidth;
+    if (e.key === 'Home') {
+      rail.scrollTo({ left: 0, behavior: 'smooth' });
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'End') {
+      rail.scrollTo({ left: rail.scrollWidth, behavior: 'smooth' });
+      e.preventDefault();
+      return;
+    }
+    if (amount !== 0) {
+      rail.scrollBy({ left: amount, behavior: 'smooth' });
+      e.preventDefault();
+    }
+  });
+}
+
+function initRails(scope = document) {
+  scope.querySelectorAll('.quick_atc_box').forEach((rail) => {
+    ensureRailArrows(rail);
+    bindDragScroll(rail);
+    updateScrollIndicator(rail);
+  });
+}
+
+function initScrollIndicators(scope = document) {
+  scope.querySelectorAll('.quick_atc_box').forEach((rail) => {
+    updateScrollIndicator(rail);
+  });
+}
+
+function refreshRails(scope = document) {
+  initRails(scope);
+
+  requestAnimationFrame(() => {
+    initScrollIndicators(scope);
+  });
+
+  setTimeout(() => {
+    initScrollIndicators(scope);
+  }, 120);
+
+  setTimeout(() => {
+    initScrollIndicators(scope);
+  }, 300);
+}
+
+/* =========================
+   COLOR RAIL
+   ========================= */
+
+function getColorSwatchCount(rail) {
+  const wrap = rail.closest('.color_swatch_wrap');
+  if (!wrap) return 0;
+
+  const grid =
+    wrap.querySelector('.collection-siblings__grid') ||
+    rail.querySelector('.collection-siblings__grid');
+
+  if (!grid) return rail.querySelectorAll('.card-swatch').length;
+
+  return Array.from(grid.children).filter((item) => {
+    if (item.hidden) return false;
+    if (item.hasAttribute('hidden')) return false;
+    return true;
+  }).length;
+}
+
+function ensureColorArrows(rail) {
+  const wrap = rail.closest('.color_swatch_wrap');
+  if (!wrap || wrap.dataset.colorArrowsBound === 'true') return;
+
+  wrap.dataset.colorArrowsBound = 'true';
+
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'color_swatch_arrow color_swatch_arrow--prev';
+  prev.setAttribute('aria-label', 'Scroll left');
+  prev.innerHTML = `
+    <svg viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+      <path d="M6.8 1.5 2.8 5l4 3.5V1.5Z"></path>
+    </svg>
+  `;
+
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'color_swatch_arrow color_swatch_arrow--next';
+  next.setAttribute('aria-label', 'Scroll right');
+  next.innerHTML = `
+    <svg viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+      <path d="M3.2 1.5 7.2 5l-4 3.5V1.5Z"></path>
+    </svg>
+  `;
+
+  wrap.appendChild(prev);
+  wrap.appendChild(next);
+}
+
+function updateColorArrows(rail) {
+  const wrap = rail.closest('.color_swatch_wrap');
+  if (!wrap) return;
+
+  const prev = wrap.querySelector('.color_swatch_arrow--prev');
+  const next = wrap.querySelector('.color_swatch_arrow--next');
+  if (!prev || !next) return;
+
+  const maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
+  const atStart = rail.scrollLeft <= 1;
+  const atEnd = rail.scrollLeft >= maxScroll - 1;
+
+  prev.disabled = atStart;
+  next.disabled = atEnd;
+}
+
+function updateColorIndicator(rail) {
+  const wrap = rail.closest('.color_swatch_wrap');
+  if (!wrap) return;
+
+  const itemCount = getColorSwatchCount(rail);
+  const maxScroll = Math.max(rail.scrollWidth - rail.clientWidth, 0);
+  const hasOverflow = maxScroll > 2 && itemCount > 2;
+
+  wrap.classList.toggle('has-overflow', hasOverflow);
+
+  if (!hasOverflow) {
+    wrap.style.setProperty('--swatch-thumb-width', '0px');
+    wrap.style.setProperty('--swatch-thumb-x', '0px');
+    updateColorArrows(rail);
+    return;
+  }
+
+  const trackInset = window.innerWidth < 750 ? 36 : 40;
+  const trackWidth = Math.max(rail.clientWidth - trackInset, 0);
+  const visibleRatio = rail.clientWidth / rail.scrollWidth;
+  const thumbWidth = Math.max(trackWidth * visibleRatio, 42);
+  const maxThumbX = Math.max(trackWidth - thumbWidth, 0);
+  const scrollRatio = maxScroll > 0 ? rail.scrollLeft / maxScroll : 0;
+  const thumbX = maxThumbX * scrollRatio;
+
+  wrap.style.setProperty('--swatch-thumb-width', thumbWidth + 'px');
+  wrap.style.setProperty('--swatch-thumb-x', thumbX + 'px');
+
+  updateColorArrows(rail);
+}
+
+function bindColorDragScroll(rail) {
+  if (rail.dataset.colorDragBound === 'true') return;
+  rail.dataset.colorDragBound = 'true';
+
+  let isPointerDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let moved = false;
+  let pointerId = null;
+
+  const start = (clientX) => {
+    isPointerDown = true;
+    moved = false;
+    rail.classList.add('is-dragging');
+    startX = clientX;
+    scrollLeft = rail.scrollLeft;
+  };
+
+  const move = (clientX) => {
+    if (!isPointerDown) return;
+    const walk = (clientX - startX) * 1.15;
+    if (Math.abs(walk) > 3) moved = true;
+    rail.scrollLeft = scrollLeft - walk;
+    updateColorIndicator(rail);
+  };
+
+  const end = () => {
+    isPointerDown = false;
+    rail.classList.remove('is-dragging');
+    pointerId = null;
+  };
+
+  if (window.PointerEvent) {
+    rail.addEventListener('pointerdown', (e) => {
+      if (e.button && e.button !== 0) return;
+      pointerId = e.pointerId;
+      try {
+        rail.setPointerCapture && rail.setPointerCapture(e.pointerId);
+      } catch (err) {}
+      start(e.clientX);
+    });
+
+    rail.addEventListener('pointermove', (e) => {
+      if (!isPointerDown) return;
+      e.preventDefault();
+      move(e.clientX);
+    });
+
+    rail.addEventListener('pointerup', (e) => {
+      if (pointerId === e.pointerId) {
+        try {
+          rail.releasePointerCapture && rail.releasePointerCapture(e.pointerId);
+        } catch (err) {}
+        end();
+      }
+    });
+
+    rail.addEventListener('pointercancel', end);
+  } else {
+    rail.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      start(e.pageX);
+    });
+
+    rail.addEventListener('mousemove', (e) => {
+      if (!isPointerDown) return;
+      e.preventDefault();
+      move(e.pageX);
+    });
+
+    rail.addEventListener('mouseleave', end);
+
+    rail.addEventListener(
+      'touchstart',
+      (e) => {
+        if (!e.touches.length) return;
+        start(e.touches[0].pageX);
+      },
+      { passive: true }
+    );
+
+    rail.addEventListener(
+      'touchmove',
+      (e) => {
+        if (!isPointerDown || !e.touches.length) return;
+        move(e.touches[0].pageX);
+      },
+      { passive: true }
+    );
+
+    rail.addEventListener('touchend', end);
+  }
+
+  rail.addEventListener('scroll', () => updateColorIndicator(rail));
+
+  rail.querySelectorAll('.card-swatch').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  // Keyboard support
+  if (!rail.hasAttribute('tabindex')) rail.tabIndex = 0;
+  rail.addEventListener('keydown', (e) => {
+    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'];
+    if (!keys.includes(e.key)) return;
+    let amount = 0;
+    if (e.key === 'ArrowLeft') amount = -Math.max(rail.clientWidth * 0.5, 80);
+    if (e.key === 'ArrowRight') amount = Math.max(rail.clientWidth * 0.5, 80);
+    if (e.key === 'PageUp') amount = -rail.clientWidth;
+    if (e.key === 'PageDown') amount = rail.clientWidth;
+    if (e.key === 'Home') {
+      rail.scrollTo({ left: 0, behavior: 'smooth' });
+      e.preventDefault();
+      return;
+    }
+    if (e.key === 'End') {
+      rail.scrollTo({ left: rail.scrollWidth, behavior: 'smooth' });
+      e.preventDefault();
+      return;
+    }
+    if (amount !== 0) {
+      rail.scrollBy({ left: amount, behavior: 'smooth' });
+      e.preventDefault();
+    }
+  });
+}
+
+function initColorRails(scope = document) {
+  scope.querySelectorAll('.color_swatch_box').forEach((rail) => {
+    ensureColorArrows(rail);
+    bindColorDragScroll(rail);
+    updateColorIndicator(rail);
+  });
+}
+
+function refreshColorRails(scope = document) {
+  initColorRails(scope);
+
+  requestAnimationFrame(() => {
+    scope.querySelectorAll('.color_swatch_box').forEach((rail) => {
+      updateColorIndicator(rail);
+    });
+  });
+
+  setTimeout(() => {
+    scope.querySelectorAll('.color_swatch_box').forEach((rail) => {
+      updateColorIndicator(rail);
+    });
+  }, 120);
+}
+
+/* =========================
+   GLOBAL INIT
+   ========================= */
+
+function refreshAllRails(scope = document) {
+  refreshRails(scope);
+  refreshColorRails(scope);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  refreshAllRails(document);
 });
+
+window.addEventListener('load', () => {
+  refreshAllRails(document);
+});
+
+document.addEventListener('shopify:section:load', (event) => {
+  const scope = event.target || document;
+  refreshAllRails(scope);
+});
+
+// Resize handling is debounced below to avoid layout thrash.
+
+// Debounce resize to avoid layout thrash
+function debounce(fn, wait) {
+  let t = null;
+  return function (...args) {
+    clearTimeout(t);
+    t = setTimeout(() => fn.apply(this, args), wait);
+  };
+}
+
+const debouncedResizeHandler = debounce(() => {
+  initScrollIndicators(document);
+  document.querySelectorAll('.color_swatch_box').forEach((rail) => updateColorIndicator(rail));
+}, 120);
+
+window.addEventListener('resize', debouncedResizeHandler);
+
+/* =========================
+   AUTO RE-INIT FOR DYNAMIC SECTIONS
+   ========================= */
+
+const quickAtcObserver = new MutationObserver((mutations) => {
+  let shouldRefresh = false;
+
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+
+      if (
+        node.matches('.quick_atc_box, .quick_atc_wrap, .color_swatch_box, .color_swatch_wrap, .custom-plp-card') ||
+        node.querySelector('.quick_atc_box, .quick_atc_wrap, .color_swatch_box, .color_swatch_wrap, .custom-plp-card')
+      ) {
+        shouldRefresh = true;
+      }
+    });
+  });
+
+  if (shouldRefresh) {
+    refreshAllRails(document);
+  }
+});
+
+quickAtcObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+;(function(){
+  function isDataUrl(src){ return typeof src === 'string' && src.indexOf('data:') === 0; }
+  function makeBgTransparent(img){
+    try{
+      if(!img || isDataUrl(img.src)) return;
+      if(!img.complete){ img.addEventListener('load', function(){ makeBgTransparent(img); }); return; }
+      var w = img.naturalWidth || img.width;
+      var h = img.naturalHeight || img.height;
+      if(!w || !h) return;
+      var canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      var imgData;
+      try { imgData = ctx.getImageData(0,0,w,h); } catch(e) { return; }
+      var d = imgData.data;
+      var threshold = 240; // pixels brighter than this are considered background
+      for(var i = 0; i < d.length; i += 4){
+        var r = d[i], g = d[i+1], b = d[i+2];
+        if(r >= threshold && g >= threshold && b >= threshold){ d[i+3] = 0; }
+      }
+      ctx.putImageData(imgData, 0, 0);
+      img.src = canvas.toDataURL('image/png');
+    } catch(err) {
+      // likely CORS or unsupported; fail silently
+    }
+  }
+
+  function init(){
+    var selectors = '.custom-plp-card__media img, .collection-siblings__grid img';
+    document.querySelectorAll(selectors).forEach(function(img){ makeBgTransparent(img); });
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();

@@ -915,26 +915,6 @@ summary::-webkit-details-marker {
   row-gap: 0;
 }
 
-/* Product Grid Responsive Gap Improvements */
-.product-grid {
-  --grid-mobile-horizontal-spacing: 8px;
-  --grid-mobile-vertical-spacing: 12px;
-}
-
-@media screen and (min-width: 750px) {
-  .product-grid {
-    --grid-desktop-horizontal-spacing: 12px;
-    --grid-desktop-vertical-spacing: 16px;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .product-grid {
-    --grid-desktop-horizontal-spacing: 16px;
-    --grid-desktop-vertical-spacing: 20px;
-  }
-}
-
 @media screen and (max-width: 749px) {
   .grid__item.slider__slide--full-width {
     width: 100%;
@@ -1537,6 +1517,7 @@ details[open] > .share-button__fallback {
 .share-button__fallback .field {
   border-radius: 0;
   min-width: auto;
+  min-height: auto;
   transition: none;
 }
 
@@ -1554,6 +1535,7 @@ details[open] > .share-button__fallback {
   overflow: hidden;
   filter: none;
   min-width: auto;
+  min-height: auto;
 }
 
 .share-button__fallback .field__input:hover {
@@ -1996,8 +1978,8 @@ input[type='checkbox'] {
 .quantity__input:-webkit-autofill,
 .quantity__input:-webkit-autofill:hover,
 .quantity__input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
   box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+  -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
 }
 
 .quantity__input::-webkit-outer-spin-button,
@@ -2008,7 +1990,6 @@ input[type='checkbox'] {
 
 .quantity__input[type='number'] {
   -moz-appearance: textfield;
-  appearance: none;
 }
 
 .quantity__rules {
@@ -3702,13 +3683,11 @@ details-disclosure > details {
   position: relative;
   background: #f3f3f3;
   border-radius: 8px;
-  padding: 10px 10px 12px;
+  padding: 14px 14px 16px;
   border: 0;
   box-shadow: none;
   height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .custom-plp-card::before,
@@ -3727,7 +3706,7 @@ details-disclosure > details {
 
 .custom-plp-card__media-wrap {
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
 
 .custom-plp-card__media-link {
@@ -3739,11 +3718,10 @@ details-disclosure > details {
 .custom-plp-card__media {
   position: relative;
   width: 100%;
-  height: 120px;
-  min-height: 120px;
+  height: 150px;
+  min-height: 150px;
   background: transparent;
   overflow: hidden;
-  margin-bottom: 10px;
 }
 
 .custom-plp-card__main-image {
@@ -3788,21 +3766,20 @@ details-disclosure > details {
   display: flex;
   flex-direction: column;
   gap: 0;
-  flex: 1;
 }
 
 .custom-plp-card__gender {
-  font-size: 0.8rem;
+  font-size: 1.05rem;
   line-height: 1;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   color: #9a7b5f;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .custom-plp-card__title {
-  margin: 0 0 0.6rem;
-  font-size: 1.1rem;
+  margin: 0 0 0.8rem;
+  font-size: 1.45rem;
   line-height: 1.05;
   font-weight: 800;
   text-transform: uppercase;
@@ -3813,14 +3790,13 @@ details-disclosure > details {
   text-decoration: none;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 2.2rem;
+  min-height: 3rem;
 }
 
 .custom-plp-card__price {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .custom-plp-card__price .price,
@@ -3837,14 +3813,14 @@ details-disclosure > details {
 .custom-plp-card__price .price-item--sale,
 .custom-plp-card__price .price__regular,
 .custom-plp-card__price .price__sale {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.2;
   color: #000;
 }
 
 
 .custom-plp-card__quick-add {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
 }
 
 .custom-plp-card .quick-add,
@@ -3866,31 +3842,31 @@ details-disclosure > details {
 
 .custom-plp-card__atc {
   width: 100%;
-  min-height: 36px;
-  height: 36px;
+  min-height: 40px;
+  height: 40px;
   border-radius: 6px;
   background: #000 !important;
   color: #fff !important;
   border: 0 !important;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: 0.04rem;
+  letter-spacing: 0.06rem;
   text-transform: uppercase;
   box-shadow: none;
 }
 
 .custom-plp-card__colors-count {
-  font-size: 0.9rem;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  line-height: 1.3;
   color: #111;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .custom-plp-card__color-label {
-  font-size: 0.85rem;
-  line-height: 1.2;
+  font-size: 1.1rem;
+  line-height: 1.3;
   color: #111;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
 
 .custom-plp-card__color-label strong {
@@ -3906,9 +3882,9 @@ details-disclosure > details {
 }
 
 .card-swatch {
-  width: 50px;
-  height: 40px;
-  padding: 3px;
+  width: 58px;
+  height: 44px;
+  padding: 4px;
   border: 1px solid #d8d8d8;
   background: #fff;
   border-radius: 6px;
@@ -3956,62 +3932,6 @@ details-disclosure > details {
 /* tablet */
 @media screen and (min-width: 750px) {
   .custom-plp-card {
-    padding: 14px 14px 16px;
-  }
-
-  .custom-plp-card__media {
-    height: 160px;
-    min-height: 160px;
-  }
-
-  .custom-plp-card__media-wrap {
-    margin-bottom: 10px;
-  }
-
-  .custom-plp-card__gender {
-    font-size: 0.9rem;
-  }
-
-  .custom-plp-card__title {
-    font-size: 1.3rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .custom-plp-card__title a {
-    min-height: 2.8rem;
-  }
-
-  .custom-plp-card__price .price-item,
-  .custom-plp-card__price .price-item--regular,
-  .custom-plp-card__price .price-item--sale,
-  .custom-plp-card__price .price__regular,
-  .custom-plp-card__price .price__sale {
-    font-size: 1.1rem;
-  }
-
-  .custom-plp-card__atc {
-    min-height: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-
-  .custom-plp-card__colors-count {
-    font-size: 1rem;
-  }
-
-  .custom-plp-card__color-label {
-    font-size: 0.95rem;
-  }
-
-  .card-swatch {
-    width: 56px;
-    height: 44px;
-  }
-}
-
-/* desktop */
-@media screen and (min-width: 990px) {
-  .custom-plp-card {
     padding: 16px 16px 18px;
   }
 
@@ -4020,21 +3940,16 @@ details-disclosure > details {
     min-height: 180px;
   }
 
-  .custom-plp-card__media-wrap {
-    margin-bottom: 12px;
-  }
-
   .custom-plp-card__gender {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .custom-plp-card__title {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.6rem;
   }
 
   .custom-plp-card__title a {
-    min-height: 3.2rem;
+    min-height: 3.4rem;
   }
 
   .custom-plp-card__price .price-item,
@@ -4042,26 +3957,70 @@ details-disclosure > details {
   .custom-plp-card__price .price-item--sale,
   .custom-plp-card__price .price__regular,
   .custom-plp-card__price .price__sale {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .custom-plp-card__atc {
     min-height: 42px;
     height: 42px;
-    font-size: 1.2rem;
-  }
-
-  .custom-plp-card__colors-count {
-    font-size: 1.2rem;
-  }
-
-  .custom-plp-card__color-label {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   .card-swatch {
-    width: 60px;
+    width: 62px;
     height: 48px;
+  }
+}
+
+/* desktop */
+@media screen and (min-width: 990px) {
+  .custom-plp-card {
+    padding: 20px 20px 22px;
+  }
+
+  .custom-plp-card__media {
+    height: 210px;
+    min-height: 210px;
+  }
+
+  .custom-plp-card__gender {
+    font-size: 1.2rem;
+  }
+
+  .custom-plp-card__title {
+    font-size: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .custom-plp-card__title a {
+    min-height: 3.8rem;
+  }
+
+  .custom-plp-card__price .price-item,
+  .custom-plp-card__price .price-item--regular,
+  .custom-plp-card__price .price-item--sale,
+  .custom-plp-card__price .price__regular,
+  .custom-plp-card__price .price__sale {
+    font-size: 1.4rem;
+  }
+
+  .custom-plp-card__atc {
+    min-height: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+
+  .custom-plp-card__colors-count {
+    font-size: 1.4rem;
+  }
+
+  .custom-plp-card__color-label {
+    font-size: 1.3rem;
+  }
+
+  .card-swatch {
+    width: 64px;
+    height: 52px;
   }
 }
 /* =========================
@@ -4150,7 +4109,6 @@ details-disclosure > details {
 .custom-plp-card__title a {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 3rem;
@@ -4421,9 +4379,10 @@ details-disclosure > details {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   -ms-overflow-style: none;
   touch-action: pan-x;
-  -webkit-user-select: none;
   user-select: none;
   cursor: grab;
   scroll-behavior: smooth;
@@ -4549,8 +4508,8 @@ details-disclosure > details {
 }
 
 .custom-plp-card .quick_atc_wrap.has-overflow .quick_atc_grid {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
 }
 
 @media screen and (max-width: 749px) {
@@ -4617,6 +4576,7 @@ details-disclosure > details {
   overflow-x: auto;
   overflow-y: hidden;
   -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .color_swatch_box::-webkit-scrollbar {
@@ -4759,6 +4719,8 @@ details-disclosure > details {
 .color_swatch_box,
 .custom-plp-card .quick_atc_box {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
   display: flex;

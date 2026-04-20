@@ -13,36 +13,6 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-  
-  /* Make entire card clickable */
-  .multicolumn-card__link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    height: 100%;
-  }
-  
-  .multicolumn-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .multicolumn-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-  
-  /* Ensure the link doesn't break existing styles */
-  .multicolumn-card__info {
-    pointer-events: auto;
-  }
-  
-  /* Keep separate link styles working */
-  .multicolumn-card__info a:not(.multicolumn-card__link) {
-    pointer-events: auto;
-    position: relative;
-    z-index: 2;
-  }
 {%- endstyle -%}
 
 {%- liquid
@@ -95,11 +65,6 @@
           -%}
             {%- assign empty_column = ' multicolumn-list__item--empty' -%}
           {%- endif -%}
-          
-          {%- assign card_link = block.settings.link -%}
-          {%- if card_link == blank -%}
-            {%- assign card_link = block.settings.collection -%}
-          {%- endif -%}
 
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -110,9 +75,6 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            {%- if card_link != blank -%}
-              <a href="{{ card_link }}" class="multicolumn-card__link">
-            {%- endif -%}
             <div class="multicolumn-card content-container">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
@@ -180,9 +142,6 @@
                 {%- endif -%}
               </div>
             </div>
-            {%- if card_link != blank -%}
-              </a>
-            {%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -463,16 +422,15 @@
           "label": "t:sections.multicolumn.blocks.column.settings.text.label"
         },
         {
-          "type": "url",
-          "id": "link",
-          "label": "t:sections.multicolumn.blocks.column.settings.link.label",
-          "info": "Link for the entire card (image + content)"
-        },
-        {
           "type": "text",
           "id": "link_label",
           "label": "t:sections.multicolumn.blocks.column.settings.link_label.label",
-          "info": "Optional button/link text"
+          "info": "t:sections.multicolumn.blocks.column.settings.link_label.info"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.multicolumn.blocks.column.settings.link.label"
         }
       ]
     }

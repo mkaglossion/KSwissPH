@@ -9,43 +9,20 @@
  */
 {
   "sections": {
-    "slideshow_PVnQf3": {
+    "slideshow_a8Xym4": {
       "type": "slideshow",
       "blocks": {
-        "slide_DMjbd3": {
+        "slide_MBNmf7": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
-            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
-            "slideshow_link": "shopify://collections/sale-1",
             "image_overlay_opacity": 0,
-            "heading": "",
+            "heading": "Image slide",
             "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
             "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-1"
-          }
-        },
-        "slide_W3HrJD": {
-          "type": "slide",
-          "settings": {
-            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
-            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
-            "slideshow_link": "shopify://collections/avenue-collection",
-            "image_overlay_opacity": 0,
-            "heading": "",
-            "heading_size": "h2",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "show_text_box": false,
+            "show_text_box": true,
             "box_align": "middle-center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
@@ -54,19 +31,19 @@
         }
       },
       "block_order": [
-        "slide_DMjbd3",
-        "slide_W3HrJD"
+        "slide_MBNmf7"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
         "slide_height": "medium",
-        "slider_visual": "dots",
+        "slider_visual": "counter",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": ""
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "image_banner": {
@@ -74,19 +51,21 @@
       "blocks": {
         "heading": {
           "type": "heading",
+          "disabled": true,
           "settings": {
-            "heading": "",
+            "heading": "Browse our latest products",
             "heading_size": "h0"
           }
         },
         "button": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
-            "button_label_1": "",
-            "button_link_1": "shopify://collections/all",
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/avenue-collection",
             "button_style_secondary_1": true,
             "button_label_2": "",
-            "button_link_2": "",
+            "button_link_2": "shopify://collections/avenue-collection",
             "button_style_secondary_2": false
           }
         }
@@ -95,7 +74,7 @@
         "heading",
         "button"
       ],
-      "disabled": true,
+      "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
@@ -107,38 +86,68 @@
         "desktop_content_alignment": "center",
         "show_text_box": false,
         "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
-    "collection_list_9EdQ3M": {
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_zF4DKX": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_M4p7FC": {
+        "featured_collection_N6VBB3": {
           "type": "featured_collection",
           "settings": {
             "collection": "lifestyle-all"
           }
         },
-        "featured_collection_8MX479": {
+        "featured_collection_ctdLEt": {
           "type": "featured_collection",
           "settings": {
             "collection": "mens-active-training"
           }
         },
-        "featured_collection_m9kBPL": {
+        "featured_collection_ap7LHR": {
           "type": "featured_collection",
           "settings": {
             "collection": "tennis-all"
           }
         },
-        "featured_collection_RjyqdJ": {
+        "featured_collection_LkRBcp": {
           "type": "featured_collection",
           "settings": {
             "collection": "pickleball-1"
           }
         },
-        "featured_collection_bwyMix": {
+        "featured_collection_8d3jhc": {
           "type": "featured_collection",
           "settings": {
             "collection": "padel"
@@ -146,16 +155,15 @@
         }
       },
       "block_order": [
-        "featured_collection_M4p7FC",
-        "featured_collection_8MX479",
-        "featured_collection_m9kBPL",
-        "featured_collection_RjyqdJ",
-        "featured_collection_bwyMix"
+        "featured_collection_N6VBB3",
+        "featured_collection_ctdLEt",
+        "featured_collection_ap7LHR",
+        "featured_collection_LkRBcp",
+        "featured_collection_8d3jhc"
       ],
       "custom_css": [],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "enable_full_width": false,
         "title": "",
         "heading_size": "h1",
         "image_ratio": "portrait",
@@ -168,33 +176,33 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn_CGgrLR": {
+    "multicolumn_fbNdPX": {
       "type": "multicolumn",
       "blocks": {
-        "column_kETUBP": {
+        "column_TBGfAV": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
             "title": "",
             "text": "",
-            "link": "shopify://collections/lifestyle-all",
-            "link_label": ""
+            "link_label": "",
+            "link": ""
           }
         },
-        "column_mAaMPb": {
+        "column_h9bnnJ": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
             "title": "",
             "text": "",
-            "link": "shopify://collections/performance-shoes-men",
-            "link_label": ""
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "column_kETUBP",
-        "column_mAaMPb"
+        "column_TBGfAV",
+        "column_h9bnnJ"
       ],
       "custom_css": [
         "h2 {display: block; text-align: center;}"
@@ -208,7 +216,7 @@
         "button_label": "",
         "button_link": "",
         "columns_desktop": 2,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
         "columns_mobile": "1",
@@ -217,11 +225,69 @@
         "padding_bottom": 36
       }
     },
-    "featured_collection": {
+    "image_banner_fTQr8y": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_7Mc9Xe": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_zw8aVY": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_cRDTXK": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7Mc9Xe",
+        "text_zw8aVY",
+        "buttons_cRDTXK"
+      ],
+      "custom_css": [
+        ".banner__heading {font-size: 48px; font-weight: 800;}",
+        ".banner__buttons .button {border-radius: 6px; padding: 12px 24px;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Best_Seller_Banner.jpg",
+        "banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "featured_collection_ay7ytH": {
       "type": "featured-collection",
       "custom_css": [
         "h2 {display: block; text-align: center;}"
       ],
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "new-arrivals",
         "products_to_show": 5,
@@ -236,49 +302,47 @@
         "show_view_all": false,
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 44,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "multicolumn_ThqdPp": {
+    "multicolumn_kgcex9": {
       "type": "multicolumn",
       "blocks": {
-        "column_mgUmgD": {
+        "column_JapKXE": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg",
             "title": "",
             "text": "",
-            "link": "shopify://collections/classic-vn-shoes",
-            "link_label": ""
+            "link_label": "",
+            "link": ""
           }
         },
-        "column_LPpRNM": {
+        "column_iqPx83": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg",
             "title": "",
             "text": "",
-            "link": "shopify://collections/avenue-shoes",
-            "link_label": ""
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "column_mgUmgD",
-        "column_LPpRNM"
+        "column_JapKXE",
+        "column_iqPx83"
       ],
-      "custom_css": [
-        "h2 {display: block; text-align: center;}"
-      ],
+      "custom_css": [],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "<strong>FEATURED</strong>",
@@ -288,63 +352,57 @@
         "button_label": "",
         "button_link": "",
         "columns_desktop": 2,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "background_style": "none",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "image_banner_NkLtfh": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_qBkX8P": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h0"
-          }
-        },
-        "buttons_F9RjBc": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_qBkX8P",
-        "buttons_F9RjBc"
+    "featured_collection_hqiVgH": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
       ],
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Best_Seller_Banner.jpg",
-        "banner_link": "shopify://collections/best-seller-classic-vn-shoes",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "collection": "above-7200",
+        "products_to_show": 5,
+        "title": "<strong>SPOTLIGHT</strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "slideshow_PVnQf3",
+    "slideshow_a8Xym4",
     "image_banner",
-    "collection_list_9EdQ3M",
-    "multicolumn_CGgrLR",
     "featured_collection",
-    "multicolumn_ThqdPp",
-    "image_banner_NkLtfh"
+    "collection_list_zF4DKX",
+    "multicolumn_fbNdPX",
+    "image_banner_fTQr8y",
+    "featured_collection_ay7ytH",
+    "multicolumn_kgcex9",
+    "featured_collection_hqiVgH"
   ]
 }

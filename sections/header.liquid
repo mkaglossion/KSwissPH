@@ -163,11 +163,9 @@
 
   /* ============================================ */
   /* MOBILE VIEW: LARGER & CENTERED LOGO */
-  /* ONLY FOR HOMEPAGE TO AVOID CONFLICT WITH COLLECTION PAGE */
   /* ============================================ */
   @media screen and (max-width: 989px) {
-    /* Only apply to homepage */
-    .template-index .header {
+    .header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -175,11 +173,11 @@
       position: relative;
     }
     
-    .template-index header-drawer {
+    header-drawer {
       order: 1;
     }
     
-    .template-index .header__heading {
+    .header__heading {
       order: 2;
       position: absolute;
       left: 50%;
@@ -187,34 +185,29 @@
       margin: 0 !important;
     }
     
-    .template-index .header__heading-logo-wrapper {
+    .header__heading-logo-wrapper {
       width: auto !important;
     }
     
-    .template-index .header__heading-logo {
-      width: 180px !important;
-      height: auto;
-      max-width: 180px;
-    }
-    
-    .template-index .header__icons {
-      order: 3;
-      margin-left: auto;
-    }
-
-    /* Make logo larger on all pages but keep original alignment */
     .header__heading-logo {
       width: 180px !important;
       height: auto;
       max-width: 180px;
     }
+    
+    .header__icons {
+      order: 3;
+      margin-left: auto;
+    }
+    
+    .header {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
   }
 
+  /* Even smaller screens */
   @media screen and (max-width: 480px) {
-    .template-index .header__heading-logo {
-      width: 150px !important;
-      max-width: 150px;
-    }
     .header__heading-logo {
       width: 150px !important;
       max-width: 150px;
@@ -575,6 +568,53 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+  
+  // ============================================
+  // REMOVE BADGES FROM MOBILE MENU DRAWER
+  // ============================================
+  function removeBadgesFromMenuDrawer() {
+    if (window.innerWidth <= 989) {
+      var menuDrawer = document.querySelector('.menu-drawer');
+      if (menuDrawer) {
+        var badges = menuDrawer.querySelectorAll('.badge, [id*="Badge"], [id*="SaleBadge"], [id*="NewBadge"], [id*="SoldOutBadge"], .card__badge');
+        badges.forEach(function(badge) {
+          if (badge) {
+            badge.remove();
+          }
+        });
+      }
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(removeBadgesFromMenuDrawer, 500);
+  });
+  
+  var drawerToggle = document.querySelector('header-drawer');
+  if (drawerToggle) {
+    drawerToggle.addEventListener('click', function() {
+      setTimeout(removeBadgesFromMenuDrawer, 300);
+    });
+  }
+  
+  document.addEventListener('shopify:section:load', function() {
+    setTimeout(removeBadgesFromMenuDrawer, 500);
+  });
+  
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.addedNodes.length) {
+        removeBadgesFromMenuDrawer();
+      }
+    });
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    var menuDrawer = document.querySelector('.menu-drawer');
+    if (menuDrawer) {
+      observer.observe(menuDrawer, { childList: true, subtree: true });
+    }
+  });
 {% endjavascript %}
 
 <script type="application/ld+json">

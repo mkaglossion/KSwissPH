@@ -1,0 +1,51 @@
+<div class="split-banner">
+  <div class="split-item">
+    {% if section.settings.image1 != blank %}
+      <img
+        src="{{ section.settings.image1 | image_url }}"
+        width="{{ section.settings.image1.width }}"
+        height="{{ section.settings.image1.height }}"
+      >
+    {% endif %}
+
+    <div class="overlay">
+      <p class="subtext">{{ section.settings.subtext1 }}</p>
+      <h2>{{ section.settings.title1 }}</h2>
+      <a href="{{ section.settings.link1 }}" class="btn">SHOP NOW</a>
+    </div>
+  </div>
+
+  <div class="split-item">
+    {% if section.settings.image2 != blank %}
+      <img
+        src="{{ section.settings.image2 | image_url }}"
+        width="{{ section.settings.image2.width }}"
+        height="{{ section.settings.image2.height }}"
+      >
+    {% endif %}
+
+    <div class="overlay">
+      <p class="subtext">{{ section.settings.subtext2 }}</p>
+      <h2>{{ section.settings.title2 }}</h2>
+      <a href="{{ section.settings.link2 }}" class="btn">SHOP NOW</a>
+    </div>
+  </div>
+</div>
+@media screen and (max-width: 768px) {
+  .split-banner {
+    flex-direction: column;
+  }
+
+  .split-item {
+    width: 100%;
+  }
+
+  .overlay {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .overlay h2 {
+    font-size: 22px;
+  }
+}

@@ -490,3 +490,92 @@
     color: currentColor;
   }
 }
+
+/* ============================================ */
+/* FIXED: Banner Image Link Styles */
+/* ============================================ */
+
+/* Make banner position relative for absolute positioning */
+.banner {
+  position: relative;
+}
+
+/* Fix for banner image link - make sure clicking works */
+.banner__media-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+/* Make sure mobile and desktop images are positioned correctly */
+.banner__media-desktop {
+  display: block;
+}
+
+.banner__media-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .banner__media-desktop {
+    display: none;
+  }
+  
+  .banner__media-mobile {
+    display: block;
+  }
+  
+  /* Mobile link fix */
+  .banner__media-link--mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+/* Ensure content box is clickable too */
+.banner__content {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Fix button styles - make sure buttons are clickable */
+.banner__buttons .button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+}
+
+/* Make sure images are responsive */
+.banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fix for overlapping links - prevent link from blocking button clicks */
+.banner__media-link .banner__media,
+.banner__media-link .media {
+  pointer-events: none;
+}
+
+/* Remove hover effect that might cause issues */
+/* Optional: Add subtle hover effect on images instead */
+.banner__media-link:hover .banner__media img {
+  transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+
+.banner__media img {
+  transition: transform 0.5s ease;
+}
