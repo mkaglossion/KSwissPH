@@ -122,59 +122,6 @@
         "show_text_below": false
       }
     },
-    "image_banner_htg8Pq": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_zAhkWT": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
-          }
-        },
-        "text_RR99Tf": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_LKY9rj": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_zAhkWT",
-        "text_RR99Tf",
-        "buttons_LKY9rj"
-      ],
-      "custom_css": [],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
-        "banner_link": "",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "",
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -304,6 +251,38 @@
         "padding_bottom": 36
       }
     },
+    "featured_collection_ay7ytH": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {display: block; text-align: center;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "all-new-arrivals",
+        "products_to_show": 5,
+        "title": "<strong>FRESH PICKS</strong>",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "multicolumn_fbNdPX": {
       "type": "multicolumn",
       "blocks": {
@@ -353,36 +332,58 @@
         "padding_bottom": 36
       }
     },
-    "featured_collection_ay7ytH": {
-      "type": "featured-collection",
-      "custom_css": [
-        "h2 {display: block; text-align: center;}"
+    "image_banner_htg8Pq": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_zAhkWT": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_RR99Tf": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_LKY9rj": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zAhkWT",
+        "text_RR99Tf",
+        "buttons_LKY9rj"
       ],
-      "name": "t:sections.featured-collection.presets.name",
+      "disabled": true,
+      "custom_css": [],
+      "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "collection": "all-new-arrivals",
-        "products_to_show": 5,
-        "title": "<strong>FRESH PICKS</strong>",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 5,
-        "enable_desktop_slider": false,
-        "full_width": true,
-        "show_view_all": false,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
+        "banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     },
     "multicolumn_kgcex9": {
@@ -473,9 +474,9 @@
     "image_banner",
     "featured_collection",
     "collection_list_zF4DKX",
-    "image_banner_htg8Pq",
     "featured_collection_ay7ytH",
     "multicolumn_fbNdPX",
+    "image_banner_htg8Pq",
     "multicolumn_kgcex9",
     "featured_collection_hqiVgH"
   ]
