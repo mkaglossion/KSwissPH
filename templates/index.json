@@ -97,13 +97,12 @@
         "heading",
         "button"
       ],
-      "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
         "image_mobile": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
         "banner_link": "shopify://collections/avenue-collection",
         "image_overlay_opacity": 0,
-        "image_height": "medium",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
