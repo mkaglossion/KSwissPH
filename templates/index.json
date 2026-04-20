@@ -106,10 +106,7 @@
         "text_zw8aVY",
         "buttons_cRDTXK"
       ],
-      "custom_css": [
-        ".banner__heading {font-size: 48px; font-weight: 800;}",
-        ".banner__buttons .button {border-radius: 6px; padding: 12px 24px;}"
-      ],
+      "custom_css": [],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
@@ -283,7 +280,7 @@
         "column_h9bnnJ"
       ],
       "custom_css": [
-        "h2 {display: block; text-align: center;}"
+        "h2 {text-align: center; width: 100%;}"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
@@ -310,7 +307,7 @@
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "collection": "new-arrivals",
+        "collection": "all-new-arrivals",
         "products_to_show": 5,
         "title": "<strong>FRESH PICKS</strong>",
         "heading_size": "h1",
@@ -363,7 +360,9 @@
         "column_JapKXE",
         "column_iqPx83"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "<strong>FEATURED</strong>",
