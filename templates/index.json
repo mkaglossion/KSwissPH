@@ -69,6 +69,62 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "image_banner_fTQr8y": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_7Mc9Xe": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_zw8aVY": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_cRDTXK": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7Mc9Xe",
+        "text_zw8aVY",
+        "buttons_cRDTXK"
+      ],
+      "custom_css": [
+        ".banner__heading {font-size: 48px; font-weight: 800;}",
+        ".banner__buttons .button {border-radius: 6px; padding: 12px 24px;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
+        "banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -97,6 +153,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
         "image_mobile": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
@@ -246,63 +303,6 @@
         "padding_bottom": 36
       }
     },
-    "image_banner_fTQr8y": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_7Mc9Xe": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
-          }
-        },
-        "text_zw8aVY": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_cRDTXK": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_7Mc9Xe",
-        "text_zw8aVY",
-        "buttons_cRDTXK"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".banner__heading {font-size: 48px; font-weight: 800;}",
-        ".banner__buttons .button {border-radius: 6px; padding: 12px 24px;}"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/Best_Seller_Banner.jpg",
-        "banner_link": "",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "",
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
     "featured_collection_ay7ytH": {
       "type": "featured-collection",
       "custom_css": [
@@ -417,11 +417,11 @@
   },
   "order": [
     "slideshow_a8Xym4",
+    "image_banner_fTQr8y",
     "image_banner",
     "featured_collection",
     "collection_list_zF4DKX",
     "multicolumn_fbNdPX",
-    "image_banner_fTQr8y",
     "featured_collection_ay7ytH",
     "multicolumn_kgcex9",
     "featured_collection_hqiVgH"
