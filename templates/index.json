@@ -17,7 +17,7 @@
           "settings": {
             "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
             "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
-            "slideshow_link": "",
+            "slideshow_link": "shopify://collections/all-sale-shoes-apparel-more",
             "image_overlay_opacity": 0,
             "heading": "",
             "heading_size": "h1",
@@ -37,7 +37,7 @@
           "settings": {
             "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
             "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
-            "slideshow_link": "",
+            "slideshow_link": "shopify://collections/avenue-collection",
             "image_overlay_opacity": 0,
             "heading": "",
             "heading_size": "h1",
