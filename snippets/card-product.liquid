@@ -10,6 +10,8 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
+<script src="{{ 'custom-card.js' | asset_url }}" defer="defer"></script>
+
 {%- if card_product and card_product != empty -%}
   {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
 
@@ -221,7 +223,7 @@
           </div>
 
           <div class="custom-plp-card__color-label">
-            colors:
+            <strong>Color:</strong>
             {% assign color_list = '' %}
             {% if sibling_products != blank and sibling_products.size > 0 %}
               {% for p in sibling_products %}
@@ -248,29 +250,33 @@
                 <div class="collection-siblings__grid" role="list" aria-label="Color swatches">
                   {% if sibling_products != blank and sibling_products.count > 0 %}
                     {% for product in sibling_products %}
+                      {% assign prod_parts = product.title | split: ' - ' %}
+                      {% assign prod_color_name = prod_parts | last | strip %}
                       <button
                         type="button"
                         role="listitem"
                         class="card-swatch{% if product.id == card_product.id %} is-active active{% endif %}"
-                        aria-label="Select color {{ product.title | escape }}"
+                        aria-label="Select color {{ prod_color_name | escape }}"
                         aria-pressed="{% if product.id == card_product.id %}true{% else %}false{% endif %}"
                         data-url="{{ product.url }}"
                         data-image="{{ product.featured_image | image_url: width: 720 }}"
-                        data-color-name="{{ product.title | escape }}"
+                        data-color-name="{{ prod_color_name }}"
                       >
                         <img src="{{ product.featured_image | image_url: width: 120 }}" width="70" height="52" alt="{{ product.title | escape }}">
                       </button>
                     {% endfor %}
                   {% else %}
+                    {% assign current_prod_parts = card_product.title | split: ' - ' %}
+                    {% assign current_prod_color = current_prod_parts | last | strip %}
                     <button
                       type="button"
                       role="listitem"
                       class="card-swatch is-active active"
-                      aria-label="Select color {{ card_product.title | escape }}"
+                      aria-label="Select color {{ current_prod_color | escape }}"
                       aria-pressed="true"
                       data-url="{{ card_product.url }}"
                       data-image="{{ card_product.featured_image | image_url: width: 720 }}"
-                      data-color-name="{{ card_product.title | escape }}"
+                      data-color-name="{{ current_prod_color }}"
                     >
                       <img src="{{ card_product.featured_image | image_url: width: 120 }}" width="70" height="52" alt="{{ card_product.title | escape }}">
                     </button>

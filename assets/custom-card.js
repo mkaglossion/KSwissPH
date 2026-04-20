@@ -4,6 +4,11 @@ document.addEventListener('click', function (e) {
   const arrowBtn = e.target.closest('.quick_atc_arrow');
   const colorArrowBtn = e.target.closest('.color_swatch_arrow');
 
+  // Debug logging
+  if (e.target.textContent && (e.target.textContent.match(/\d/) || e.target.closest('.quick_atc_grid'))) {
+    console.log('Click detected on:', e.target, 'sizeBtn:', sizeBtn);
+  }
+
   if (arrowBtn) {
     const wrap = arrowBtn.closest('.quick_atc_wrap');
     const rail = wrap ? wrap.querySelector('.quick_atc_box') : null;
@@ -37,8 +42,11 @@ document.addEventListener('click', function (e) {
   }
 
   if (sizeBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    
     const card = sizeBtn.closest('.custom-plp-card');
-    if (!card || sizeBtn.disabled || sizeBtn.hidden) return;
+    if (!card || sizeBtn.disabled) return;
 
     card.querySelectorAll('.variant-btn').forEach((btn) => {
       btn.classList.remove('is-active', 'active');
@@ -48,10 +56,15 @@ document.addEventListener('click', function (e) {
 
     const variantId = sizeBtn.dataset.variantId;
     const variantInput = card.querySelector('.product-variant-id');
+    const atcBtn = card.querySelector('.custom-plp-card__atc');
 
     if (variantInput && variantId) {
       variantInput.value = variantId;
       variantInput.disabled = false;
+    }
+
+    if (atcBtn) {
+      atcBtn.disabled = false;
     }
 
     card.dataset.selectedVariantId = variantId;
@@ -59,6 +72,9 @@ document.addEventListener('click', function (e) {
   }
 
   if (swatchBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    
     const productUrl = swatchBtn.dataset.url;
     if (productUrl) {
       window.location.href = productUrl;
@@ -160,6 +176,44 @@ document.addEventListener('click', function (e) {
     });
   }
 });
+
+/* =========================
+   COLOR SWATCH HOVER - Show color name on hover (image stays steady)
+   ========================= */
+document.addEventListener('mouseover', function (e) {
+  const swatchBtn = e.target.closest('.card-swatch');
+  if (!swatchBtn) return;
+
+  const card = swatchBtn.closest('.custom-plp-card');
+  if (!card) return;
+
+  const colorName = swatchBtn.dataset.colorName;
+
+  // Only update if swatch has color name
+  if (!colorName) return;
+
+  // Update color name ONLY - image stays steady, alignment stays fixed
+  const colorNameSpan = card.querySelector('.active-color-name');
+  if (colorNameSpan) {
+    colorNameSpan.textContent = colorName;
+  }
+});
+
+/* Reset to active color when leaving the card */
+document.addEventListener('mouseleave', function (e) {
+  const card = e.target.closest('.custom-plp-card');
+  if (!card) return;
+
+  const swatches = card.querySelectorAll('.card-swatch');
+  const activeColor = Array.from(swatches).find((s) => s.classList.contains('is-active') || s.classList.contains('active'));
+
+  if (activeColor) {
+    const colorNameSpan = card.querySelector('.active-color-name');
+    if (colorNameSpan) {
+      colorNameSpan.textContent = activeColor.dataset.colorName;
+    }
+  }
+}, true);
 
 /* =========================
    SIZE RAIL
@@ -276,6 +330,8 @@ function bindDragScroll(rail) {
   // Prefer Pointer Events for unified pointer handling
   if (window.PointerEvent) {
     rail.addEventListener('pointerdown', (e) => {
+      // Don't start drag if clicking on a button
+      if (e.target.closest('.variant-btn') || e.target.closest('button')) return;
       if (e.button && e.button !== 0) return;
       pointerId = e.pointerId;
       try {
@@ -303,6 +359,8 @@ function bindDragScroll(rail) {
   } else {
     // Fallback for older browsers
     rail.addEventListener('mousedown', (e) => {
+      // Don't start drag if clicking on a button
+      if (e.target.closest('.variant-btn') || e.target.closest('button')) return;
       if (e.button !== 0) return;
       start(e.pageX);
     });
@@ -337,16 +395,6 @@ function bindDragScroll(rail) {
   }
 
   rail.addEventListener('scroll', () => updateScrollIndicator(rail));
-
-  // Prevent click if dragging happened
-  rail.querySelectorAll('.variant-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      if (moved) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    });
-  });
 
   // Keyboard support for accessibility
   if (!rail.hasAttribute('tabindex')) rail.tabIndex = 0;
@@ -537,6 +585,8 @@ function bindColorDragScroll(rail) {
 
   if (window.PointerEvent) {
     rail.addEventListener('pointerdown', (e) => {
+      // Don't start drag if clicking on a color swatch
+      if (e.target.closest('.card-swatch') || e.target.closest('button')) return;
       if (e.button && e.button !== 0) return;
       pointerId = e.pointerId;
       try {
@@ -563,6 +613,8 @@ function bindColorDragScroll(rail) {
     rail.addEventListener('pointercancel', end);
   } else {
     rail.addEventListener('mousedown', (e) => {
+      // Don't start drag if clicking on a color swatch
+      if (e.target.closest('.card-swatch') || e.target.closest('button')) return;
       if (e.button !== 0) return;
       start(e.pageX);
     });
@@ -578,6 +630,8 @@ function bindColorDragScroll(rail) {
     rail.addEventListener(
       'touchstart',
       (e) => {
+        // Don't start drag if touching on a color swatch
+        if (e.target.closest('.card-swatch') || e.target.closest('button')) return;
         if (!e.touches.length) return;
         start(e.touches[0].pageX);
       },
