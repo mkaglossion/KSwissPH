@@ -28,3 +28,16 @@
   width: 10rem;
   padding: 0.5rem;
 }
+
+/* Dropdown submenu items - always normal weight */
+.list-menu--disclosure .list-menu__item {
+  font-weight: 400 !important;
+}
+
+.list-menu--disclosure .list-menu__item:hover {
+  font-weight: 400 !important;
+}
+
+.list-menu--disclosure .list-menu__item--active {
+  font-weight: 400 !important;
+}

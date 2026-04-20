@@ -13,7 +13,6 @@
   box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
     rgba(var(--color-shadow), var(--popup-shadow-opacity));
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .predictive-search--search-template {

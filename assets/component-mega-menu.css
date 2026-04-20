@@ -116,17 +116,18 @@
   line-height: 1.5;
   padding: 0.6rem 0;
   text-decoration: none;
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  transition: color 0.2s ease;
   word-wrap: break-word;
+  font-weight: 400;
 }
 
 .mega-menu__link:hover {
   color: rgb(var(--color-foreground));
-  padding-left: 0.5rem;
+  font-weight: 400;
 }
 
 .mega-menu__link--level-2 {
-  font-weight: 600;
+  font-weight: 700 !important;
   font-size: 1.6rem;
   color: rgb(var(--color-foreground));
   margin-bottom: 0.5rem;
@@ -136,12 +137,17 @@
 
 .mega-menu__link--level-2:hover {
   padding-left: 0;
+  font-weight: 700 !important;
 }
 
 .mega-menu__link--active {
   color: rgb(var(--color-foreground));
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+.mega-menu__link--active:hover {
+  font-weight: 400;
 }
 
 /* Submenu styling */
@@ -154,6 +160,19 @@
 .mega-menu__submenu li {
   margin: 0;
   padding: 0;
+}
+
+/* Submenu links - always normal weight */
+.mega-menu__submenu .mega-menu__link {
+  font-weight: 400 !important;
+}
+
+.mega-menu__submenu .mega-menu__link:hover {
+  font-weight: 400 !important;
+}
+
+.mega-menu__submenu .mega-menu__link--active {
+  font-weight: 400 !important;
 }
 
 /* Animation */

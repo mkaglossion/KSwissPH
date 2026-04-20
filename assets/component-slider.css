@@ -40,7 +40,6 @@ slider-component.slider-component-full-width {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1.5rem;
-    -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
   }
 
@@ -74,7 +73,6 @@ slider-component.slider-component-full-width {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1rem;
-    -webkit-overflow-scrolling: touch;
   }
 
   .slider.slider--tablet-up .slider__slide {
@@ -90,7 +88,6 @@ slider-component.slider-component-full-width {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scroll-padding-left: 1.5rem;
-    -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
   }
 
@@ -123,7 +120,6 @@ slider-component.slider-component-full-width {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
   margin-bottom: 1rem;
 }
 
@@ -143,7 +139,6 @@ slider-component.slider-component-full-width {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
     scroll-padding-left: var(--desktop-margin-left-first-item);
   }
@@ -219,9 +214,7 @@ slider-component.slider-component-full-width {
 /* Scrollbar */
 
 .slider {
-  scrollbar-color: rgb(var(--color-foreground)) rgba(var(--color-foreground), 0.04);
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .slider::-webkit-scrollbar {

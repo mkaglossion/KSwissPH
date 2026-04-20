@@ -1517,7 +1517,6 @@ details[open] > .share-button__fallback {
 .share-button__fallback .field {
   border-radius: 0;
   min-width: auto;
-  min-height: auto;
   transition: none;
 }
 
@@ -1535,7 +1534,6 @@ details[open] > .share-button__fallback {
   overflow: hidden;
   filter: none;
   min-width: auto;
-  min-height: auto;
 }
 
 .share-button__fallback .field__input:hover {
@@ -1978,8 +1976,8 @@ input[type='checkbox'] {
 .quantity__input:-webkit-autofill,
 .quantity__input:-webkit-autofill:hover,
 .quantity__input:-webkit-autofill:active {
-  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
   -webkit-box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
+  box-shadow: 0 0 0 10rem rgb(var(--color-background)) inset !important;
 }
 
 .quantity__input::-webkit-outer-spin-button,
@@ -1990,6 +1988,7 @@ input[type='checkbox'] {
 
 .quantity__input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .quantity__rules {
@@ -2867,10 +2866,26 @@ details[open] > .header__menu-item .icon-caret {
 .header__submenu .header__menu-item {
   justify-content: space-between;
   padding: 0.8rem 2rem;
+  font-weight: 400;
+  text-decoration: none !important;
 }
 
 .header__submenu .header__menu-item:hover {
   text-decoration-line: none;
+  font-weight: 400;
+  text-decoration: none !important;
+}
+
+/* Remove underlines from active submenu items */
+.header__submenu .list-menu__item--active {
+  text-decoration: none !important;
+  font-weight: 400 !important;
+}
+
+/* Make submenu category titles (headers) bold */
+.header__submenu > li > summary.header__menu-item {
+  font-weight: 700 !important;
+  text-decoration: none !important;
 }
 
 .header__menu-item .icon-caret {
@@ -4379,10 +4394,9 @@ details-disclosure > details {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   -ms-overflow-style: none;
   touch-action: pan-x;
+  -webkit-user-select: none;
   user-select: none;
   cursor: grab;
   scroll-behavior: smooth;
@@ -4508,8 +4522,8 @@ details-disclosure > details {
 }
 
 .custom-plp-card .quick_atc_wrap.has-overflow .quick_atc_grid {
-  mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
 }
 
 @media screen and (max-width: 749px) {
@@ -4576,7 +4590,6 @@ details-disclosure > details {
   overflow-x: auto;
   overflow-y: hidden;
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .color_swatch_box::-webkit-scrollbar {
@@ -4719,8 +4732,6 @@ details-disclosure > details {
 .color_swatch_box,
 .custom-plp-card .quick_atc_box {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
   display: flex;
