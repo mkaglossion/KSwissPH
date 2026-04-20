@@ -1,3 +1,9 @@
+/* Prevent multiple initializations */
+if (window.__customCardInit) {
+  // Already initialized, skip
+} else {
+  window.__customCardInit = true;
+
 document.addEventListener('click', function (e) {
   const sizeBtn = e.target.closest('.variant-btn');
   const swatchBtn = e.target.closest('.card-swatch');
@@ -781,6 +787,8 @@ quickAtcObserver.observe(document.body, {
   childList: true,
   subtree: true
 });
+
+} /* End of guard check */
 
 ;(function(){
   function isDataUrl(src){ return typeof src === 'string' && src.indexOf('data:') === 0; }
