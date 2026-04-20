@@ -15,34 +15,57 @@
         "slide_MBNmf7": {
           "type": "slide",
           "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
+            "slideshow_link": "",
             "image_overlay_opacity": 0,
-            "heading": "Image slide",
+            "heading": "",
             "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
             "button_style_secondary": false,
-            "show_text_box": true,
+            "show_text_box": false,
             "box_align": "middle-center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
             "color_scheme": ""
           }
+        },
+        "slide_zWPLEW": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
+            "slideshow_link": "",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
         }
       },
       "block_order": [
-        "slide_MBNmf7"
+        "slide_MBNmf7",
+        "slide_zWPLEW"
       ],
-      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "show_text_below": true,
+        "show_text_below": false,
         "accessibility_info": "Slideshow about our brand"
       }
     },
@@ -86,7 +109,6 @@
         "desktop_content_alignment": "center",
         "show_text_box": false,
         "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
@@ -277,7 +299,6 @@
         "desktop_content_alignment": "center",
         "show_text_box": false,
         "color_scheme": "",
-        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
