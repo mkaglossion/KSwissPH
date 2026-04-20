@@ -252,6 +252,18 @@
                     {% for product in sibling_products %}
                       {% assign prod_parts = product.title | split: ' - ' %}
                       {% assign prod_color_name = prod_parts | last | strip %}
+                      
+                      {%- comment -%}
+                        If color name is empty or contains product type keywords, extract from variant options
+                      {%- endcomment -%}
+                      {% if prod_color_name == blank or prod_color_name contains "Men's" or prod_color_name contains "Women's" or prod_color_name contains "Shoes" %}
+                        {% for option in product.options_with_values %}
+                          {% if option.name == 'Color' or option.name == 'Colour' %}
+                            {% assign prod_color_name = option.values | first %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                      
                       <button
                         type="button"
                         role="listitem"
@@ -268,6 +280,18 @@
                   {% else %}
                     {% assign current_prod_parts = card_product.title | split: ' - ' %}
                     {% assign current_prod_color = current_prod_parts | last | strip %}
+                    
+                    {%- comment -%}
+                      If color name is empty or contains product type keywords, extract from variant options
+                    {%- endcomment -%}
+                    {% if current_prod_color == blank or current_prod_color contains "Men's" or current_prod_color contains "Women's" or current_prod_color contains "Shoes" %}
+                      {% for option in card_product.options_with_values %}
+                        {% if option.name == 'Color' or option.name == 'Colour' %}
+                          {% assign current_prod_color = option.values | first %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                    
                     <button
                       type="button"
                       role="listitem"

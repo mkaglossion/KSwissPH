@@ -178,7 +178,7 @@ document.addEventListener('click', function (e) {
 });
 
 /* =========================
-   COLOR SWATCH HOVER - Show color name on hover (image stays steady)
+   COLOR SWATCH HOVER - Highlight border + show color text
    ========================= */
 document.addEventListener('mouseover', function (e) {
   const swatchBtn = e.target.closest('.card-swatch');
@@ -192,7 +192,7 @@ document.addEventListener('mouseover', function (e) {
   // Only update if swatch has color name
   if (!colorName) return;
 
-  // Update color name ONLY - image stays steady, alignment stays fixed
+  // Update color text when hovering
   const colorNameSpan = card.querySelector('.active-color-name');
   if (colorNameSpan) {
     colorNameSpan.textContent = colorName;
