@@ -1,0 +1,108 @@
+{{ 'section-footer-top.css' | asset_url | stylesheet_tag }}
+
+<div class="footer-top" role="contentinfo" aria-label="Store Information">
+  <div class="footer-top__wrapper">
+    <div class="footer-top__item">
+      <div class="footer-top__icon-wrapper">
+        <div class="footer-top__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="footer-top__content">
+        <h3>{{ section.settings.item_1_title }}</h3>
+        <p>{{ section.settings.item_1_text }}</p>
+      </div>
+    </div>
+
+    <div class="footer-top__item">
+      <div class="footer-top__icon-wrapper">
+        <div class="footer-top__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 17 16 17 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="footer-top__content">
+        <h3>{{ section.settings.item_2_title }}</h3>
+        <p>{{ section.settings.item_2_text }}</p>
+      </div>
+    </div>
+
+    <div class="footer-top__item">
+      <div class="footer-top__icon-wrapper">
+        <div class="footer-top__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 12 15 15 9"></polyline>
+          </svg>
+        </div>
+      </div>
+      <div class="footer-top__content">
+        <h3>{{ section.settings.item_3_title }}</h3>
+        <p>{{ section.settings.item_3_text }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer Top Info",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "text",
+      "id": "item_1_title",
+      "default": "CUSTOMER SERVICES",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "item_1_text",
+      "default": "Our customer service team is available from M-F.",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "text",
+      "id": "item_2_title",
+      "default": "FREE STANDARD DELIVERY",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "item_2_text",
+      "default": "Standard Delivery takes up to 3-7 working days.",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "text",
+      "id": "item_3_title",
+      "default": "SAFE & SECURE PAYMENT",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "item_3_text",
+      "default": "All payment information is protected by secure connection",
+      "label": "Description"
+    }
+  ]
+}
+{% endschema %}

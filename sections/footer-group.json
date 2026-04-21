@@ -11,6 +11,19 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "footer-top": {
+      "type": "footer-top",
+      "settings": {
+        "item_1_title": "CUSTOMER SERVICES",
+        "item_1_text": "Our customer service team is available from M-F.",
+        "item_2_title": "FREE STANDARD DELIVERY",
+        "item_2_text": "Standard Delivery takes up to 3-7 working days.",
+        "item_3_title": "QUICK TURN TIMES",
+        "item_3_text": "Receive your decorated apparel in as few as 2 weeks.",
+        "item_4_title": "SAFE & SECURE PAYMENT",
+        "item_4_text": "All payment information is protected by secure connection"
+      }
+    },
     "footer": {
       "type": "footer",
       "settings": {
@@ -30,6 +43,7 @@
     }
   },
   "order": [
+    "footer-top",
     "footer"
   ]
 }

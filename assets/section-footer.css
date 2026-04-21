@@ -1,5 +1,6 @@
 .footer {
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  background: #f5f5f5;
 }
 
 .footer:not(.color-scheme-1) {
@@ -9,6 +10,20 @@
 .footer__content-top {
   padding-bottom: 5rem;
   display: block;
+}
+
+.footer-block__heading {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: #000;
+}
+
+.footer-block__details-content {
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 749px) {
@@ -485,6 +500,108 @@
   100% {
     opacity: 1;
     transform: translateY(-1rem);
+  }
+}
+
+/* Copyright Section */
+.footer__copyright-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.footer__copyright-left {
+  font-size: 1.2rem;
+  text-align: center;
+  flex: 0 0 auto;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.footer__copyright-left .copyright__content {
+  font-size: 1.2rem;
+}
+
+.footer__copyright-right {
+  font-size: 1.2rem;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.footer__copyright-right .policies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.footer__copyright-right .policies li {
+  display: inline;
+  padding: 0;
+}
+
+.footer__copyright-right .policies li::before {
+  padding: 0 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.footer__copyright-right .policies li:first-child::before {
+  content: none;
+}
+
+.footer__copyright-right .policies li a {
+  padding: 0;
+  display: inline;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+  transition: color 0.2s ease;
+  font-size: 1.2rem;
+}
+
+.footer__copyright-right .policies li a:hover {
+  color: rgba(0, 0, 0, 1);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__copyright-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .footer__copyright-left {
+    font-size: 1.4rem;
+    text-align: center;
+    flex: 0 0 auto;
+  }
+
+  .footer__copyright-left .copyright__content {
+    font-size: 1.4rem;
+  }
+
+  .footer__copyright-right {
+    font-size: 1.4rem;
+    text-align: center;
+    flex: 0 0 auto;
+  }
+
+  .footer__copyright-right .policies {
+    justify-content: center;
+  }
+
+  .footer__copyright-right .policies li::before {
+    padding: 0 1.2rem;
+  }
+
+  .footer__copyright-right .policies li a {
+    font-size: 1.4rem;
   }
 }
 
