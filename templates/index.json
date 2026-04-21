@@ -195,111 +195,6 @@
         "padding_bottom": 36
       }
     },
-    "collection_list_zF4DKX": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_N6VBB3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "lifestyle-all"
-          }
-        },
-        "featured_collection_ctdLEt": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "mens-active-training"
-          }
-        },
-        "featured_collection_ap7LHR": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "tennis-all"
-          }
-        },
-        "featured_collection_LkRBcp": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "pickleball-1"
-          }
-        },
-        "featured_collection_8d3jhc": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "padel"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_N6VBB3",
-        "featured_collection_ctdLEt",
-        "featured_collection_ap7LHR",
-        "featured_collection_LkRBcp",
-        "featured_collection_8d3jhc"
-      ],
-      "custom_css": [],
-      "name": "t:sections.collection-list.presets.name",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_ratio": "portrait",
-        "columns_desktop": 5,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_fbNdPX": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_TBGfAV": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_h9bnnJ": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_TBGfAV",
-        "column_h9bnnJ"
-      ],
-      "custom_css": [
-        "h2 {text-align: center; width: 100%;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "<strong>SHOP BY CATEGORY</strong>",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "portrait",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection_ay7ytH": {
       "type": "featured-collection",
       "custom_css": [
@@ -381,8 +276,170 @@
         "padding_bottom": 36
       }
     },
+    "collection_list_zF4DKX": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_N6VBB3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lifestyle-all"
+          }
+        },
+        "featured_collection_ctdLEt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens-active-training"
+          }
+        },
+        "featured_collection_ap7LHR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tennis-all"
+          }
+        },
+        "featured_collection_LkRBcp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pickleball-1"
+          }
+        },
+        "featured_collection_8d3jhc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "padel"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_N6VBB3",
+        "featured_collection_ctdLEt",
+        "featured_collection_ap7LHR",
+        "featured_collection_LkRBcp",
+        "featured_collection_8d3jhc"
+      ],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "<strong>SPOTLIGHT</strong>",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_fbNdPX": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_TBGfAV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_h9bnnJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_TBGfAV",
+        "column_h9bnnJ"
+      ],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>SHOP BY CATEGORY</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_htg8Pq": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_zAhkWT": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "text_RR99Tf": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_LKY9rj": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zAhkWT",
+        "text_RR99Tf",
+        "buttons_LKY9rj"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
+        "banner_link": "",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "featured_collection_hqiVgH": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "h2 {display: block; text-align: center;}"
       ],
@@ -419,10 +476,11 @@
     "image_banner_fTQr8y",
     "image_banner",
     "featured_collection",
-    "collection_list_zF4DKX",
     "multicolumn_fbNdPX",
     "featured_collection_ay7ytH",
     "multicolumn_kgcex9",
+    "collection_list_zF4DKX",
+    "image_banner_htg8Pq",
     "featured_collection_hqiVgH"
   ]
 }

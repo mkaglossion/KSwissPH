@@ -147,7 +147,8 @@
           </h3>
 
           <div class="custom-plp-card__price">
-            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            <div class="loox-rating" data-id="{{ card_product.id }}" data-rating="{{ card_product.metafields.loox.avg_rating }}" data-raters="{{ card_product.metafields.loox.num_reviews }}"></div>
+{% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
           </div>
 
           {% if size_option_index != nil %}
