@@ -19,9 +19,7 @@
         "item_2_title": "FREE STANDARD DELIVERY",
         "item_2_text": "Standard Delivery takes up to 3-7 working days.",
         "item_3_title": "QUICK TURN TIMES",
-        "item_3_text": "Receive your decorated apparel in as few as 2 weeks.",
-        "item_4_title": "SAFE & SECURE PAYMENT",
-        "item_4_text": "All payment information is protected by secure connection"
+        "item_3_text": "Receive your decorated apparel in as few as 2 weeks."
       }
     },
     "footer": {
@@ -35,7 +33,7 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 36
