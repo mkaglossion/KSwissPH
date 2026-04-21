@@ -1,0 +1,144 @@
+/* Section: Customer Reviews */
+
+.reviews-section-wrapper {
+  width: 100%;
+}
+
+/* Header */
+.review-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.review-rating-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.review-stars {
+  color: #F39C12;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.review-count {
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Grid */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Card */
+.review-card {
+  background: rgba(var(--color-foreground), 0.02);
+  border: 1px solid rgba(var(--color-foreground), 0.08);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  border-color: rgba(var(--color-foreground), 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Rating */
+.review-rating {
+  color: #F39C12;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+
+/* Author */
+.review-author {
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgba(var(--color-foreground), 0.95);
+  margin-bottom: 0.25rem;
+}
+
+/* Verified badge */
+.review-verified {
+  color: #27AE60;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  background-color: rgba(39, 174, 96, 0.1);
+  padding: 2px 8px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+/* Review text */
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.8);
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.review-text::before {
+  content: '"';
+  margin-right: 2px;
+}
+
+.review-text::after {
+  content: '"';
+  margin-left: 2px;
+}
+
+/* Date */
+.review-date {
+  font-size: 0.8rem;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+/* Tablet */
+@media screen and (min-width: 750px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1000px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  .review-card {
+    padding: 1.25rem;
+  }
+
+  .review-rating-summary {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .review-card {
+    transition: none;
+  }
+}

@@ -205,6 +205,11 @@
   box-sizing: border-box;
 }
 
+.multicolumn-card__image-link {
+  display: block;
+  text-decoration: none;
+}
+
 .multicolumn-card > .multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
   border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
   border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));

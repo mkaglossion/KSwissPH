@@ -1,0 +1,334 @@
+{{ 'section-fit-predictor.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #FitPredictor-{{ section.id }} {
+    background: linear-gradient(135deg, rgba(var(--color-button), 0.03) 0%, rgba(var(--color-foreground), 0.02) 100%);
+  }
+
+  #FitPredictor-{{ section.id }} .predictor-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  #FitPredictor-{{ section.id }} .predictor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #FitPredictor-{{ section.id }} .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #FitPredictor-{{ section.id }} .form-label {
+    font-weight: 600;
+    color: rgba(var(--color-foreground), 0.95);
+    font-size: 0.95rem;
+  }
+
+  #FitPredictor-{{ section.id }} .form-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  #FitPredictor-{{ section.id }} .option-button {
+    padding: 12px 16px;
+    border: 2px solid rgba(var(--color-foreground), 0.15);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: rgba(var(--color-foreground), 0.8);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  #FitPredictor-{{ section.id }} .option-button:hover {
+    border-color: var(--color-button);
+    background: rgba(var(--color-button), 0.05);
+  }
+
+  #FitPredictor-{{ section.id }} .option-button.selected {
+    background: var(--color-button);
+    color: white;
+    border-color: var(--color-button);
+  }
+
+  #FitPredictor-{{ section.id }} .submit-button {
+    padding: 14px 24px;
+    background: var(--color-button);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  #FitPredictor-{{ section.id }} .submit-button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  #FitPredictor-{{ section.id }} .submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #FitPredictor-{{ section.id }} .result-box {
+    background: rgba(39, 174, 96, 0.1);
+    border: 2px solid #27AE60;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    display: none;
+  }
+
+  #FitPredictor-{{ section.id }} .result-box.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #FitPredictor-{{ section.id }} .result-title {
+    color: #27AE60;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  #FitPredictor-{{ section.id }} .result-text {
+    color: rgba(var(--color-foreground), 0.85);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  #FitPredictor-{{ section.id }} .tip {
+    background: rgba(243, 156, 18, 0.08);
+    border-left: 3px solid #F39C12;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  @media screen and (max-width: 749px) {
+    #FitPredictor-{{ section.id }} .form-options {
+      grid-template-columns: 1fr;
+    }
+
+    #FitPredictor-{{ section.id }} .predictor-container {
+      padding: 0 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+  id="FitPredictor-{{ section.id }}"
+>
+  <div class="page-width">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h2 class="title">{{ section.settings.title }}</h2>
+      {% if section.settings.description != blank %}
+        <p>{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="predictor-container">
+      <form class="predictor-form" id="fitForm-{{ section.id }}">
+        <!-- Fit Preference -->
+        <div class="form-group">
+          <label class="form-label">How do you prefer your shoes to fit?</label>
+          <div class="form-options">
+            <button type="button" class="option-button" data-fit="tight">👟 Tight/Snug</button>
+            <button type="button" class="option-button" data-fit="normal">👟 Normal</button>
+            <button type="button" class="option-button" data-fit="loose">👟 Loose</button>
+          </div>
+        </div>
+
+        <!-- Width Preference -->
+        <div class="form-group">
+          <label class="form-label">Width preference?</label>
+          <div class="form-options">
+            <button type="button" class="option-button" data-width="narrow">Narrow</button>
+            <button type="button" class="option-button" data-width="medium">Medium</button>
+            <button type="button" class="option-button" data-width="wide">Wide</button>
+          </div>
+        </div>
+
+        <!-- Foot Type -->
+        <div class="form-group">
+          <label class="form-label">Do you have high or low arches?</label>
+          <div class="form-options">
+            <button type="button" class="option-button" data-arch="flat">Flat</button>
+            <button type="button" class="option-button" data-arch="normal">Normal</button>
+            <button type="button" class="option-button" data-arch="high">High</button>
+          </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="form-group">
+          <label class="form-label">What will you wear these for?</label>
+          <div class="form-options">
+            <button type="button" class="option-button" data-activity="casual">Casual</button>
+            <button type="button" class="option-button" data-activity="sports">Sports</button>
+            <button type="button" class="option-button" data-activity="both">Both</button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-button">Get My Size Recommendation</button>
+      </form>
+
+      <!-- Result -->
+      <div class="result-box" id="result-{{ section.id }}">
+        <div class="result-title">✓ Your Recommended Size:</div>
+        <div class="result-text" id="resultText-{{ section.id }}"></div>
+        
+        <div class="tip">
+          💡 <strong>Pro Tip:</strong> Remember everyone's feet are unique. If you're between sizes, we recommend sizing up for more comfort.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('fitForm-{{ section.id }}');
+    const buttons = form.querySelectorAll('.option-button');
+    const resultBox = document.getElementById('result-{{ section.id }}');
+    const resultText = document.getElementById('resultText-{{ section.id }}');
+
+    // Button selection
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const group = this.parentElement;
+        group.querySelectorAll('.option-button').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fit = form.querySelector('[data-fit].selected')?.dataset.fit;
+      const width = form.querySelector('[data-width].selected')?.dataset.width;
+      const arch = form.querySelector('[data-arch].selected')?.dataset.arch;
+      const activity = form.querySelector('[data-activity].selected')?.dataset.activity;
+
+      if (!fit || !width || !arch || !activity) {
+        alert('Please answer all questions');
+        return;
+      }
+
+      // Simple size recommendation logic
+      let recommendation = 'Your true size';
+      let reason = '';
+
+      if (fit === 'tight') {
+        recommendation = 'Size up by 0.5';
+        reason = 'Since you prefer a snug fit, sizing up slightly will give you the perfect comfort.';
+      } else if (fit === 'loose') {
+        recommendation = 'Size up by 1';
+        reason = 'For that extra roomy feel, we recommend going up a full size.';
+      } else {
+        recommendation = 'Your true size';
+        reason = 'This will give you the most comfortable standard fit.';
+      }
+
+      if (width === 'narrow') reason += ' Wide widths available - check in shoe details.';
+      if (activity === 'sports') reason += ' Our athletic shoes provide excellent arch support.';
+
+      resultText.innerHTML = `<strong>${recommendation}</strong><br><br>${reason}`;
+      resultBox.classList.add('show');
+      
+      // Scroll to result
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "👟 Fit Predictor",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Find Your Perfect Fit"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Answer a few quick questions to get your personalized size recommendation.</p>"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1",
+      "options": [
+        { "value": "background-1", "label": "Default" },
+        { "value": "background-2", "label": "Secondary" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding bottom"
+    }
+  ],
+  "presets": [
+    { "name": "👟 Fit Predictor" }
+  ]
+}
+{% endschema %}

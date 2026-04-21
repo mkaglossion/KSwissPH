@@ -1,0 +1,242 @@
+{{ 'section-social-proof.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #SocialProof-{{ section.id }} .proof-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  #SocialProof-{{ section.id }} .proof-banner {
+    background: linear-gradient(135deg, rgba(var(--color-button), 0.08) 0%, rgba(var(--color-button), 0.04) 100%);
+    border: 1px solid rgba(var(--color-button), 0.15);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  #SocialProof-{{ section.id }} .proof-item {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #SocialProof-{{ section.id }} .proof-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #SocialProof-{{ section.id }} .proof-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-button);
+    display: block;
+    line-height: 1.2;
+  }
+
+  #SocialProof-{{ section.id }} .proof-label {
+    font-size: 0.85rem;
+    color: rgba(var(--color-foreground), 0.7);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+
+  #SocialProof-{{ section.id }} .benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  #SocialProof-{{ section.id }} .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(39, 174, 96, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid #27AE60;
+  }
+
+  #SocialProof-{{ section.id }} .benefit-icon {
+    font-size: 1.2rem;
+    color: #27AE60;
+    flex-shrink: 0;
+  }
+
+  #SocialProof-{{ section.id }} .benefit-text {
+    font-size: 0.9rem;
+    color: rgba(var(--color-foreground), 0.85);
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+    #SocialProof-{{ section.id }} .proof-banner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1.5rem 1rem;
+    }
+
+    #SocialProof-{{ section.id }} .proof-number {
+      font-size: 1.5rem;
+    }
+
+    #SocialProof-{{ section.id }} .benefits-list {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+  id="SocialProof-{{ section.id }}"
+>
+  <div class="page-width">
+    {% if section.settings.show_header %}
+      <div class="proof-header">
+        <h2 class="title">{{ section.settings.title }}</h2>
+        {% if section.settings.description != blank %}
+          <p class="rte">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="proof-banner">
+      {% for block in section.blocks %}
+        <div class="proof-item" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <span class="proof-icon">{{ block.settings.icon }}</span>
+          {% endif %}
+          <span class="proof-number">{{ block.settings.number }}</span>
+          <span class="proof-label">{{ block.settings.label }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_benefits %}
+      <div class="benefits-list">
+        {% for block in section.blocks %}
+          {% if block.settings.benefit != blank %}
+            <div class="benefit-item">
+              <span class="benefit-icon">✓</span>
+              <span class="benefit-text">{{ block.settings.benefit }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "🎯 Social Proof",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose K-Swiss?"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show benefits list",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1",
+      "options": [
+        { "value": "background-1", "label": "Default" },
+        { "value": "background-2", "label": "Secondary" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "proof",
+      "name": "Social Proof Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "👥"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number/stat",
+          "default": "15K+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Happy Customers"
+        },
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit text (optional)",
+          "default": "Trusted by thousands of customers"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "🎯 Social Proof" }
+  ]
+}
+{% endschema %}

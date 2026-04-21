@@ -1,0 +1,259 @@
+{{ 'section-customer-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #Reviews-{{ section.id }} .review-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  #Reviews-{{ section.id }} .review-rating-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  #Reviews-{{ section.id }} .review-stars {
+    color: #F39C12;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  #Reviews-{{ section.id }} .review-count {
+    color: rgba(var(--color-foreground), 0.7);
+    font-size: 0.9rem;
+  }
+
+  #Reviews-{{ section.id }} .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  #Reviews-{{ section.id }} .review-card {
+    background: rgba(var(--color-foreground), 0.02);
+    border: 1px solid rgba(var(--color-foreground), 0.08);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  #Reviews-{{ section.id }} .review-card:hover {
+    border-color: rgba(var(--color-foreground), 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  #Reviews-{{ section.id }} .review-rating {
+    color: #F39C12;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  #Reviews-{{ section.id }} .review-author {
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgba(var(--color-foreground), 0.95);
+    margin-bottom: 0.25rem;
+  }
+
+  #Reviews-{{ section.id }} .review-verified {
+    color: #27AE60;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    background-color: rgba(39, 174, 96, 0.1);
+    padding: 2px 8px;
+    border-radius: 3px;
+    width: fit-content;
+  }
+
+  #Reviews-{{ section.id }} .review-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(var(--color-foreground), 0.8);
+    margin-bottom: 0.75rem;
+    flex-grow: 1;
+  }
+
+  #Reviews-{{ section.id }} .review-date {
+    font-size: 0.8rem;
+    color: rgba(var(--color-foreground), 0.5);
+  }
+
+  @media screen and (min-width: 1000px) {
+    #Reviews-{{ section.id }} .reviews-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+  id="Reviews-{{ section.id }}"
+>
+  <div class="page-width">
+    <div class="review-header">
+      <h2 class="title">{{ section.settings.title }}</h2>
+      
+      {% if section.settings.show_rating %}
+        <div class="review-rating-summary">
+          <span class="review-stars">★★★★★</span>
+          <span class="review-count">{{ section.settings.rating_count }}</span>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <p class="rte" style="margin-top: 0.5rem;">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        <div class="review-card" {{ block.shopify_attributes }}>
+          <div class="review-rating">
+            {% for i in (1..block.settings.rating) %}★{% endfor %}
+          </div>
+          
+          <div class="review-author">
+            {{ block.settings.author }}
+          </div>
+
+          {% if block.settings.verified %}
+            <span class="review-verified">✓ Verified Purchase</span>
+          {% endif %}
+
+          <p class="review-text">
+            "{{ block.settings.review_text }}"
+          </p>
+
+          <div class="review-date">
+            {{ block.settings.review_date }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "⭐ Customer Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What Customers Say"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show overall rating",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Rating text",
+      "default": "4.8/5 Stars (2,341 reviews)"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1",
+      "options": [
+        { "value": "background-1", "label": "Default" },
+        { "value": "background-2", "label": "Secondary" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "default": 5,
+          "label": "Star rating"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "John Doe"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified purchase",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review text",
+          "default": "Amazing shoes! Very comfortable and great quality. Highly recommended!"
+        },
+        {
+          "type": "text",
+          "id": "review_date",
+          "label": "Date",
+          "default": "April 15, 2024"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "⭐ Customer Reviews" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,394 @@
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-testimonials.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-carousel {
+    position: relative;
+  }
+
+  #Testimonials-{{ section.id }} .testimonials-track {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #Testimonials-{{ section.id }} .testimonials-track::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  #Testimonials-{{ section.id }} .testimonials-track::-webkit-scrollbar-track {
+    background: rgba(var(--color-foreground), 0.05);
+    border-radius: 3px;
+  }
+
+  #Testimonials-{{ section.id }} .testimonials-track::-webkit-scrollbar-thumb {
+    background: rgba(var(--color-foreground), 0.2);
+    border-radius: 3px;
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-item {
+    flex: 0 0 calc(100% - 1.5rem);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  @media screen and (min-width: 750px) {
+    #Testimonials-{{ section.id }} .testimonial-item {
+      flex: 0 0 calc(50% - 0.75rem);
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #Testimonials-{{ section.id }} .testimonial-item {
+      flex: 0 0 calc(33.333% - 1rem);
+    }
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-card {
+    background: var(--color-background);
+    border: 1px solid rgba(var(--color-foreground), 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(var(--color-foreground), 0.15);
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-rating {
+    color: #F39C12;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(var(--color-foreground), 0.85);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-text::before {
+    content: '"';
+    margin-right: 2px;
+    font-size: 1.5rem;
+    color: rgba(var(--color-foreground), 0.2);
+  }
+
+  #Testimonials-{{ section.id }} .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  #Testimonials-{{ section.id }} .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-button), rgba(var(--color-button), 0.6));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  #Testimonials-{{ section.id }} .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #Testimonials-{{ section.id }} .author-name {
+    font-weight: 600;
+    color: rgba(var(--color-foreground), 0.95);
+    font-size: 0.9rem;
+  }
+
+  #Testimonials-{{ section.id }} .author-title {
+    font-size: 0.8rem;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  #Testimonials-{{ section.id }} .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  #Testimonials-{{ section.id }} .carousel-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--color-foreground), 0.2);
+    background: transparent;
+    color: rgba(var(--color-foreground), 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  #Testimonials-{{ section.id }} .carousel-button:hover {
+    background: var(--color-button);
+    color: white;
+    border-color: var(--color-button);
+  }
+
+  #Testimonials-{{ section.id }} .carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  #Testimonials-{{ section.id }} .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(var(--color-foreground), 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #Testimonials-{{ section.id }} .carousel-dot.active {
+    background: var(--color-button);
+    width: 24px;
+    border-radius: 4px;
+  }
+{%- endstyle -%}
+
+<section
+  class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding"
+  id="Testimonials-{{ section.id }}"
+>
+  <div class="page-width">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h2 class="title">{{ section.settings.title }}</h2>
+      {% if section.settings.description != blank %}
+        <p class="rte">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <div class="testimonial-carousel" data-carousel-id="{{ section.id }}">
+      <div class="testimonials-track" id="track-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="testimonial-item" {{ block.shopify_attributes }}>
+            <div class="testimonial-card">
+              <div class="testimonial-rating">
+                {% for i in (1..block.settings.rating) %}★{% endfor %}
+              </div>
+
+              <p class="testimonial-text">{{ block.settings.testimonial }}</p>
+
+              <div class="testimonial-author">
+                <div class="author-avatar" title="{{ block.settings.author | truncate: 2 }}">
+                  {{ block.settings.author | truncate: 1 | upcase }}
+                </div>
+                <div class="author-info">
+                  <span class="author-name">{{ block.settings.author }}</span>
+                  {% if block.settings.title != blank %}
+                    <span class="author-title">{{ block.settings.title }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.blocks.size > 1 %}
+        <div class="carousel-controls">
+          <button 
+            class="carousel-button" 
+            onclick="carousel_scroll('{{ section.id }}', -1)"
+            aria-label="Previous testimonial"
+          >
+            ←
+          </button>
+
+          <div class="carousel-dots" id="dots-{{ section.id }}">
+            {% for block in section.blocks %}
+              <button 
+                class="carousel-dot{% if forloop.first %} active{% endif %}" 
+                onclick="carousel_scroll_to('{{ section.id }}', {{ forloop.index0 }})"
+                aria-label="Testimonial {{ forloop.index }}"
+              ></button>
+            {% endfor %}
+          </div>
+
+          <button 
+            class="carousel-button" 
+            onclick="carousel_scroll('{{ section.id }}', 1)"
+            aria-label="Next testimonial"
+          >
+            →
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  function carousel_scroll(sectionId, direction) {
+    const track = document.getElementById(`track-${sectionId}`);
+    const itemWidth = track.querySelector('.testimonial-item').offsetWidth + 24;
+    track.scrollBy({ left: itemWidth * direction, behavior: 'smooth' });
+  }
+
+  function carousel_scroll_to(sectionId, index) {
+    const track = document.getElementById(`track-${sectionId}`);
+    const item = track.querySelectorAll('.testimonial-item')[index];
+    item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+  }
+
+  // Update dots on scroll
+  document.addEventListener('DOMContentLoaded', function() {
+    const tracks = document.querySelectorAll('.testimonials-track');
+    tracks.forEach(track => {
+      track.addEventListener('scroll', debounce(function() {
+        updateActiveDot(this.id.replace('track-', ''));
+      }, 100));
+    });
+  });
+
+  function updateActiveDot(sectionId) {
+    const track = document.getElementById(`track-${sectionId}`);
+    const dots = document.querySelectorAll(`#dots-${sectionId} .carousel-dot`);
+    
+    if (!track || !dots.length) return;
+
+    const itemWidth = track.querySelector('.testimonial-item').offsetWidth + 24;
+    const scrollPosition = track.scrollLeft;
+    const activeIndex = Math.round(scrollPosition / itemWidth);
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function() {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.call(this), delay);
+    };
+  }
+</script>
+
+{% schema %}
+{
+  "name": "💬 Testimonials Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What Our Customers Love"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (optional)"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1",
+      "options": [
+        { "value": "background-1", "label": "Default" },
+        { "value": "background-2", "label": "Secondary" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 36,
+      "unit": "px",
+      "label": "Padding bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "default": 5,
+          "label": "Rating"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial",
+          "label": "Testimonial text",
+          "default": "Best shoes I've ever owned! Comfortable, stylish, and worth every peso."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Maria Santos"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Author title (optional)",
+          "default": "Basketball player"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "💬 Testimonials Carousel" }
+  ]
+}
+{% endschema %}

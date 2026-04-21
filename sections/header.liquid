@@ -166,11 +166,13 @@
   /* ============================================ */
   @media screen and (max-width: 989px) {
     .header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      position: relative !important;
+      grid-template-columns: unset !important;
+      grid-template-areas: unset !important;
     }
     
     header-drawer {
@@ -183,6 +185,8 @@
       left: 50%;
       transform: translateX(-50%);
       margin: 0 !important;
+      grid-area: unset !important;
+      justify-self: unset !important;
     }
     
     .header__heading-logo-wrapper {
@@ -198,6 +202,7 @@
     .header__icons {
       order: 3;
       margin-left: auto;
+      grid-area: unset !important;
     }
     
     .header {

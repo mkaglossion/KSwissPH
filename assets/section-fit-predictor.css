@@ -1,0 +1,178 @@
+/* Section: Fit Predictor */
+
+.fit-predictor-wrapper {
+  width: 100%;
+}
+
+.predictor-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Form */
+.predictor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.95);
+  font-size: 0.95rem;
+}
+
+.form-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Option buttons */
+.option-button {
+  padding: 12px 16px;
+  border: 2px solid rgba(var(--color-foreground), 0.15);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: rgba(var(--color-foreground), 0.8);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.option-button:hover {
+  border-color: var(--color-button);
+  background: rgba(var(--color-button), 0.05);
+}
+
+.option-button:focus {
+  outline: 2px solid var(--color-button);
+  outline-offset: 2px;
+}
+
+.option-button.selected {
+  background: var(--color-button);
+  color: white;
+  border-color: var(--color-button);
+  box-shadow: 0 4px 12px rgba(var(--color-button), 0.3);
+}
+
+/* Submit button */
+.submit-button {
+  padding: 14px 24px;
+  background: var(--color-button);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Result box */
+.result-box {
+  background: rgba(39, 174, 96, 0.1);
+  border: 2px solid #27AE60;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  display: none;
+}
+
+.result-box.show {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-title {
+  color: #27AE60;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.result-text {
+  color: rgba(var(--color-foreground), 0.85);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Tip box */
+.tip {
+  background: rgba(243, 156, 18, 0.08);
+  border-left: 3px solid #F39C12;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  .form-options {
+    grid-template-columns: 1fr;
+  }
+
+  .option-button {
+    padding: 14px 16px;
+  }
+
+  .predictor-container {
+    padding: 0;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .option-button,
+  .submit-button,
+  .result-box {
+    transition: none;
+  }
+
+  .result-box.show {
+    animation: none;
+  }
+
+  .submit-button:hover {
+    transform: none;
+  }
+}
