@@ -4,6 +4,67 @@ if (window.__customCardInit) {
 } else {
   window.__customCardInit = true;
 
+// Prevent card dragging on mobile - more aggressive approach
+document.addEventListener('touchstart', function(e) {
+  const card = e.target.closest('.custom-plp-card');
+  const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
+  const media = e.target.closest('.custom-plp-card__media');
+  const image = e.target.closest('.custom-plp-card__main-image');
+  const link = e.target.closest('.custom-plp-card__media-link');
+  
+  if (mediaWrap || media || image || link) {
+    e.stopPropagation();
+    // Don't prevent on the link itself, but prevent on media elements
+    if (image || media || mediaWrap) {
+      e.preventDefault();
+    }
+  }
+}, { passive: false });
+
+document.addEventListener('touchmove', function(e) {
+  const card = e.target.closest('.custom-plp-card');
+  const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
+  const media = e.target.closest('.custom-plp-card__media');
+  const image = e.target.closest('.custom-plp-card__main-image');
+  
+  if (mediaWrap || media || image) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener('touchend', function(e) {
+  const card = e.target.closest('.custom-plp-card');
+  const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
+  const media = e.target.closest('.custom-plp-card__media');
+  const image = e.target.closest('.custom-plp-card__main-image');
+  
+  if (mediaWrap || media || image) {
+    e.stopPropagation();
+  }
+}, { passive: false });
+
+// Also prevent pointer events (for devices supporting PointerEvent)
+document.addEventListener('pointerdown', function(e) {
+  const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
+  const media = e.target.closest('.custom-plp-card__media');
+  const image = e.target.closest('.custom-plp-card__main-image');
+  
+  if (mediaWrap || media || image) {
+    e.stopPropagation();
+  }
+}, { passive: false });
+
+document.addEventListener('pointermove', function(e) {
+  const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
+  const media = e.target.closest('.custom-plp-card__media');
+  const image = e.target.closest('.custom-plp-card__main-image');
+  
+  if (mediaWrap || media || image) {
+    e.stopPropagation();
+  }
+}, { passive: false });
+
 document.addEventListener('click', function (e) {
   const sizeBtn = e.target.closest('.variant-btn');
   const swatchBtn = e.target.closest('.card-swatch');
@@ -207,6 +268,9 @@ document.addEventListener('mouseover', function (e) {
 
 /* Reset to active color when leaving the card */
 document.addEventListener('mouseleave', function (e) {
+  if (!(e.target instanceof Element)) return;
+  if (typeof e.target.closest !== 'function') return;
+  
   const card = e.target.closest('.custom-plp-card');
   if (!card) return;
 

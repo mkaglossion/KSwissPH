@@ -103,6 +103,7 @@
                   sizes="(min-width: 990px) calc((100vw - 140px) / 5), (min-width: 750px) calc((100vw - 80px) / 3), calc((100vw - 40px) / 2)"
                   alt="{{ card_product.featured_media.alt | escape }}"
                   class="custom-plp-card__main-image primary-image"
+                  draggable="false"
                   {% unless lazy_load == false %}
                     loading="lazy"
                   {% endunless %}
@@ -125,6 +126,7 @@
                     sizes="(min-width: 990px) calc((100vw - 140px) / 5), (min-width: 750px) calc((100vw - 80px) / 3), calc((100vw - 40px) / 2)"
                     alt="{{ second_image.alt | escape }}"
                     class="custom-plp-card__main-image hover-image"
+                    draggable="false"
                     loading="lazy"
                     width="{{ second_image.width }}"
                     height="{{ second_image.height }}"
@@ -275,7 +277,7 @@
                         data-image="{{ product.featured_image | image_url: width: 720 }}"
                         data-color-name="{{ prod_color_name }}"
                       >
-                        <img src="{{ product.featured_image | image_url: width: 120 }}" width="70" height="52" alt="{{ product.title | escape }}">
+                        <img src="{{ product.featured_image | image_url: width: 120 }}" width="85" height="65" alt="{{ product.title | escape }}">
                       </button>
                     {% endfor %}
                   {% else %}
@@ -303,7 +305,7 @@
                       data-image="{{ card_product.featured_image | image_url: width: 720 }}"
                       data-color-name="{{ current_prod_color }}"
                     >
-                      <img src="{{ card_product.featured_image | image_url: width: 120 }}" width="70" height="52" alt="{{ card_product.title | escape }}">
+                      <img src="{{ card_product.featured_image | image_url: width: 120 }}" width="85" height="65" alt="{{ card_product.title | escape }}">
                     </button>
                   {% endif %}
                 </div>

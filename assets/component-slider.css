@@ -215,6 +215,7 @@ slider-component.slider-component-full-width {
 
 .slider {
   -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
 }
 
 .slider::-webkit-scrollbar {
@@ -367,4 +368,13 @@ slider-component.slider-component-full-width {
 
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
+}
+
+/* Prevent product card dragging in sliders */
+.slider .slider__slide .custom-plp-card__media-wrap,
+.slider .slider__slide .custom-plp-card__media,
+.slider .slider__slide .custom-plp-card__main-image {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
 }
