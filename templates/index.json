@@ -114,7 +114,7 @@
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
         "banner_link": "shopify://collections/all-sale-shoes-apparel-more",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
