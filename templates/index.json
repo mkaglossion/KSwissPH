@@ -195,6 +195,55 @@
         "padding_bottom": 36
       }
     },
+    "multicolumn_fbNdPX": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_TBGfAV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/lifestyle-all"
+          }
+        },
+        "column_h9bnnJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/performance-shoes-men"
+          }
+        }
+      },
+      "block_order": [
+        "column_TBGfAV",
+        "column_h9bnnJ"
+      ],
+      "custom_css": [
+        "h2 {text-align: center; width: 100%;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>SHOP BY CATEGORY</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "featured_collection_ay7ytH": {
       "type": "featured-collection",
       "custom_css": [
@@ -237,7 +286,7 @@
             "title": "",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/classic-vn-shoes"
           }
         },
         "column_iqPx83": {
@@ -247,7 +296,7 @@
             "title": "",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "shopify://collections/avenue-collection"
           }
         }
       },
@@ -330,55 +379,6 @@
         "show_view_all": false,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_fbNdPX": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_TBGfAV": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_h9bnnJ": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_TBGfAV",
-        "column_h9bnnJ"
-      ],
-      "custom_css": [
-        "h2 {text-align: center; width: 100%;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "<strong>SHOP BY CATEGORY</strong>",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "portrait",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -469,6 +469,38 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1776759950053936f8": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_64EJJk": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "@KSWISS PHILIPPINES",
+            "title_color": "#121212",
+            "title_size_v2": 40,
+            "alignment": "center",
+            "instafeed_margin_top": 30,
+            "instafeed_margin_bottom": 30,
+            "instafeed_margin_sides": 20,
+            "show_instagram_link": false,
+            "link_alignment": "center",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_64EJJk"
+      ],
+      "custom_css": [
+        "h2 {font-weight: bold;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -481,6 +513,7 @@
     "multicolumn_kgcex9",
     "collection_list_zF4DKX",
     "image_banner_htg8Pq",
-    "featured_collection_hqiVgH"
+    "featured_collection_hqiVgH",
+    "1776759950053936f8"
   ]
 }
