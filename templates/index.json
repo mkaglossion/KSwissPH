@@ -57,6 +57,7 @@
         "slide_MBNmf7",
         "slide_zWPLEW"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
@@ -109,8 +110,9 @@
       "custom_css": [],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
-        "banner_link": "",
+        "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
+        "banner_link": "shopify://collections/all-sale-shoes-apparel-more",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
