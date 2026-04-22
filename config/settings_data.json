@@ -1,20 +1,11 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "current": {
     "logo": "shopify://shop_images/K-swiss-logov2_6e7f0af2-c5da-4398-a20e-0ff01b2f2257.png",
     "logo_width": 200,
     "favicon": "shopify://shop_images/flavcon_HeritageLogo_32x32_7aad7420-bba8-4332-95d4-608181636c41.webp",
-    "type_header_font": "serif",
+    "type_header_font": "sans_serif_n4",
     "heading_scale": 100,
-    "type_body_font": "sans_serif_n4",
+    "type_body_font": "assistant_n4",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,

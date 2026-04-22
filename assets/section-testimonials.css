@@ -96,7 +96,7 @@
   color: rgba(var(--color-foreground), 0.85);
   margin-bottom: 1rem;
   flex-grow: 1;
-  font-style: italic;
+  font-style: normal;
 }
 
 .testimonial-text::before {
