@@ -849,6 +849,105 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "menu_image",
+      "name": "Menu Section Image",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Select Header, SubMenu & Image"
+        },
+        {
+          "type": "select",
+          "id": "main_menu",
+          "label": "Pick Header Menu",
+          "options": [
+            {
+              "value": "Men",
+              "label": "Men"
+            },
+            {
+              "value": "Women",
+              "label": "Women"
+            },
+            {
+              "value": "Pickleball",
+              "label": "Pickleball"
+            },
+            {
+              "value": "Sale",
+              "label": "Sale"
+            },
+            {
+              "value": "Our Story",
+              "label": "Our Story"
+            }
+          ],
+          "default": "Men"
+        },
+        {
+          "type": "select",
+          "id": "submenu_title",
+          "label": "Pick SubMenu Design",
+          "options": [
+            {
+              "value": "New & Featured",
+              "label": "New & Featured"
+            },
+            {
+              "value": "Lifestyle",
+              "label": "Lifestyle"
+            },
+            {
+              "value": "Active & Training",
+              "label": "Active & Training"
+            },
+            {
+              "value": "Performance",
+              "label": "Performance"
+            },
+            {
+              "value": "Women's Clothing",
+              "label": "Women's Clothing"
+            },
+            {
+              "value": "Accessories",
+              "label": "Accessories"
+            },
+            {
+              "value": "Footwear",
+              "label": "Footwear"
+            },
+            {
+              "value": "Clothing & Accessories",
+              "label": "Clothing & Accessories"
+            },
+            {
+              "value": "Collections",
+              "label": "Collections"
+            },
+            {
+              "value": "New Arrivals",
+              "label": "New Arrivals"
+            },
+            {
+              "value": "Best Seller",
+              "label": "Best Seller"
+            },
+            {
+              "value": "Sale",
+              "label": "Sale"
+            }
+          ],
+          "default": "New & Featured"
+        },
+        {
+          "type": "image_picker",
+          "id": "section_image",
+          "label": "Upload Image for This SubMenu"
+        }
+      ]
     }
   ]
 }

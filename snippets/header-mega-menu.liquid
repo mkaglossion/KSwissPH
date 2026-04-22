@@ -5,6 +5,82 @@
   {% render 'header-mega-menu' %}
 {% endcomment %}
 
+<style>
+  .mega-menu__content-inner {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+    gap: 30px !important;
+    align-items: start !important;
+  }
+
+  .mega-menu__list-wrapper {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .mega-menu__section {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .mega-menu__submenu-image-wrapper {
+    width: 100% !important;
+    height: 180px !important;
+    overflow: hidden !important;
+    border-radius: 4px !important;
+    display: block !important;
+    background: #f5f5f5 !important;
+    margin-top: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .mega-menu__submenu-image-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .mega-menu__image-wrapper {
+    width: 100% !important;
+    height: 220px !important;
+    overflow: hidden !important;
+    border-radius: 4px !important;
+    display: block !important;
+    background: #f5f5f5 !important;
+    margin-top: 20px !important;
+  }
+
+  .mega-menu__image-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  @media (max-width: 1200px) {
+    .mega-menu__submenu-image-wrapper {
+      height: 150px !important;
+    }
+
+    .mega-menu__image-wrapper {
+      height: 180px !important;
+    }
+  }
+
+  @media (max-width: 989px) {
+    .mega-menu__submenu-image-wrapper {
+      width: 100% !important;
+      height: 140px !important;
+    }
+
+    .mega-menu__image-wrapper {
+      width: 100% !important;
+      height: 150px !important;
+    }
+  }
+</style>
+
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
@@ -31,43 +107,67 @@
                 tabindex="-1"
               >
                 <div class="page-width mega-menu__content-inner">
-                  <ul
-                    class="mega-menu__list mega-menu__list--cols-{{ link.links.size | at_most: 6 }}"
-                    role="list"
-                  >
-                    {%- for childlink in link.links -%}
-                      <li>
-                        <a
-                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                          href="{{ childlink.url }}"
-                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                          {% if childlink.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
-                          {{ childlink.title | escape }}
-                        </a>
-                        {%- if childlink.links != blank -%}
-                          <ul class="mega-menu__submenu list-unstyled" role="list">
-                            {%- for grandchildlink in childlink.links -%}
-                              <li>
-                                <a
-                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                  href="{{ grandchildlink.url }}"
-                                  class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
-                                  {% if grandchildlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
-                                  {{ grandchildlink.title | escape }}
-                                </a>
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        {%- endif -%}
-                      </li>
-                    {%- endfor -%}
-                  </ul>
+                  <div class="mega-menu__section">
+                    <ul
+                      class="mega-menu__list mega-menu__list--cols-{{ link.links.size | at_most: 6 }}"
+                      role="list"
+                    >
+                      {%- for childlink in link.links -%}
+                        <li>
+                          <a
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            href="{{ childlink.url }}"
+                            class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                            {% if childlink.current %}
+                              aria-current="page"
+                            {% endif %}
+                          >
+                            {{ childlink.title | escape }}
+                          </a>
+                          {%- if childlink.links != blank -%}
+                            <ul class="mega-menu__submenu list-unstyled" role="list">
+                              {%- for grandchildlink in childlink.links -%}
+                                <li>
+                                  <a
+                                    id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                    href="{{ grandchildlink.url }}"
+                                    class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                    {% if grandchildlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ grandchildlink.title | escape }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                          
+                          {%- comment -%} Check for block image matching this submenu {%- endcomment -%}
+                          {%- for block in section.blocks -%}
+                            {%- if block.type == 'menu_image' -%}
+                              {%- if block.settings.main_menu == link.title and block.settings.submenu_title == childlink.title and block.settings.section_image -%}
+                                <div class="mega-menu__submenu-image-wrapper">
+                                  {% capture image_alt %}{{ childlink.title }}{% endcapture %}
+                                  {{
+                                    block.settings.section_image
+                                    | image_url: width: 300
+                                    | image_tag:
+                                      class: 'mega-menu__submenu-image',
+                                      alt: image_alt,
+                                      width: 150,
+                                      height: 200,
+                                      sizes: '150px',
+                                      loading: 'lazy'
+                                  }}
+                                </div>
+                              {%- endif -%}
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </details>
