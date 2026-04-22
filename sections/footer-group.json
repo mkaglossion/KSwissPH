@@ -35,10 +35,34 @@
             "enablesocial": false,
             "width": "25%"
           }
+        },
+        "menu_maPETd": {
+          "type": "menu",
+          "settings": {
+            "link_list": "company",
+            "width": "25%"
+          }
+        },
+        "menu_rVa4mW": {
+          "type": "menu",
+          "settings": {
+            "link_list": "help",
+            "width": "25%"
+          }
+        },
+        "menu_4wbnjm": {
+          "type": "menu",
+          "settings": {
+            "link_list": "footer",
+            "width": "25%"
+          }
         }
       },
       "block_order": [
-        "newsletter_cgDdDh"
+        "newsletter_cgDdDh",
+        "menu_maPETd",
+        "menu_rVa4mW",
+        "menu_4wbnjm"
       ],
       "settings": {
         "cssfooter": "",
