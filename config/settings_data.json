@@ -190,7 +190,7 @@
       },
       "5946647744298494267": {
         "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "show_ui": true,
           "storefront_layout_enabled": true,
@@ -207,7 +207,7 @@
       },
       "17761373519772116650": {
         "type": "shopify://apps/wishlist-plus/blocks/storefront-ui-elements/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
