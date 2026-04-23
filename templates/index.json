@@ -253,7 +253,7 @@
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "collection": "all-new-arrivals",
+        "collection": "fresh-picks-shoes-new",
         "products_to_show": 5,
         "title": "<strong>FRESH PICKS</strong>",
         "heading_size": "h1",
