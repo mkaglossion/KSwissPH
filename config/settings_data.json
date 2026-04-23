@@ -200,13 +200,13 @@
           "swym_variant_selector_create_list_title": "Name Your Wishlist"
         }
       },
-      "17761373519772116650": {
-        "type": "shopify://apps/wishlist-plus/blocks/storefront-ui-elements/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-        "disabled": true,
-        "settings": {}
-      },
       "1232542678405107163": {
         "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "17761373519772116650": {
+        "type": "shopify://apps/wishlist-plus/blocks/storefront-ui-elements/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
         "disabled": false,
         "settings": {}
       }
