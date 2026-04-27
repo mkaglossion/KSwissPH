@@ -46,7 +46,7 @@
         "enable_full_width_header": true,
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "menu": "mega-menu",
+        "menu": "mega-menu-updated",
         "menu_type_desktop": "mega",
         "sticky_header_type": "always",
         "show_line_separator": false,
