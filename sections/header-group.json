@@ -38,6 +38,19 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "menu_image_9rgpct": {
+          "type": "menu_image",
+          "settings": {
+            "main_menu": "Men",
+            "submenu_title": "Collections",
+            "section_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "menu_image_9rgpct"
+      ],
       "custom_css": [
         ".header a {text-decoration: none !important;}",
         ".header a:hover {text-decoration: underline !important; text-underline-offset: 0.3rem; text-decoration-thickness: 2px; font-weight: 700;}"
@@ -46,7 +59,7 @@
         "enable_full_width_header": true,
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
-        "menu": "mega-menu-updated",
+        "menu": "mega-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "always",
         "show_line_separator": false,
