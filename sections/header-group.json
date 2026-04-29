@@ -43,7 +43,7 @@
         ".header a:hover {text-decoration: underline !important; text-underline-offset: 0.3rem; text-decoration-thickness: 2px; font-weight: 700;}"
       ],
       "settings": {
-        "enable_full_width_header": false,
+        "enable_full_width_header": true,
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
         "menu": "main-mega-menu-updated",
