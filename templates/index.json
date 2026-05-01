@@ -107,6 +107,7 @@
         "text_zw8aVY",
         "buttons_cRDTXK"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
