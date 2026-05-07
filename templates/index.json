@@ -112,7 +112,7 @@
       "settings": {
         "image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
         "image_mobile": "shopify://shop_images/may_promo_socmed.jpg",
-        "banner_link": "shopify://collections",
+        "banner_link": "shopify://collections/performance-regular",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
