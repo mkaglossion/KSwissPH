@@ -107,13 +107,12 @@
         "text_zw8aVY",
         "buttons_cRDTXK"
       ],
-      "disabled": true,
       "custom_css": [],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
-        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
-        "banner_link": "shopify://collections/all-sale-shoes-apparel-more",
+        "image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
+        "image_mobile": "shopify://shop_images/may_promo_socmed.jpg",
+        "banner_link": "shopify://collections",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
