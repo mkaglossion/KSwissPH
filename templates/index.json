@@ -57,6 +57,7 @@
         "slide_zWPLEW",
         "slide_MBNmf7"
       ],
+      "disabled": true,
       "name": "t:sections.slideshow.presets.name",
       "settings": {
         "layout": "full_bleed",
