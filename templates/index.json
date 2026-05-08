@@ -9,67 +9,6 @@
  */
 {
   "sections": {
-    "slideshow_a8Xym4": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_zWPLEW": {
-          "type": "slide",
-          "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
-            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
-            "slideshow_link": "shopify://collections/avenue-collection",
-            "image_overlay_opacity": 0,
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-1"
-          }
-        },
-        "slide_MBNmf7": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
-            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
-            "slideshow_link": "shopify://collections/all-sale-shoes-apparel-more",
-            "image_overlay_opacity": 0,
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_zWPLEW",
-        "slide_MBNmf7"
-      ],
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "adapt_image",
-        "slider_visual": "dots",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
     "image_banner_fTQr8y": {
       "type": "image-banner",
       "blocks": {
@@ -504,10 +443,65 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "slideshow_DGFcJW": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_PWbq8K": {
+          "type": "slide",
+          "settings": {
+            "slideshow_link": "",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_MapqUC": {
+          "type": "slide",
+          "settings": {
+            "slideshow_link": "",
+            "image_overlay_opacity": 0,
+            "heading": "Welcome to Dawn",
+            "heading_size": "h1",
+            "subheading": "Discover our latest collection",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_PWbq8K",
+        "slide_MapqUC"
+      ],
+      "name": "Dawn Slideshow",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Promotional slideshow"
+      }
     }
   },
   "order": [
-    "slideshow_a8Xym4",
     "image_banner_fTQr8y",
     "image_banner",
     "featured_collection",
@@ -517,6 +511,7 @@
     "collection_list_zF4DKX",
     "image_banner_htg8Pq",
     "featured_collection_hqiVgH",
-    "1776759950053936f8"
+    "1776759950053936f8",
+    "slideshow_DGFcJW"
   ]
 }
