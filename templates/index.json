@@ -187,50 +187,6 @@
         "show_text_below": false
       }
     },
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/avenue-collection",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "shopify://collections/avenue-collection",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
-        "image_mobile": "shopify://shop_images/BEST_SELLER_BANNER_800X400_MOBILE.jpg",
-        "banner_link": "shopify://collections/avenue-collection",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -635,7 +591,6 @@
     "slideshow_v2_gjVHbw",
     "slideshow_a8Xym4",
     "image_banner_fTQr8y",
-    "image_banner",
     "featured_collection",
     "multicolumn_fbNdPX",
     "image_banner_aKC9ek",
