@@ -266,8 +266,8 @@
         "column_TBGfAV": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Lifestyle_ae3f9347-9281-4df8-92a4-161996f71669.jpg",
-            "title": "",
+            "image": "shopify://shop_images/CATEGORY_BANNERS_1.jpg",
+            "title": "LIFESTYLE",
             "text": "",
             "link_label": "",
             "link": "shopify://collections/lifestyle-all"
@@ -276,8 +276,18 @@
         "column_h9bnnJ": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Performance_88bc6687-1062-4ad8-a7ed-f59492d5f8bc.jpg",
-            "title": "",
+            "image": "shopify://shop_images/CATEGORY_BANNERS_2.jpg",
+            "title": "PERFORMANCE",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/performance-shoes-men"
+          }
+        },
+        "column_MVdJLq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CATEGORY_BANNERS_3.jpg",
+            "title": "ACCESSORIES",
             "text": "",
             "link_label": "",
             "link": "shopify://collections/performance-shoes-men"
@@ -286,20 +296,21 @@
       },
       "block_order": [
         "column_TBGfAV",
-        "column_h9bnnJ"
+        "column_h9bnnJ",
+        "column_MVdJLq"
       ],
       "custom_css": [
         "h2 {text-align: center; width: 100%;}"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "<strong>SHOP BY CATEGORY</strong>",
+        "title": "",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "portrait",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 2,
+        "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
