@@ -65,6 +65,64 @@ document.addEventListener('pointermove', function(e) {
   }
 }, { passive: false });
 
+/* =========================
+   IMAGE SWAP (DESKTOP + MOBILE)
+   ========================= */
+const IMAGE_PREVIEW_CLASS = 'is-image-preview';
+let imagePreviewResetTimer = null;
+
+function clearImagePreview(exceptCard = null) {
+  document.querySelectorAll('.custom-plp-card.' + IMAGE_PREVIEW_CLASS).forEach((card) => {
+    if (card !== exceptCard) card.classList.remove(IMAGE_PREVIEW_CLASS);
+  });
+}
+
+function activateImagePreview(card) {
+  if (!card) return;
+  const hasSecondImage = !!card.querySelector('.custom-plp-card__main-image.hover-image');
+  if (!hasSecondImage) return;
+
+  clearImagePreview(card);
+  card.classList.add(IMAGE_PREVIEW_CLASS);
+}
+
+function scheduleImagePreviewReset(delayMs) {
+  if (imagePreviewResetTimer) clearTimeout(imagePreviewResetTimer);
+  imagePreviewResetTimer = setTimeout(() => {
+    clearImagePreview();
+  }, delayMs);
+}
+
+document.addEventListener('pointerdown', function (e) {
+  if (e.pointerType === 'mouse') return;
+  const media = e.target.closest('.custom-plp-card__media');
+  if (!media) return;
+  const card = media.closest('.custom-plp-card');
+  activateImagePreview(card);
+});
+
+document.addEventListener('touchstart', function (e) {
+  const media = e.target.closest('.custom-plp-card__media');
+  if (!media) return;
+  const card = media.closest('.custom-plp-card');
+  activateImagePreview(card);
+}, { passive: true });
+
+document.addEventListener('pointerup', function (e) {
+  if (e.pointerType === 'mouse') return;
+  const card = e.target.closest('.custom-plp-card');
+  if (!card || !card.classList.contains(IMAGE_PREVIEW_CLASS)) return;
+  scheduleImagePreviewReset(900);
+});
+
+document.addEventListener('pointercancel', function () {
+  clearImagePreview();
+});
+
+document.addEventListener('touchend', function () {
+  scheduleImagePreviewReset(900);
+}, { passive: true });
+
 document.addEventListener('click', function (e) {
   const sizeBtn = e.target.closest('.variant-btn');
   const swatchBtn = e.target.closest('.card-swatch');

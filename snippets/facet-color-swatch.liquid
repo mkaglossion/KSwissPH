@@ -1,0 +1,70 @@
+{%- liquid
+  assign swatch_background = blank
+
+  if facet_value.swatch and facet_value.swatch.image
+    assign image_url = facet_value.swatch.image | image_url: width: 50
+    assign swatch_background = 'url(' | append: image_url | append: ')'
+  elsif facet_value.swatch and facet_value.swatch.color
+    assign swatch_background = 'rgb(' | append: facet_value.swatch.color.rgb | append: ')'
+  else
+    assign label_key = facet_value.label | downcase | replace: '-', ' ' | replace: '/', ' '
+    assign words = label_key | split: ' '
+    assign color_primary = blank
+    assign color_secondary = blank
+
+    for word in words
+      assign mapped_color = blank
+      case word
+        when 'black'
+          assign mapped_color = '#1a1a1a'
+        when 'white', 'blanc'
+          assign mapped_color = '#f8f8f8'
+        when 'offwhite', 'off'
+          assign mapped_color = '#f2f0e8'
+        when 'cream'
+          assign mapped_color = '#efe6d7'
+        when 'snow'
+          assign mapped_color = '#f6f7f8'
+        when 'gray', 'grey'
+          assign mapped_color = '#8f959d'
+        when 'navy', 'naval'
+          assign mapped_color = '#1f2d5c'
+        when 'blue'
+          assign mapped_color = '#2f6ebc'
+        when 'red'
+          assign mapped_color = '#c73b3b'
+        when 'green'
+          assign mapped_color = '#2f7d4f'
+        when 'brown', 'gum'
+          assign mapped_color = '#8a6442'
+        when 'beige', 'tan'
+          assign mapped_color = '#c8ae8a'
+      endcase
+
+      if mapped_color != blank
+        if color_primary == blank
+          assign color_primary = mapped_color
+        elsif color_secondary == blank and mapped_color != color_primary
+          assign color_secondary = mapped_color
+          break
+        endif
+      endif
+    endfor
+
+    if color_primary == blank
+      assign color_primary = '#d9d9d9'
+    endif
+
+    if color_secondary != blank
+      assign swatch_background = 'linear-gradient(135deg, ' | append: color_primary | append: ' 0 50%, ' | append: color_secondary | append: ' 50% 100%)'
+    else
+      assign swatch_background = color_primary
+    endif
+  endif
+-%}
+
+<span
+  class="facets__color-swatch"
+  style="--facet-color-swatch-background: {{ swatch_background }};"
+  aria-hidden="true"
+></span>

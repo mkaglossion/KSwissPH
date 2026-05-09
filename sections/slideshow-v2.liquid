@@ -46,19 +46,23 @@
   .dawn-slideshow-v2 .slideshow__slide.slide-has-link {
     cursor: pointer;
   }
-  
+
+  .dawn-slideshow-v2 .slideshow__slide.slide-has-link .banner__media {
+    pointer-events: none;
+  }
+
   .dawn-slideshow-v2 .slideshow__slide-link {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     display: block;
   }
-  
+
   .dawn-slideshow-v2 .slideshow__slide.slide-has-link .slideshow__text-wrapper {
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
-  
+
   .dawn-slideshow-v2 .slideshow__slide.slide-has-link .banner__buttons {
     position: relative;
     z-index: 3;
@@ -290,7 +294,7 @@
                 </div>
               {%- endif -%}
               {%- if block.settings.button_label != blank -%}
-                <div class="banner__buttons">
+                <div class="banner__buttons" onclick="event.stopPropagation();">
                   <a
                     {% if block.settings.button_link %}
                       href="{{ block.settings.button_link }}"
@@ -298,6 +302,7 @@
                       role="link" aria-disabled="true"
                     {% endif %}
                     class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}"
+                    onclick="event.stopPropagation();"
                   >
                     {{- block.settings.button_label | escape -}}
                   </a>

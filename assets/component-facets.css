@@ -516,6 +516,18 @@
   flex-shrink: 0;
 }
 
+.facets__color-swatch {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  background: var(--facet-color-swatch-background, #d9d9d9);
+  background-size: cover;
+  background-position: center;
+  margin-right: 1.2rem;
+  flex-shrink: 0;
+}
+
 .facet-checkbox .svg-wrapper {
   visibility: hidden;
   position: absolute;
@@ -1027,6 +1039,10 @@ input.mobile-facets__checkbox {
   z-index: 2;
   margin-right: 1.2rem;
   flex-shrink: 0;
+}
+
+.mobile-facets__label .facets__color-swatch {
+  margin-right: 1.2rem;
 }
 
 .mobile-facets__label .icon-checkmark {

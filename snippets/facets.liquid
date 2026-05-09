@@ -113,6 +113,11 @@
               {% liquid
                 assign total_active_values = total_active_values | plus: filter.active_values.size
                 assign presentation = filter.presentation | default: default_presentation
+                assign filter_label_downcase = filter.label | downcase
+                assign is_color_filter = false
+                if filter_label_downcase contains 'color' or filter_label_downcase contains 'colour'
+                  assign is_color_filter = true
+                endif
 
                 if presentation == 'image'
                   assign show_more_number = 12
@@ -261,6 +266,11 @@
                                           | image_tag: class: 'facets__image', alt: value.alt
                                         }}
                                       {%- endif -%}
+                                    </div>
+                                  {%- elsif is_color_filter -%}
+                                    {% render 'facet-color-swatch', facet_value: value %}
+                                    <div class="svg-wrapper">
+                                      {{- 'icon-checkmark.svg' | inline_asset_content -}}
                                     </div>
                                   {%- else -%}
                                     {{- 'square.svg' | inline_asset_content -}}
@@ -511,6 +521,11 @@
                 {%- for filter in results.filters -%}
                   {% liquid
                     assign presentation = filter.presentation | default: default_presentation
+                    assign filter_label_downcase = filter.label | downcase
+                    assign is_color_filter = false
+                    if filter_label_downcase contains 'color' or filter_label_downcase contains 'colour'
+                      assign is_color_filter = true
+                    endif
                     if presentation == 'image'
                       assign visual_layout_class = 'facets-layout facets-layout-grid facets-layout-grid--' | append: presentation
                     else
@@ -632,6 +647,9 @@
                                           }}
                                         {%- endif -%}
                                       </div>
+                                    {%- elsif is_color_filter -%}
+                                      {% render 'facet-color-swatch', facet_value: value %}
+                                      {{- 'icon-checkmark.svg' | inline_asset_content -}}
                                     {%- else -%}
                                       <span class="mobile-facets__highlight"></span>
                                       {{- 'square.svg' | inline_asset_content -}}

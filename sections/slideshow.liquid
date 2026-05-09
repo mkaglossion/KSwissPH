@@ -5,19 +5,19 @@
 <style>
   /* Desktop and Mobile image switching */
   @media screen and (max-width: 749px) {
-    .slideshow__media .desktop-image-only {
+    slideshow-component:not(.dawn-slideshow-v2) .slideshow__media .desktop-image-only {
       display: none !important;
     }
-    .slideshow__media .mobile-image-only {
+    slideshow-component:not(.dawn-slideshow-v2) .slideshow__media .mobile-image-only {
       display: block !important;
     }
   }
-  
+
   @media screen and (min-width: 750px) {
-    .slideshow__media .desktop-image-only {
+    slideshow-component:not(.dawn-slideshow-v2) .slideshow__media .desktop-image-only {
       display: block !important;
     }
-    .slideshow__media .mobile-image-only {
+    slideshow-component:not(.dawn-slideshow-v2) .slideshow__media .mobile-image-only {
       display: none !important;
     }
   }
@@ -40,23 +40,30 @@
   .slideshow__slide.slide-has-link {
     cursor: pointer;
   }
-  
+
   .slideshow__slide.slide-has-link .banner__media {
     pointer-events: none;
   }
-  
+
+  .slideshow__slide-link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: block;
+  }
+
   .slideshow__slide.slide-has-link .slideshow__text-wrapper {
     pointer-events: auto;
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
-  
+
   .slideshow__slide.slide-has-link .banner__buttons {
     pointer-events: auto;
     position: relative;
     z-index: 3;
   }
-  
+
   .slideshow__slide.slide-has-link .banner__buttons a {
     pointer-events: auto;
   }
@@ -200,10 +207,6 @@
         aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
-        {% if slide_has_link %}
-          onclick="window.location.href='{{ block.settings.slideshow_link }}';"
-          style="cursor: pointer;"
-        {% endif %}
       >
         <div class="slideshow__media banner__media media{% if block.settings.desktop_image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
           <!-- Desktop Image -->
@@ -250,6 +253,15 @@
             }}
           {%- endif -%}
         </div>
+        {%- if slide_has_link -%}
+          {%- assign slide_link_label = block.settings.heading | strip_html | default: block.settings.button_label | default: section.settings.accessibility_info -%}
+          <a
+            class="slideshow__slide-link"
+            href="{{ block.settings.slideshow_link }}"
+            aria-label="{{ slide_link_label | escape }}"
+            onclick="event.stopPropagation();"
+          ></a>
+        {%- endif -%}
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
             {%- if block.settings.heading != blank -%}

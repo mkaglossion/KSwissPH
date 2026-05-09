@@ -4424,6 +4424,26 @@ details-disclosure > details {
 .custom-plp-card__media:hover .hover-image {
   opacity: 1;
 }
+
+/* Programmatic swap support (touch/press devices) */
+.custom-plp-card.is-image-preview .primary-image {
+  opacity: 0;
+}
+
+.custom-plp-card.is-image-preview .hover-image {
+  opacity: 1;
+}
+
+/* Fallback for touch-only interactions */
+@media (hover: none) {
+  .custom-plp-card__media:active .primary-image {
+    opacity: 0;
+  }
+
+  .custom-plp-card__media:active .hover-image {
+    opacity: 1;
+  }
+}
 /* =========================
    FINAL QUICK ATC RAIL
    ========================= */
@@ -4636,12 +4656,8 @@ details-disclosure > details {
   overflow-x: auto;
   overflow-y: hidden;
   -ms-overflow-style: none;
-  max-width: calc((var(--swatch-size) * 2.5) + (8px * 2)); /* Show ~2-2.5 swatches */
-  transition: max-width 0.4s ease-in-out;
-}
-
-.custom-plp-card:hover .color_swatch_box {
-  max-width: none; /* Show all swatches on hover */
+  max-width: none;
+  transition: none;
 }
 
 .color_swatch_box::-webkit-scrollbar {
@@ -4838,18 +4854,13 @@ details-disclosure > details {
 .card-swatch:focus { outline: var(--focused-base-outline); outline-offset: var(--focused-base-outline-offset); }
 .card-swatch:hover { transform: scale(1.03); transition: transform .12s ease; }
 
-/* ========== Color Swatches - Initial & Hover States ========== */
-/* Limited visibility initially, expand on image/card hover */
+/* ========== Color Swatches - Always Expanded ========== */
 .color_swatch_box {
   overflow-x: auto;
   overflow-y: hidden;
   -ms-overflow-style: none;
-  max-width: calc((var(--swatch-size) * 2.5) + (8px * 2)); /* Show ~2-2.5 swatches */
-  transition: max-width 0.4s ease-in-out;
-}
-
-.custom-plp-card:hover .color_swatch_box {
-  max-width: none; /* Show all swatches on hover */
+  max-width: none;
+  transition: none;
 }
 
 /* Expand color section on image hover - bring to front */
@@ -4858,37 +4869,16 @@ details-disclosure > details {
   z-index: 10;
 }
 
-/* ========== Product card image size overrides ========== */
-/* Make shoe images fill the media area and be larger on mobile/tablet/desktop */
+/* ========== Product card image responsiveness ========== */
+/* Keep the full product visible on all breakpoints */
 .custom-plp-card__media {
-  height: 220px !important;
-  min-height: 220px !important;
+  height: clamp(220px, 50vw, 300px) !important;
+  min-height: clamp(220px, 50vw, 300px) !important;
 }
 
 .custom-plp-card__main-image {
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
-}
-
-@media screen and (max-width: 480px) {
-  .custom-plp-card__media {
-    height: 240px !important;
-    min-height: 240px !important;
-  }
-}
-
-@media screen and (min-width: 750px) {
-  .custom-plp-card__media {
-    height: 260px !important;
-    min-height: 260px !important;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .custom-plp-card__media {
-    height: 300px !important;
-    min-height: 300px !important;
-  }
 }
 
 /* Image banner: desktop image 1, mobile image 2 (section-specific classes) */
@@ -4911,14 +4901,6 @@ details-disclosure > details {
   .banner__media-mobile {
     display: block !important;
     width: 100% !important;
-  }
-}
-
-/* Desktop: show full shoe by using contain and slightly smaller media area */
-@media screen and (min-width: 990px) {
-  .custom-plp-card__main-image {
-    object-fit: contain !important;
-    object-position: center !important;
   }
 }
 
