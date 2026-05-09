@@ -15,8 +15,8 @@
         "slide_Qhpq3g": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
-            "mobile_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
+            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
+            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
             "slideshow_link": "shopify://collections/avenue-collection",
             "image_overlay_opacity": 0,
             "force_image_only": false,
@@ -62,7 +62,7 @@
       "name": "Dawn Slideshow v2",
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "medium",
+        "slide_height": "adapt_image",
         "slider_visual": "counter",
         "auto_rotate": false,
         "change_slides_speed": 3,
