@@ -12,6 +12,26 @@
     "slideshow_a8Xym4": {
       "type": "slideshow",
       "blocks": {
+        "slide_zWPLEW": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
+            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
+            "slideshow_link": "shopify://collections/avenue-collection",
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
         "slide_MBNmf7": {
           "type": "slide",
           "settings": {
@@ -31,31 +51,11 @@
             "text_alignment_mobile": "center",
             "color_scheme": ""
           }
-        },
-        "slide_zWPLEW": {
-          "type": "slide",
-          "settings": {
-            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_8a22958b-c0d9-46bf-a790-9870363c5d1e.jpg",
-            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_8323f00f-4013-4ba5-af82-a2feaf4e2fac.jpg",
-            "slideshow_link": "shopify://collections/avenue-collection",
-            "image_overlay_opacity": 0,
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-1"
-          }
         }
       },
       "block_order": [
-        "slide_MBNmf7",
-        "slide_zWPLEW"
+        "slide_zWPLEW",
+        "slide_MBNmf7"
       ],
       "disabled": true,
       "name": "t:sections.slideshow.presets.name",
@@ -107,11 +107,12 @@
         "text_zw8aVY",
         "buttons_cRDTXK"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_5f0a8e61-7b54-40cf-a774-cf4bc350c126.jpg",
-        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_51b2b2b7-3e90-469b-871c-715332c4210d.jpg",
+        "image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
+        "image_mobile": "shopify://shop_images/may_promo_socmed.jpg",
         "banner_link": "shopify://collections/all-sale-shoes-apparel-more",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -253,7 +254,7 @@
       ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "collection": "all-new-arrivals",
+        "collection": "fresh-picks-shoes-new",
         "products_to_show": 5,
         "title": "<strong>FRESH PICKS</strong>",
         "heading_size": "h1",
@@ -351,7 +352,7 @@
         "featured_collection_LkRBcp": {
           "type": "featured_collection",
           "settings": {
-            "collection": "pickleball-1"
+            "collection": "pickleball-featured"
           }
         },
         "featured_collection_8d3jhc": {
