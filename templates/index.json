@@ -415,21 +415,21 @@
         "column_JapKXE": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Classic_VN_13f4ea61-522a-44a1-9dfb-b30075ea000d.jpg",
+            "image": "shopify://shop_images/MENS_b437fe12-6dca-408c-b89c-b1415eedac5f.jpg",
             "title": "",
             "text": "",
             "link_label": "",
-            "link": "shopify://collections/classic-vn-shoes"
+            "link": "shopify://collections/men-all-shoes"
           }
         },
         "column_iqPx83": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Avenue_0315e3d1-48e9-4435-8be0-3f8afad4f4d7.jpg",
+            "image": "shopify://shop_images/WOMENS_4aad262a-567f-4bcd-a48e-06f9073e5e9f.jpg",
             "title": "",
             "text": "",
             "link_label": "",
-            "link": "shopify://collections/avenue-collection"
+            "link": "shopify://collections/womens-all-shoes"
           }
         }
       },
@@ -442,7 +442,7 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "<strong>FEATURED</strong>",
+        "title": "",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
