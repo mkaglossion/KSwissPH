@@ -39,7 +39,7 @@
     "header": {
       "type": "header",
       "blocks": {
-        "menu_image_QdaNTY": {
+        "menu_image_cT4Y3p": {
           "type": "menu_image",
           "settings": {
             "main_menu": "Men",
@@ -49,7 +49,7 @@
         }
       },
       "block_order": [
-        "menu_image_QdaNTY"
+        "menu_image_cT4Y3p"
       ],
       "custom_css": [
         ".header a {text-decoration: none !important;}",
