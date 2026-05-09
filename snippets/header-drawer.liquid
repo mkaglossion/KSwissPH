@@ -113,6 +113,29 @@
                                     </div>
                                   </details>
                                 {%- endif -%}
+                                {%- for block in section.blocks -%}
+                                  {%- if block.type == 'menu_image'
+                                    and block.settings.main_menu == link.title
+                                    and block.settings.submenu_title == childlink.title
+                                    and block.settings.section_image
+                                  -%}
+                                    <div class="menu-drawer__submenu-image-wrapper">
+                                      {% capture drawer_image_alt %}{{ childlink.title }}{% endcapture %}
+                                      {{
+                                        block.settings.section_image
+                                        | image_url: width: 800
+                                        | image_tag:
+                                          class: 'menu-drawer__submenu-image',
+                                          alt: drawer_image_alt,
+                                          width: 600,
+                                          height: 600,
+                                          sizes: '(min-width: 750px) 300px, calc(100vw - 6rem)',
+                                          loading: 'lazy',
+                                          decoding: 'async'
+                                      }}
+                                    </div>
+                                  {%- endif -%}
+                                {%- endfor -%}
                               </li>
                             {%- endfor -%}
                           </ul>

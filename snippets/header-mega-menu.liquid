@@ -25,7 +25,8 @@
 
   .mega-menu__submenu-image-wrapper {
     width: 100% !important;
-    height: 180px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
     overflow: hidden !important;
     border-radius: 4px !important;
     display: block !important;
@@ -37,13 +38,15 @@
   .mega-menu__submenu-image-wrapper img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
+    object-position: center !important;
     display: block !important;
   }
 
   .mega-menu__image-wrapper {
     width: 100% !important;
-    height: 220px !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
     overflow: hidden !important;
     border-radius: 4px !important;
     display: block !important;
@@ -54,29 +57,34 @@
   .mega-menu__image-wrapper img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
+    object-position: center !important;
     display: block !important;
   }
 
   @media (max-width: 1200px) {
     .mega-menu__submenu-image-wrapper {
-      height: 150px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
     }
 
     .mega-menu__image-wrapper {
-      height: 180px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
     }
   }
 
   @media (max-width: 989px) {
     .mega-menu__submenu-image-wrapper {
       width: 100% !important;
-      height: 140px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
     }
 
     .mega-menu__image-wrapper {
       width: 100% !important;
-      height: 150px !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
     }
   }
 </style>
@@ -151,13 +159,13 @@
                                   {% capture image_alt %}{{ childlink.title }}{% endcapture %}
                                   {{
                                     block.settings.section_image
-                                    | image_url: width: 300
+                                    | image_url: width: 500
                                     | image_tag:
                                       class: 'mega-menu__submenu-image',
                                       alt: image_alt,
-                                      width: 150,
-                                      height: 200,
-                                      sizes: '150px',
+                                      width: 300,
+                                      height: 300,
+                                      sizes: '(min-width: 990px) 180px, 140px',
                                       loading: 'lazy'
                                   }}
                                 </div>
