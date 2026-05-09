@@ -31,51 +31,78 @@
                 role="list"
                 tabindex="-1"
               >
-                {%- for childlink in link.links -%}
-                  <li>
-                    {%- if childlink.links == blank -%}
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
-                    {%- else -%}
-                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                        <summary
-                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
-                        >
-                          <span>{{ childlink.title | escape }}</span>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                        </summary>
-                        <ul
-                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                          class="header__submenu list-menu motion-reduce"
-                        >
-                          {%- for grandchildlink in childlink.links -%}
-                            <li>
-                              <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
-                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
-                                {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ grandchildlink.title | escape }}
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      </details>
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
+                 {%- for childlink in link.links -%}
+                   <li>
+                     {%- if childlink.links == blank -%}
+                       <a
+                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                         href="{{ childlink.url }}"
+                         class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                         {% if childlink.current %}
+                           aria-current="page"
+                         {% endif %}
+                       >
+                         {{ childlink.title | escape }}
+                       </a>
+                     {%- else -%}
+                       <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                         <summary
+                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                           class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                         >
+                           <span>{{ childlink.title | escape }}</span>
+                           {{- 'icon-caret.svg' | inline_asset_content -}}
+                         </summary>
+                         <ul
+                           id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                           class="header__submenu list-menu motion-reduce"
+                         >
+                           {%- for grandchildlink in childlink.links -%}
+                             <li>
+                               <a
+                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                 href="{{ grandchildlink.url }}"
+                                 class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                 {% if grandchildlink.current %}
+                                   aria-current="page"
+                                 {% endif %}
+                               >
+                                 {{ grandchildlink.title | escape }}
+                               </a>
+                             </li>
+                           {%- endfor -%}
+                         </ul>
+                       </details>
+                     {%- endif -%}
+                     {%- comment -%} Check for block image matching this submenu {%- endcomment -%}
+                     {%- for block in section.blocks -%}
+                       {%- if block.type == 'menu_image' -%}
+                         {%- if block.settings.main_menu == link.title and block.settings.submenu_title == childlink.title and block.settings.section_image -%}
+                           <div class="dropdown-submenu-image-wrapper">
+                             {%- if block.settings.image_link != blank -%}
+                               <a href="{{ block.settings.image_link }}" onclick="event.stopPropagation();">
+                             {%- endif -%}
+                             {% capture image_alt %}{{ childlink.title }}{% endcapture %}
+                             {{
+                               block.settings.section_image
+                               | image_url: width: 300
+                               | image_tag:
+                                 class: 'dropdown-submenu-image',
+                                 alt: image_alt,
+                                 width: 200,
+                                 height: 200,
+                                 sizes: '200px',
+                                 loading: 'lazy'
+                             }}
+                             {%- if block.settings.image_link != blank -%}
+                               </a>
+                             {%- endif -%}
+                           </div>
+                         {%- endif -%}
+                       {%- endif -%}
+                     {%- endfor -%}
+                   </li>
+                 {%- endfor -%}
               </ul>
             </details>
           </header-menu>

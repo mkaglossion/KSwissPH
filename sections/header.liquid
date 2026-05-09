@@ -162,6 +162,24 @@
   }
 
   /* ============================================ */
+  /* DROPDOWN SUBMENU IMAGE */
+  /* ============================================ */
+  .dropdown-submenu-image-wrapper {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .dropdown-submenu-image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ============================================ */
   /* MOBILE HEADER: STABLE GRID LAYOUT */
   /* ============================================ */
   @media screen and (max-width: 989px) {
@@ -941,6 +959,11 @@
           "type": "image_picker",
           "id": "section_image",
           "label": "Upload Image for This SubMenu"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link"
         }
       ]
     }
