@@ -12,27 +12,6 @@
     "slideshow_v2_gjVHbw": {
       "type": "slideshow-v2",
       "blocks": {
-        "slide_Qhpq3g": {
-          "type": "slide",
-          "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
-            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
-            "slideshow_link": "shopify://collections/avenue-collection",
-            "image_overlay_opacity": 0,
-            "force_image_only": false,
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": ""
-          }
-        },
         "slide_efhfLJ": {
           "type": "slide",
           "settings": {
@@ -53,11 +32,32 @@
             "text_alignment_mobile": "center",
             "color_scheme": ""
           }
+        },
+        "slide_Qhpq3g": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
+            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
+            "slideshow_link": "shopify://collections/avenue-collection",
+            "image_overlay_opacity": 0,
+            "force_image_only": false,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
         }
       },
       "block_order": [
-        "slide_Qhpq3g",
-        "slide_efhfLJ"
+        "slide_efhfLJ",
+        "slide_Qhpq3g"
       ],
       "name": "Dawn Slideshow v2",
       "settings": {
