@@ -39,6 +39,15 @@
     "header": {
       "type": "header",
       "blocks": {
+        "menu_image_LWtNBV": {
+          "type": "menu_image",
+          "settings": {
+            "main_menu": "Women",
+            "submenu_title": "Collections",
+            "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
+            "image_link": "shopify://collections/avenue-collection"
+          }
+        },
         "menu_image_cT4Y3p": {
           "type": "menu_image",
           "settings": {
@@ -50,6 +59,7 @@
         }
       },
       "block_order": [
+        "menu_image_LWtNBV",
         "menu_image_cT4Y3p"
       ],
       "custom_css": [
