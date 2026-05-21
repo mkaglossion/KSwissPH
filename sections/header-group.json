@@ -39,11 +39,12 @@
     "header": {
       "type": "header",
       "blocks": {
-        "extra_menu_section_jR9Rb6": {
+        "extra_menu_section_mNgFdz": {
           "type": "extra_menu_section",
           "settings": {
             "main_menu": "New & Featured",
-            "submenu_title": "New Arrivals",
+            "submenu_title": "Men's",
+            "custom_submenu_title": "Pickleball",
             "title": "",
             "title_link": "",
             "menu": "pickleball-mens-menu",
@@ -55,6 +56,7 @@
           "settings": {
             "main_menu": "Men",
             "submenu_title": "Collections",
+            "nested_submenu_title": "",
             "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
             "image_link": "shopify://collections/avenue-collection"
           }
@@ -64,13 +66,14 @@
           "settings": {
             "main_menu": "Women",
             "submenu_title": "Collections",
+            "nested_submenu_title": "",
             "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
             "image_link": "shopify://collections/avenue-collection"
           }
         }
       },
       "block_order": [
-        "extra_menu_section_jR9Rb6",
+        "extra_menu_section_mNgFdz",
         "menu_image_LWtNBV",
         "menu_image_cT4Y3p"
       ],
