@@ -184,6 +184,11 @@
     display: block;
   }
 
+  .mega-menu__submenu-image-wrapper--nested,
+  .dropdown-submenu-image-wrapper--nested {
+    margin-inline-start: 1.8rem;
+  }
+
   .mega-menu__section-heading,
   .header__submenu-extra-heading {
     margin: 0;
@@ -192,7 +197,7 @@
   .mega-menu__submenu--bullets,
   .header__submenu-extra-list--bullets {
     list-style: disc;
-    padding-left: 1.8rem;
+    padding-inline-start: 1.8rem;
   }
 
   .header__submenu-extra-list {
@@ -203,31 +208,17 @@
 
   .mega-menu__nested-extra-section,
   .header__nested-extra-section {
-    margin-top: 0.6rem;
+    margin-block-start: 0.8rem;
+    padding-inline-start: 1.8rem;
   }
 
   .mega-menu__nested-extra-section .mega-menu__submenu--extra,
-  .mega-menu__extra-section .mega-menu__submenu--extra,
-  .header__nested-extra-section .header__submenu-extra-list,
-  .header__submenu-extra-section .header__submenu-extra-list {
-    display: none;
+  .header__nested-extra-section .header__submenu-extra-list {
+    margin-block-start: 0.3rem;
   }
 
-  .mega-menu__nested-extra-section:hover .mega-menu__submenu--extra,
-  .mega-menu__nested-extra-section:focus-within .mega-menu__submenu--extra,
-  .mega-menu__extra-section:hover .mega-menu__submenu--extra,
-  .mega-menu__extra-section:focus-within .mega-menu__submenu--extra,
-  .header__nested-extra-section:hover .header__submenu-extra-list,
-  .header__nested-extra-section:focus-within .header__submenu-extra-list,
-  .header__submenu-extra-section:hover .header__submenu-extra-list,
-  .header__submenu-extra-section:focus-within .header__submenu-extra-list {
-    display: block;
-  }
-
-  .mega-menu__nested-extra-section--always-visible .mega-menu__submenu--extra,
-  .mega-menu__extra-section--always-visible .mega-menu__submenu--extra,
-  .header__nested-extra-section--always-visible .header__submenu-extra-list,
-  .header__submenu-extra-section--always-visible .header__submenu-extra-list {
+  .mega-menu__submenu--extra,
+  .header__submenu-extra-list {
     display: block;
   }
 
@@ -927,7 +918,7 @@
       "settings": [
         {
           "type": "header",
-          "content": "Select Header, SubMenu & Image"
+          "content": "Place an image inside a header submenu"
         },
         {
           "type": "select",
@@ -958,60 +949,16 @@
           "default": "Men"
         },
         {
-          "type": "select",
+          "type": "text",
           "id": "submenu_title",
-          "label": "Pick SubMenu Design",
-          "options": [
-            {
-              "value": "New & Featured",
-              "label": "New & Featured"
-            },
-            {
-              "value": "Lifestyle",
-              "label": "Lifestyle"
-            },
-            {
-              "value": "Active & Training",
-              "label": "Active & Training"
-            },
-            {
-              "value": "Performance",
-              "label": "Performance"
-            },
-            {
-              "value": "Women's Clothing",
-              "label": "Women's Clothing"
-            },
-            {
-              "value": "Accessories",
-              "label": "Accessories"
-            },
-            {
-              "value": "Footwear",
-              "label": "Footwear"
-            },
-            {
-              "value": "Clothing & Accessories",
-              "label": "Clothing & Accessories"
-            },
-            {
-              "value": "Collections",
-              "label": "Collections"
-            },
-            {
-              "value": "New Arrivals",
-              "label": "New Arrivals"
-            },
-            {
-              "value": "Best Seller",
-              "label": "Best Seller"
-            },
-            {
-              "value": "Sale",
-              "label": "Sale"
-            }
-          ],
-          "default": "New & Featured"
+          "label": "Target sub menu column",
+          "info": "Type the exact first-level submenu title, for example Men's, Women's, or Collections."
+        },
+        {
+          "type": "text",
+          "id": "nested_submenu_title",
+          "label": "Target nested sub menu",
+          "info": "Optional. Type the exact deeper submenu title, for example New Arrivals. Leave blank to place the image directly under the target sub menu column."
         },
         {
           "type": "image_picker",
@@ -1066,73 +1013,16 @@
           "default": "New & Featured"
         },
         {
-          "type": "select",
+          "type": "text",
           "id": "submenu_title",
-          "label": "Target sub menu title",
-          "info": "Choose where this flexible menu will be inserted.",
-          "options": [
-            {
-              "value": "__new_column",
-              "label": "Separate column"
-            },
-            {
-              "value": "Men's",
-              "label": "Men's"
-            },
-            {
-              "value": "Women's",
-              "label": "Women's"
-            },
-            {
-              "value": "New Arrivals",
-              "label": "New Arrivals"
-            },
-            {
-              "value": "Pickleball",
-              "label": "Pickleball"
-            },
-            {
-              "value": "Lifestyle",
-              "label": "Lifestyle"
-            },
-            {
-              "value": "Active & Training",
-              "label": "Active & Training"
-            },
-            {
-              "value": "Performance",
-              "label": "Performance"
-            },
-            {
-              "value": "Women's Clothing",
-              "label": "Women's Clothing"
-            },
-            {
-              "value": "Accessories",
-              "label": "Accessories"
-            },
-            {
-              "value": "Footwear",
-              "label": "Footwear"
-            },
-            {
-              "value": "Clothing & Accessories",
-              "label": "Clothing & Accessories"
-            },
-            {
-              "value": "Collections",
-              "label": "Collections"
-            },
-            {
-              "value": "Best Seller",
-              "label": "Best Seller"
-            },
-            {
-              "value": "Sale",
-              "label": "Sale"
-            }
-          ],
-          "default": "__new_column"
+          "label": "Target sub menu column",
+          "info": "Type the exact first-level submenu title, for example Men's or Women's. Leave blank to add this as a separate column."
+        },
+        {
+          "type": "text",
+          "id": "custom_submenu_title",
+          "label": "Target nested sub menu",
+          "info": "Optional. Type the exact deeper submenu title, for example New Arrivals. Leave blank to insert directly under the target sub menu column."
         },
         {
           "type": "text",
