@@ -39,28 +39,28 @@
     "header": {
       "type": "header",
       "blocks": {
-        "menu_image_LWtNBV": {
+        "menu_image_L9BAVk": {
           "type": "menu_image",
           "settings": {
             "main_menu": "Men",
             "submenu_title": "Collections",
             "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
-            "image_link": "shopify://collections/avenue-collection"
+            "image_link": ""
           }
         },
-        "menu_image_cT4Y3p": {
+        "menu_image_H9nUHj": {
           "type": "menu_image",
           "settings": {
             "main_menu": "Women",
             "submenu_title": "Collections",
             "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
-            "image_link": "shopify://collections/avenue-collection"
+            "image_link": ""
           }
         }
       },
       "block_order": [
-        "menu_image_LWtNBV",
-        "menu_image_cT4Y3p"
+        "menu_image_L9BAVk",
+        "menu_image_H9nUHj"
       ],
       "custom_css": [
         ".header a {text-decoration: none !important;}",
