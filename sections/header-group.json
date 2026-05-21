@@ -42,7 +42,7 @@
         "menu_image_LWtNBV": {
           "type": "menu_image",
           "settings": {
-            "main_menu": "Women",
+            "main_menu": "Men",
             "submenu_title": "Collections",
             "section_image": "shopify://shop_images/DROP_DOWN_BANNER_RECOMMENDED_COLLECTIONS.jpg",
             "image_link": "shopify://collections/avenue-collection"
