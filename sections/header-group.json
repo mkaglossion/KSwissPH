@@ -39,6 +39,17 @@
     "header": {
       "type": "header",
       "blocks": {
+        "extra_menu_section_jR9Rb6": {
+          "type": "extra_menu_section",
+          "settings": {
+            "main_menu": "New & Featured",
+            "submenu_title": "Men's",
+            "title": "",
+            "title_link": "",
+            "menu": "pickleball-mens-menu",
+            "show_bullets": false
+          }
+        },
         "menu_image_LWtNBV": {
           "type": "menu_image",
           "settings": {
@@ -59,6 +70,7 @@
         }
       },
       "block_order": [
+        "extra_menu_section_jR9Rb6",
         "menu_image_LWtNBV",
         "menu_image_cT4Y3p"
       ],
