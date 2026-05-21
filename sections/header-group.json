@@ -39,6 +39,18 @@
     "header": {
       "type": "header",
       "blocks": {
+        "extra_menu_section_jtDRxe": {
+          "type": "extra_menu_section",
+          "settings": {
+            "main_menu": "New & Featured",
+            "submenu_title": "Women's",
+            "custom_submenu_title": "Pickleball",
+            "title": "",
+            "title_link": "",
+            "menu": "pickleball-womens-menu",
+            "show_bullets": true
+          }
+        },
         "extra_menu_section_mNgFdz": {
           "type": "extra_menu_section",
           "settings": {
@@ -73,6 +85,7 @@
         }
       },
       "block_order": [
+        "extra_menu_section_jtDRxe",
         "extra_menu_section_mNgFdz",
         "menu_image_LWtNBV",
         "menu_image_cT4Y3p"

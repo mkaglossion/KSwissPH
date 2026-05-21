@@ -23,7 +23,15 @@
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
                 <li>
-                  {%- if link.links != blank -%}
+                  {%- liquid
+                    assign has_extra_menu_section = false
+                    for block in section.blocks
+                      if block.type == 'extra_menu_section' and block.settings.main_menu == link.title
+                        assign has_extra_menu_section = true
+                      endif
+                    endfor
+                  -%}
+                  {%- if link.links != blank or has_extra_menu_section -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
@@ -107,6 +115,49 @@
                                             >
                                               {{ grandchildlink.title | escape }}
                                             </a>
+                                            {%- for block in section.blocks -%}
+                                              {%- if block.type == 'extra_menu_section' -%}
+                                                {%- liquid
+                                                  assign extra_submenu_title = block.settings.submenu_title | strip | downcase
+                                                  assign extra_nested_title = block.settings.custom_submenu_title | strip | downcase
+                                                  assign childlink_title = childlink.title | strip | downcase
+                                                  assign grandchildlink_title = grandchildlink.title | strip | downcase
+                                                -%}
+                                                {%- if block.settings.main_menu == link.title and extra_submenu_title == childlink_title and extra_nested_title != blank and extra_nested_title != '__none' and extra_nested_title == grandchildlink_title -%}
+                                                  <div class="menu-drawer__extra-menu-section menu-drawer__extra-menu-section--nested" {{ block.shopify_attributes }}>
+                                                    {%- if block.settings.title != blank -%}
+                                                      {%- if block.settings.title_link != blank -%}
+                                                        <a href="{{ block.settings.title_link }}" class="menu-drawer__extra-heading link link--text focus-inset">
+                                                          {{ block.settings.title | escape }}
+                                                        </a>
+                                                      {%- else -%}
+                                                        <p class="menu-drawer__extra-heading">
+                                                          {{ block.settings.title | escape }}
+                                                        </p>
+                                                      {%- endif -%}
+                                                    {%- endif -%}
+
+                                                    {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                                                      <ul class="menu-drawer__extra-list{% if block.settings.show_bullets %} menu-drawer__extra-list--bullets{% endif %}" role="list">
+                                                        {%- for extra_link in block.settings.menu.links -%}
+                                                          <li>
+                                                            <a
+                                                              href="{{ extra_link.url }}"
+                                                              class="menu-drawer__extra-link link link--text focus-inset{% if extra_link.current %} menu-drawer__menu-item--active{% endif %}"
+                                                              {% if extra_link.current %}
+                                                                aria-current="page"
+                                                              {% endif %}
+                                                            >
+                                                              {{ extra_link.title | escape }}
+                                                            </a>
+                                                          </li>
+                                                        {%- endfor -%}
+                                                      </ul>
+                                                    {%- endif -%}
+                                                  </div>
+                                                {%- endif -%}
+                                              {%- endif -%}
+                                            {%- endfor -%}
                                           </li>
                                         {%- endfor -%}
                                       </ul>
@@ -142,7 +193,97 @@
                                      </div>
                                    {%- endif -%}
                                  {%- endfor -%}
+                                 {%- for block in section.blocks -%}
+                                   {%- if block.type == 'extra_menu_section' -%}
+                                     {%- liquid
+                                       assign extra_submenu_title = block.settings.submenu_title | strip | downcase
+                                       assign extra_nested_title = block.settings.custom_submenu_title | strip | downcase
+                                       assign childlink_title = childlink.title | strip | downcase
+                                       assign is_direct_extra_target = false
+                                       if block.settings.main_menu == link.title and extra_submenu_title != '__new_column' and extra_submenu_title == childlink_title
+                                         if extra_nested_title == blank or extra_nested_title == '__none'
+                                           assign is_direct_extra_target = true
+                                         endif
+                                       endif
+                                     -%}
+                                     {%- if is_direct_extra_target -%}
+                                       <div class="menu-drawer__extra-menu-section" {{ block.shopify_attributes }}>
+                                         {%- if block.settings.title != blank -%}
+                                           {%- if block.settings.title_link != blank -%}
+                                             <a href="{{ block.settings.title_link }}" class="menu-drawer__extra-heading link link--text focus-inset">
+                                               {{ block.settings.title | escape }}
+                                             </a>
+                                           {%- else -%}
+                                             <p class="menu-drawer__extra-heading">
+                                               {{ block.settings.title | escape }}
+                                             </p>
+                                           {%- endif -%}
+                                         {%- endif -%}
+
+                                         {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                                           <ul class="menu-drawer__extra-list{% if block.settings.show_bullets %} menu-drawer__extra-list--bullets{% endif %}" role="list">
+                                             {%- for extra_link in block.settings.menu.links -%}
+                                               <li>
+                                                 <a
+                                                   href="{{ extra_link.url }}"
+                                                   class="menu-drawer__extra-link link link--text focus-inset{% if extra_link.current %} menu-drawer__menu-item--active{% endif %}"
+                                                   {% if extra_link.current %}
+                                                     aria-current="page"
+                                                   {% endif %}
+                                                 >
+                                                   {{ extra_link.title | escape }}
+                                                 </a>
+                                               </li>
+                                             {%- endfor -%}
+                                           </ul>
+                                         {%- endif -%}
+                                       </div>
+                                     {%- endif -%}
+                                   {%- endif -%}
+                                 {%- endfor -%}
                               </li>
+                            {%- endfor -%}
+                            {%- for block in section.blocks -%}
+                              {%- if block.type == 'extra_menu_section' and block.settings.main_menu == link.title -%}
+                                {%- liquid
+                                  assign extra_submenu_title = block.settings.submenu_title | strip
+                                -%}
+                                {%- if extra_submenu_title == blank or extra_submenu_title == '__new_column' -%}
+                                  <li>
+                                    <div class="menu-drawer__extra-menu-section" {{ block.shopify_attributes }}>
+                                      {%- if block.settings.title != blank -%}
+                                        {%- if block.settings.title_link != blank -%}
+                                          <a href="{{ block.settings.title_link }}" class="menu-drawer__extra-heading link link--text focus-inset">
+                                            {{ block.settings.title | escape }}
+                                          </a>
+                                        {%- else -%}
+                                          <p class="menu-drawer__extra-heading">
+                                            {{ block.settings.title | escape }}
+                                          </p>
+                                        {%- endif -%}
+                                      {%- endif -%}
+
+                                      {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                                        <ul class="menu-drawer__extra-list{% if block.settings.show_bullets %} menu-drawer__extra-list--bullets{% endif %}" role="list">
+                                          {%- for extra_link in block.settings.menu.links -%}
+                                            <li>
+                                              <a
+                                                href="{{ extra_link.url }}"
+                                                class="menu-drawer__extra-link link link--text focus-inset{% if extra_link.current %} menu-drawer__menu-item--active{% endif %}"
+                                                {% if extra_link.current %}
+                                                  aria-current="page"
+                                                {% endif %}
+                                              >
+                                                {{ extra_link.title | escape }}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      {%- endif -%}
+                                    </div>
+                                  </li>
+                                {%- endif -%}
+                              {%- endif -%}
                             {%- endfor -%}
                           </ul>
                         </div>
