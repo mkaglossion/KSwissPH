@@ -93,7 +93,15 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       <li>
-        {%- if link.links != blank -%}
+        {%- liquid
+          assign has_extra_menu_section = false
+          for block in section.blocks
+            if block.type == 'extra_menu_section' and block.settings.main_menu == link.title
+              assign has_extra_menu_section = true
+            endif
+          endfor
+        -%}
+        {%- if link.links != blank or has_extra_menu_section -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
               <summary
@@ -122,8 +130,19 @@
               >
                 <div class="page-width mega-menu__content-inner">
                   <div class="mega-menu__section">
+                    {%- liquid
+                      assign menu_column_count = link.links.size
+                      for block in section.blocks
+                        if block.type == 'extra_menu_section' and block.settings.main_menu == link.title
+                          assign extra_submenu_title = block.settings.submenu_title | strip
+                          if extra_submenu_title == blank or extra_submenu_title == '__new_column'
+                            assign menu_column_count = menu_column_count | plus: 1
+                          endif
+                        endif
+                      endfor
+                    -%}
                     <ul
-                      class="mega-menu__list mega-menu__list--cols-{{ link.links.size | at_most: 6 }}"
+                      class="mega-menu__list mega-menu__list--cols-{{ menu_column_count | at_most: 6 }}"
                       role="list"
                     >
                       {%- for childlink in link.links -%}
@@ -184,7 +203,94 @@
                                {%- endif -%}
                              {%- endif -%}
                            {%- endfor -%}
+                           {%- for block in section.blocks -%}
+                             {%- if block.type == 'extra_menu_section' -%}
+                               {%- liquid
+                                 assign extra_submenu_title = block.settings.submenu_title | strip | downcase
+                                 assign childlink_title = childlink.title | strip | downcase
+                               -%}
+                               {%- if block.settings.main_menu == link.title and extra_submenu_title != '__new_column' and extra_submenu_title == childlink_title -%}
+                                 <div class="mega-menu__nested-extra-section{% if block.settings.title == blank %} mega-menu__nested-extra-section--always-visible{% endif %}" {{ block.shopify_attributes }}>
+                                   {%- if block.settings.title != blank -%}
+                                     {%- if block.settings.title_link != blank -%}
+                                       <a
+                                         href="{{ block.settings.title_link }}"
+                                         class="mega-menu__link mega-menu__link--extra-heading link"
+                                       >
+                                         {{ block.settings.title | escape }}
+                                       </a>
+                                     {%- else -%}
+                                       <p class="mega-menu__link mega-menu__link--extra-heading mega-menu__section-heading" tabindex="0">
+                                         {{ block.settings.title | escape }}
+                                       </p>
+                                     {%- endif -%}
+                                   {%- endif -%}
+
+                                   {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                                     <ul class="mega-menu__submenu mega-menu__submenu--extra{% if block.settings.show_bullets %} mega-menu__submenu--bullets{% endif %}" role="list">
+                                       {%- for extra_link in block.settings.menu.links -%}
+                                         <li>
+                                           <a
+                                             href="{{ extra_link.url }}"
+                                             class="mega-menu__link link{% if extra_link.current %} mega-menu__link--active{% endif %}"
+                                             {% if extra_link.current %}
+                                               aria-current="page"
+                                             {% endif %}
+                                           >
+                                             {{ extra_link.title | escape }}
+                                           </a>
+                                         </li>
+                                       {%- endfor -%}
+                                     </ul>
+                                   {%- endif -%}
+                                 </div>
+                               {%- endif -%}
+                             {%- endif -%}
+                           {%- endfor -%}
                         </li>
+                      {%- endfor -%}
+                      {%- for block in section.blocks -%}
+                        {%- if block.type == 'extra_menu_section' and block.settings.main_menu == link.title -%}
+                          {%- liquid
+                            assign extra_submenu_title = block.settings.submenu_title | strip
+                          -%}
+                          {%- if extra_submenu_title == blank or extra_submenu_title == '__new_column' -%}
+                            <li class="mega-menu__extra-section{% if block.settings.title == blank %} mega-menu__extra-section--always-visible{% endif %}" {{ block.shopify_attributes }}>
+                              {%- if block.settings.title != blank -%}
+                                {%- if block.settings.title_link != blank -%}
+                                  <a
+                                    href="{{ block.settings.title_link }}"
+                                    class="mega-menu__link mega-menu__link--level-2 link"
+                                  >
+                                    {{ block.settings.title | escape }}
+                                  </a>
+                                {%- else -%}
+                                  <p class="mega-menu__link mega-menu__link--level-2 mega-menu__section-heading" tabindex="0">
+                                    {{ block.settings.title | escape }}
+                                  </p>
+                                {%- endif -%}
+                              {%- endif -%}
+
+                              {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                                <ul class="mega-menu__submenu mega-menu__submenu--extra{% if block.settings.show_bullets %} mega-menu__submenu--bullets{% endif %}" role="list">
+                                  {%- for extra_link in block.settings.menu.links -%}
+                                    <li>
+                                      <a
+                                        href="{{ extra_link.url }}"
+                                        class="mega-menu__link link{% if extra_link.current %} mega-menu__link--active{% endif %}"
+                                        {% if extra_link.current %}
+                                          aria-current="page"
+                                        {% endif %}
+                                      >
+                                        {{ extra_link.title | escape }}
+                                      </a>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {%- endif -%}
+                            </li>
+                          {%- endif -%}
+                        {%- endif -%}
                       {%- endfor -%}
                     </ul>
                   </div>

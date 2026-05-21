@@ -9,7 +9,15 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       <li>
-        {%- if link.links != blank -%}
+        {%- liquid
+          assign has_extra_menu_section = false
+          for block in section.blocks
+            if block.type == 'extra_menu_section' and block.settings.main_menu == link.title
+              assign has_extra_menu_section = true
+            endif
+          endfor
+        -%}
+        {%- if link.links != blank or has_extra_menu_section -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
               <summary
@@ -107,7 +115,94 @@
                          {%- endif -%}
                        {%- endif -%}
                      {%- endfor -%}
+                     {%- for block in section.blocks -%}
+                       {%- if block.type == 'extra_menu_section' -%}
+                         {%- liquid
+                           assign extra_submenu_title = block.settings.submenu_title | strip | downcase
+                           assign childlink_title = childlink.title | strip | downcase
+                         -%}
+                         {%- if block.settings.main_menu == link.title and extra_submenu_title != '__new_column' and extra_submenu_title == childlink_title -%}
+                           <div class="header__nested-extra-section{% if block.settings.title == blank %} header__nested-extra-section--always-visible{% endif %}" {{ block.shopify_attributes }}>
+                             {%- if block.settings.title != blank -%}
+                               {%- if block.settings.title_link != blank -%}
+                                 <a
+                                   href="{{ block.settings.title_link }}"
+                                   class="header__menu-item list-menu__item link link--text focus-inset caption-large header__submenu-extra-heading"
+                                 >
+                                   {{ block.settings.title | escape }}
+                                 </a>
+                               {%- else -%}
+                                 <p class="header__menu-item list-menu__item caption-large header__submenu-extra-heading" tabindex="0">
+                                   {{ block.settings.title | escape }}
+                                 </p>
+                               {%- endif -%}
+                             {%- endif -%}
+
+                             {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                               <ul class="header__submenu-extra-list{% if block.settings.show_bullets %} header__submenu-extra-list--bullets{% endif %}" role="list">
+                                 {%- for extra_link in block.settings.menu.links -%}
+                                   <li>
+                                     <a
+                                       href="{{ extra_link.url }}"
+                                       class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if extra_link.current %} list-menu__item--active{% endif %}"
+                                       {% if extra_link.current %}
+                                         aria-current="page"
+                                       {% endif %}
+                                     >
+                                       {{ extra_link.title | escape }}
+                                     </a>
+                                   </li>
+                                 {%- endfor -%}
+                               </ul>
+                             {%- endif -%}
+                           </div>
+                         {%- endif -%}
+                       {%- endif -%}
+                     {%- endfor -%}
                    </li>
+                 {%- endfor -%}
+                 {%- for block in section.blocks -%}
+                   {%- if block.type == 'extra_menu_section' and block.settings.main_menu == link.title -%}
+                     {%- liquid
+                       assign extra_submenu_title = block.settings.submenu_title | strip
+                     -%}
+                     {%- if extra_submenu_title == blank or extra_submenu_title == '__new_column' -%}
+                       <li class="header__submenu-extra-section{% if block.settings.title == blank %} header__submenu-extra-section--always-visible{% endif %}" {{ block.shopify_attributes }}>
+                         {%- if block.settings.title != blank -%}
+                           {%- if block.settings.title_link != blank -%}
+                             <a
+                               href="{{ block.settings.title_link }}"
+                               class="header__menu-item list-menu__item link link--text focus-inset caption-large header__submenu-extra-heading"
+                             >
+                               {{ block.settings.title | escape }}
+                             </a>
+                           {%- else -%}
+                             <p class="header__menu-item list-menu__item caption-large header__submenu-extra-heading" tabindex="0">
+                               {{ block.settings.title | escape }}
+                             </p>
+                           {%- endif -%}
+                         {%- endif -%}
+
+                         {%- if block.settings.menu != blank and block.settings.menu.links != blank -%}
+                           <ul class="header__submenu-extra-list{% if block.settings.show_bullets %} header__submenu-extra-list--bullets{% endif %}" role="list">
+                             {%- for extra_link in block.settings.menu.links -%}
+                               <li>
+                                 <a
+                                   href="{{ extra_link.url }}"
+                                   class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if extra_link.current %} list-menu__item--active{% endif %}"
+                                   {% if extra_link.current %}
+                                     aria-current="page"
+                                   {% endif %}
+                                 >
+                                   {{ extra_link.title | escape }}
+                                 </a>
+                               </li>
+                             {%- endfor -%}
+                           </ul>
+                         {%- endif -%}
+                       </li>
+                       {%- endif -%}
+                   {%- endif -%}
                  {%- endfor -%}
               </ul>
             </details>

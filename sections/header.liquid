@@ -184,6 +184,59 @@
     display: block;
   }
 
+  .mega-menu__section-heading,
+  .header__submenu-extra-heading {
+    margin: 0;
+  }
+
+  .mega-menu__submenu--bullets,
+  .header__submenu-extra-list--bullets {
+    list-style: disc;
+    padding-left: 1.8rem;
+  }
+
+  .header__submenu-extra-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mega-menu__nested-extra-section,
+  .header__nested-extra-section {
+    margin-top: 0.6rem;
+  }
+
+  .mega-menu__nested-extra-section .mega-menu__submenu--extra,
+  .mega-menu__extra-section .mega-menu__submenu--extra,
+  .header__nested-extra-section .header__submenu-extra-list,
+  .header__submenu-extra-section .header__submenu-extra-list {
+    display: none;
+  }
+
+  .mega-menu__nested-extra-section:hover .mega-menu__submenu--extra,
+  .mega-menu__nested-extra-section:focus-within .mega-menu__submenu--extra,
+  .mega-menu__extra-section:hover .mega-menu__submenu--extra,
+  .mega-menu__extra-section:focus-within .mega-menu__submenu--extra,
+  .header__nested-extra-section:hover .header__submenu-extra-list,
+  .header__nested-extra-section:focus-within .header__submenu-extra-list,
+  .header__submenu-extra-section:hover .header__submenu-extra-list,
+  .header__submenu-extra-section:focus-within .header__submenu-extra-list {
+    display: block;
+  }
+
+  .mega-menu__nested-extra-section--always-visible .mega-menu__submenu--extra,
+  .mega-menu__extra-section--always-visible .mega-menu__submenu--extra,
+  .header__nested-extra-section--always-visible .header__submenu-extra-list,
+  .header__submenu-extra-section--always-visible .header__submenu-extra-list {
+    display: block;
+  }
+
+  .mega-menu__link--extra-heading {
+    font-weight: 700 !important;
+    color: rgb(var(--color-foreground));
+    padding-bottom: 0.2rem;
+  }
+
   /* ============================================ */
   /* MOBILE HEADER: STABLE GRID LAYOUT */
   /* ============================================ */
@@ -969,6 +1022,139 @@
           "type": "url",
           "id": "image_link",
           "label": "Image Link"
+        }
+      ]
+    },
+    {
+      "type": "extra_menu_section",
+      "name": "Extra Mega Menu Section",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Place this inside a header submenu"
+        },
+        {
+          "type": "select",
+          "id": "main_menu",
+          "label": "Pick Header Menu",
+          "options": [
+            {
+              "value": "New & Featured",
+              "label": "New & Featured"
+            },
+            {
+              "value": "Men",
+              "label": "Men"
+            },
+            {
+              "value": "Women",
+              "label": "Women"
+            },
+            {
+              "value": "Pickleball",
+              "label": "Pickleball"
+            },
+            {
+              "value": "Sale",
+              "label": "Sale"
+            },
+            {
+              "value": "Our Story",
+              "label": "Our Story"
+            }
+          ],
+          "default": "New & Featured"
+        },
+        {
+          "type": "select",
+          "id": "submenu_title",
+          "label": "Target sub menu title",
+          "info": "Choose where this flexible menu will be inserted.",
+          "options": [
+            {
+              "value": "__new_column",
+              "label": "Separate column"
+            },
+            {
+              "value": "Men's",
+              "label": "Men's"
+            },
+            {
+              "value": "Women's",
+              "label": "Women's"
+            },
+            {
+              "value": "New Arrivals",
+              "label": "New Arrivals"
+            },
+            {
+              "value": "Pickleball",
+              "label": "Pickleball"
+            },
+            {
+              "value": "Lifestyle",
+              "label": "Lifestyle"
+            },
+            {
+              "value": "Active & Training",
+              "label": "Active & Training"
+            },
+            {
+              "value": "Performance",
+              "label": "Performance"
+            },
+            {
+              "value": "Women's Clothing",
+              "label": "Women's Clothing"
+            },
+            {
+              "value": "Accessories",
+              "label": "Accessories"
+            },
+            {
+              "value": "Footwear",
+              "label": "Footwear"
+            },
+            {
+              "value": "Clothing & Accessories",
+              "label": "Clothing & Accessories"
+            },
+            {
+              "value": "Collections",
+              "label": "Collections"
+            },
+            {
+              "value": "Best Seller",
+              "label": "Best Seller"
+            },
+            {
+              "value": "Sale",
+              "label": "Sale"
+            }
+          ],
+          "default": "__new_column"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Optional section title",
+          "default": "Featured"
+        },
+        {
+          "type": "url",
+          "id": "title_link",
+          "label": "Section title link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Flexible menu to include"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_bullets",
+          "label": "Show sub menu as bullets",
+          "default": false
         }
       ]
     }
