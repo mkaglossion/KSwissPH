@@ -241,6 +241,7 @@
         },
         "column_MVdJLq": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/CATEGORY_BANNERS_3.jpg",
             "title": "ACCESSORIES",
@@ -266,7 +267,7 @@
         "image_ratio": "portrait",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 3,
+        "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
