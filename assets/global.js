@@ -751,13 +751,16 @@ class SliderComponent extends HTMLElement {
     this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
     if (this.sliderItemsToShow.length < 2) return;
 
+    // Always calculate a reliable offset for arrow scrolling
+    const firstSlide = this.sliderItemsToShow[0];
+    this.sliderItemOffset = firstSlide.clientWidth || (this.slider.clientWidth / (this.slidesPerPage || 1));
+
     if (this.hasAttribute('data-use-real-count')) {
-      // For product media gallery: always show real number of media items (e.g. 7/7)
+      // For product media gallery (Modern etc.): use real media count for counter
       this.totalPages = this.sliderItemsToShow.length;
     } else {
-      this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
       this.slidesPerPage = Math.floor(
-        (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+        (this.slider.clientWidth - firstSlide.offsetLeft) / this.sliderItemOffset
       );
       this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     }
@@ -776,7 +779,33 @@ class SliderComponent extends HTMLElement {
     if (!this.slider || !this.nextButton) return;
 
     const previousPage = this.currentPage;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+
+    if (this.hasAttribute('data-use-real-count')) {
+      const scrollLeft = this.slider.scrollLeft;
+      let closestIndex = 0;
+      let minDiff = Infinity;
+
+      this.sliderItemsToShow.forEach((slide, index) => {
+        const diff = Math.abs(slide.offsetLeft - scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIndex = index;
+        }
+      });
+
+      this.currentPage = closestIndex + 1;
+    } else {
+      if (this.sliderItemOffset && this.sliderItemOffset > 0) {
+        this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+      } else {
+        this.currentPage = 1;
+      }
+    }
+
+    // Strong guard against NaN (especially on mobile with hidden thumbnails)
+    if (isNaN(this.currentPage) || this.currentPage < 1) {
+      this.currentPage = 1;
+    }
 
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;

@@ -282,33 +282,47 @@
   }
 
   /* ============================================ */
-  /* VERY SMALL SCREENS (phones < 480px) */
-  /* Ensures the two modern templates (mega + dropdown) + new header version stay clean on mobile */
+  /* VERY SMALL SCREENS (phones < 480px) - Modern templates + responsive fixes */
   /* ============================================ */
   @media screen and (max-width: 480px) {
     .header {
-      padding-left: 0.75rem !important;
-      padding-right: 0.75rem !important;
-      column-gap: 0.4rem;
+      padding-left: 0.6rem !important;
+      padding-right: 0.6rem !important;
+      column-gap: 0.3rem;
     }
 
     .header__heading-logo-wrapper {
-      max-width: 95px;
+      max-width: 85px;
+    }
+
+    .header__heading-logo {
+      width: clamp(80px, 28vw, 110px) !important;
     }
 
     .header__icon,
     .header__icon .svg-wrapper {
-      width: 36px !important;
-      height: 36px !important;
+      width: 34px !important;
+      height: 34px !important;
     }
 
     header-drawer {
-      margin-left: -0.5rem;
+      margin-left: -0.4rem;
     }
 
-    /* Safety: ensure desktop modern menus never leak on tiny screens */
+    /* Ensure modern desktop menus (mega/dropdown) never show on mobile */
     .header__inline-menu {
       display: none !important;
+    }
+
+    /* Better drawer and icon touch targets on very small phones */
+    .header__icon {
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    /* Prevent layout break on modern header versions */
+    .header {
+      grid-template-columns: auto minmax(0, 1fr) auto !important;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="modern-v2-product-page modern-product-page section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="modern-product-page section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -10,7 +10,8 @@
   {% endif %}
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-  {{ 'section-main-product-modern-v2.css' | asset_url | stylesheet_tag }}
+  {{ 'section-main-product-modern.css' | asset_url | stylesheet_tag }}
+  {{ 'section-main-product-modern-card.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
@@ -757,7 +758,7 @@
 
 {% schema %}
 {
-  "name": "Modern V2",
+  "name": "Modern Card",
   "tag": "section",
   "class": "section",
   "blocks": [

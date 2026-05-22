@@ -1,4 +1,16 @@
 .modern-product-page {
+  --modern-card-radius: 1.2rem;
+  --modern-card-radius-sm: 0.8rem;
+  --modern-border-soft: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  --modern-text-muted: rgba(var(--color-foreground), 0.62);
+  --modern-text-soft: rgba(var(--color-foreground), 0.76);
+  --modern-surface-soft: #f7f8fa;
+  --modern-accent: #111217;
+  --modern-gap-xs: 0.8rem;
+  --modern-gap-sm: 1.2rem;
+  --modern-gap-md: 1.6rem;
+  --modern-gap-lg: 2rem;
+  --modern-gap-xl: 2.4rem;
   background:
     linear-gradient(180deg, rgba(248, 249, 250, 0.95), rgba(255, 255, 255, 1) 58%),
     rgb(var(--color-background));
@@ -10,6 +22,7 @@
 
 .modern-product__layout {
   align-items: flex-start;
+  gap: var(--modern-gap-lg);
 }
 
 .modern-product__media-wrapper,
@@ -17,17 +30,64 @@
   min-width: 0;
 }
 
-.modern-product-page .product__media-item {
+/* Media base (deduped) */
+.modern-product-page .modern-product__media-wrapper {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 0;
+  padding-right: 0;
+  width: calc(100% + 3rem);
   overflow: hidden;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.12);
-  border-radius: 1.2rem;
-  background: #f7f7f7;
+}
+
+.modern-product-page .product__media-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  scroll-padding: 0;
+  width: 100%;
+}
+
+.modern-product-page .product__media-item {
+  padding: 0 !important;
+  margin: 0 !important;
+  flex: 0 0 100% !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.modern-product-page .product__media-item img,
+.modern-product-page .product__media-item video,
+.modern-product-page .product__media-item model-viewer {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Remove white background in media area */
+.modern-product-page .product__media,
+.modern-product-page .product-media-container,
+.modern-product-page .product__modal-opener,
+.modern-product-page .product__media-item,
+.modern-product-page .product__media-item img,
+.modern-product-page .product__media-item video,
+.modern-product-page .product__media-item model-viewer {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .modern-product-page .product__media,
 .modern-product-page .product-media-container,
 .modern-product-page .product__modal-opener {
-  border-radius: 1.2rem;
+  border-radius: var(--modern-card-radius);
 }
 
 .modern-product-page .product-media-container {
@@ -35,7 +95,7 @@
 }
 
 .modern-product-page .product__media img {
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 .modern-product__summary {
@@ -463,5 +523,118 @@
 
   .related-products .card__content {
     padding-top: 1rem;
+  }
+
+  /* Strict "one image only" on mobile - no peeking of next image at all */
+  .modern-product-page .modern-product__media-wrapper {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: calc(100% + 3rem);
+    overflow: hidden;
+  }
+
+  .modern-product-page .product__media-list {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+    scroll-padding: 0;
+    width: 100%;
+  }
+
+  .modern-product-page .product__media-item {
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .modern-product-page .product__media-item img,
+  .modern-product-page .product__media-item video,
+  .modern-product-page .product__media-item model-viewer {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .modern-product-page .product__media-wrapper .product__media-item {
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modern-product-page .product__media-wrapper .product__media-item img,
+  .modern-product-page .product__media-wrapper .product__media-item video,
+  .modern-product-page .product__media-wrapper .product__media-item model-viewer {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Thumbnail carousel - make it responsive on mobile (Modern V2) */
+  .modern-product-page .product__media-list--thumbnails,
+  .modern-product-page .thumbnail-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 8px 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .modern-product-page .product__media-list--thumbnails::-webkit-scrollbar,
+  .modern-product-page .thumbnail-list::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .modern-product-page .product__media-list--thumbnails::-webkit-scrollbar-thumb,
+  .modern-product-page .thumbnail-list::-webkit-scrollbar-thumb {
+    background: #c32033;
+    border-radius: 4px;
+  }
+
+  .modern-product-page .product__media-item--thumbnail,
+  .modern-product-page .thumbnail {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .modern-product-page .product__media-item--thumbnail img,
+  .modern-product-page .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
   }
 }
