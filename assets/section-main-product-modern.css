@@ -215,7 +215,7 @@
 }
 
 .modern-product-page .modern-product__app-block :is(a, button, [role='button']) {
-  border-radius: 0.8rem;
+  border-radius: 0;
 }
 
 .modern-product-page .product__description {
