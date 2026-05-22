@@ -213,7 +213,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   width: 100%;
   background-color: transparent;
   font-family: var(--font-body-family);
-  font-style: var(--font-body-style);
+  font-style: normal;
   text-align: left;
 }
 
