@@ -39,16 +39,18 @@
 }
 
 .modern-product__summary {
+  box-sizing: border-box;
   width: 100%;
-  padding: 2.4rem;
+  padding: 2rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.12);
   border-radius: 1.2rem;
   background: rgb(var(--color-background));
   box-shadow: 0 1.8rem 5rem rgba(18, 18, 18, 0.06);
+  overflow: hidden;
 }
 
 .modern-product-page .product__info-container > * + * {
-  margin: 1.5rem 0;
+  margin: 1.4rem 0;
 }
 
 .modern-product-page .product__text.caption-with-letter-spacing {
@@ -64,16 +66,17 @@
 }
 
 .modern-product-page .product__title h1 {
-  max-width: 17ch;
-  font-size: clamp(3.6rem, 3.8vw, 5.8rem);
-  line-height: 1;
+  max-width: none;
+  font-size: clamp(3rem, 3vw, 4.8rem);
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
 .modern-product-page .price--large {
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  font-size: 2.1rem;
+  font-size: clamp(1.8rem, 1.5vw, 2.1rem);
   line-height: 1.2;
 }
 
@@ -99,6 +102,16 @@
   margin-bottom: 1.6rem;
 }
 
+.modern-product-page .product-form__input--pill {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.modern-product-page .product-form__input--pill .form__label {
+  width: 100%;
+}
+
 .modern-product-page .product-form__input .form__label {
   margin-bottom: 0.8rem;
   color: rgba(var(--color-foreground), 0.72);
@@ -107,9 +120,9 @@
 }
 
 .modern-product-page .product-form__input--pill input[type='radio'] + label {
-  min-width: 5.2rem;
+  min-width: 4.8rem;
   min-height: 4.4rem;
-  padding: 1.2rem 1.6rem;
+  padding: 1.1rem 1.4rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.12);
   border-radius: 999px;
   background: #f7f8fa;
@@ -151,6 +164,7 @@
 
 .modern-product-page .product-form__buttons {
   max-width: none;
+  width: 100%;
 }
 
 .modern-product-page .product-form__submit,
@@ -194,7 +208,7 @@
 
 .modern-product-page .modern-product__assurance {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.8rem;
   margin-top: 2rem;
   padding-top: 1.6rem;
@@ -244,9 +258,10 @@
 
 .modern-product__assurance-item {
   display: flex;
-  min-height: 7.2rem;
-  flex-direction: column;
-  justify-content: center;
+  min-height: 5.6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
   gap: 0.7rem;
   padding: 1.2rem;
   border-radius: 0.8rem;
@@ -333,11 +348,11 @@
   }
 
   .modern-product__summary {
-    padding: 1.8rem;
+    padding: 1.6rem;
   }
 
   .modern-product-page .product__title h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .modern-product-page .modern-product__assurance {
