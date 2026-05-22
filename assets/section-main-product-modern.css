@@ -170,9 +170,12 @@
 .modern-product-page .product-form__submit,
 .modern-product-page .shopify-payment-button__button {
   min-height: 5.6rem;
-  border-radius: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.04rem;
+}
+
+.modern-product-page .product-form__submit {
+  border-radius: 0.8rem;
 }
 
 .modern-product-page .product-form__submit.button--secondary {
@@ -181,6 +184,16 @@
 }
 
 .modern-product-page .shopify-payment-button__button--unbranded {
+  border: 0;
+  border-radius: 0;
+  background: #111217;
+  color: #ffffff;
+}
+
+.modern-product-page .shopify-payment-button__button--unbranded:hover,
+.modern-product-page .shopify-payment-button__button--unbranded:hover:not([disabled]) {
+  border: 0;
+  border-radius: 0;
   background: #111217;
   color: #ffffff;
 }
