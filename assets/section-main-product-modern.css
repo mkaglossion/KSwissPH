@@ -249,7 +249,7 @@
 }
 
 .related-products {
-  max-width: var(--page-width);
+  max-width: 1500px;
 }
 
 .related-products__heading {
