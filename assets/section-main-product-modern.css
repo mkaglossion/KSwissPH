@@ -5,21 +5,16 @@
 }
 
 .modern-product__shell {
-  max-width: 1320px;
+  max-width: var(--page-width);
 }
 
 .modern-product__layout {
   align-items: flex-start;
-  gap: 0;
 }
 
 .modern-product__media-wrapper,
 .modern-product__info-wrapper {
   min-width: 0;
-}
-
-.modern-product-page .product__media-list {
-  gap: var(--grid-desktop-vertical-spacing) var(--grid-desktop-horizontal-spacing);
 }
 
 .modern-product-page .product__media-item {
@@ -45,7 +40,7 @@
 
 .modern-product__summary {
   width: 100%;
-  padding: clamp(2rem, 2vw, 2.8rem);
+  padding: 2.4rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.12);
   border-radius: 1.2rem;
   background: rgb(var(--color-background));
@@ -207,7 +202,7 @@
 }
 
 .related-products {
-  max-width: 1320px;
+  max-width: var(--page-width);
 }
 
 .related-products__heading {
@@ -215,13 +210,6 @@
   font-size: clamp(2.8rem, 3vw, 4rem);
   line-height: 1.05;
   letter-spacing: 0;
-}
-
-.related-products .product-grid {
-  --grid-desktop-horizontal-spacing: 2.4rem;
-  --grid-desktop-vertical-spacing: 4.8rem;
-  --grid-mobile-horizontal-spacing: 1.4rem;
-  --grid-mobile-vertical-spacing: 3.2rem;
 }
 
 .related-products .grid__item {
@@ -285,17 +273,6 @@
 }
 
 @media screen and (min-width: 990px) {
-  .modern-product-page .product--large:not(.product--no-media) .product__media-wrapper {
-    max-width: calc(62% - var(--grid-desktop-horizontal-spacing) / 2);
-    width: calc(62% - var(--grid-desktop-horizontal-spacing) / 2);
-  }
-
-  .modern-product-page .product--large:not(.product--no-media) .product__info-wrapper {
-    max-width: calc(38% - var(--grid-desktop-horizontal-spacing) / 2);
-    width: calc(38% - var(--grid-desktop-horizontal-spacing) / 2);
-    padding-left: 0;
-  }
-
   .modern-product-page .product--large.product--thumbnail_slider .product__media-item .product__media.media > * {
     object-fit: contain;
   }
@@ -323,8 +300,7 @@
   }
 
   .related-products .product-grid {
-    --grid-desktop-horizontal-spacing: 1.8rem;
-    --grid-desktop-vertical-spacing: 3.6rem;
+    --grid-desktop-vertical-spacing: 4rem;
   }
 }
 
@@ -343,7 +319,6 @@
   }
 
   .modern-product-page .product__media-list {
-    gap: var(--grid-mobile-vertical-spacing) var(--grid-mobile-horizontal-spacing);
     margin-left: 0;
     width: 100%;
   }
@@ -386,7 +361,6 @@
   }
 
   .related-products .product-grid {
-    --grid-mobile-horizontal-spacing: 1.2rem;
     --grid-mobile-vertical-spacing: 3.2rem;
   }
 
