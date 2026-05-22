@@ -280,6 +280,37 @@
       padding-right: 0;
     }
   }
+
+  /* ============================================ */
+  /* VERY SMALL SCREENS (phones < 480px) */
+  /* Ensures the two modern templates (mega + dropdown) + new header version stay clean on mobile */
+  /* ============================================ */
+  @media screen and (max-width: 480px) {
+    .header {
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+      column-gap: 0.4rem;
+    }
+
+    .header__heading-logo-wrapper {
+      max-width: 95px;
+    }
+
+    .header__icon,
+    .header__icon .svg-wrapper {
+      width: 36px !important;
+      height: 36px !important;
+    }
+
+    header-drawer {
+      margin-left: -0.5rem;
+    }
+
+    /* Safety: ensure desktop modern menus never leak on tiny screens */
+    .header__inline-menu {
+      display: none !important;
+    }
+  }
 </style>
 
 {%- style -%}
