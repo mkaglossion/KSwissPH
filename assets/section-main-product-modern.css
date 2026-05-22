@@ -5,7 +5,7 @@
 }
 
 .modern-product__shell {
-  max-width: var(--page-width);
+  max-width: 1500px;
 }
 
 .modern-product__layout {
@@ -288,6 +288,17 @@
 }
 
 @media screen and (min-width: 990px) {
+  .modern-product-page .product--large:not(.product--no-media) .product__media-wrapper {
+    max-width: calc(60% - var(--grid-desktop-horizontal-spacing) / 2);
+    width: calc(60% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+
+  .modern-product-page .product--large:not(.product--no-media) .product__info-wrapper {
+    max-width: calc(40% - var(--grid-desktop-horizontal-spacing) / 2);
+    width: calc(40% - var(--grid-desktop-horizontal-spacing) / 2);
+    padding-left: 3rem;
+  }
+
   .modern-product-page .product--large.product--thumbnail_slider .product__media-item .product__media.media > * {
     object-fit: contain;
   }
