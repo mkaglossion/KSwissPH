@@ -259,6 +259,13 @@
   letter-spacing: 0;
 }
 
+.related-products .product-grid {
+  --grid-desktop-horizontal-spacing: 3.2rem;
+  --grid-desktop-vertical-spacing: 5.2rem;
+  --grid-mobile-horizontal-spacing: 1.6rem;
+  --grid-mobile-vertical-spacing: 3.6rem;
+}
+
 .related-products .grid__item {
   min-width: 0;
 }
@@ -359,7 +366,8 @@
   }
 
   .related-products .product-grid {
-    --grid-desktop-vertical-spacing: 4rem;
+    --grid-desktop-horizontal-spacing: 2.4rem;
+    --grid-desktop-vertical-spacing: 4.4rem;
   }
 }
 
@@ -420,7 +428,8 @@
   }
 
   .related-products .product-grid {
-    --grid-mobile-vertical-spacing: 3.2rem;
+    --grid-mobile-horizontal-spacing: 1.4rem;
+    --grid-mobile-vertical-spacing: 3.6rem;
   }
 
   .related-products .card__content {
