@@ -263,12 +263,14 @@
     }
 
     .header__heading-logo-wrapper {
+      --header-mobile-logo-max: min({{ settings.logo_width }}px, 180px);
+      --header-mobile-logo-min: max(calc({{ settings.logo_width }}px * 0.58), 96px);
       width: auto !important;
-      max-width: 100%;
+      max-width: var(--header-mobile-logo-max);
     }
 
     .header__heading-logo {
-      width: clamp(120px, 42vw, 180px) !important;
+      width: clamp(var(--header-mobile-logo-min), 34vw, var(--header-mobile-logo-max)) !important;
       max-width: 100%;
       height: auto;
     }
@@ -292,11 +294,13 @@
     }
 
     .header__heading-logo-wrapper {
-      max-width: 85px;
+      --header-mobile-logo-max: min({{ settings.logo_width }}px, 156px);
+      --header-mobile-logo-min: max(calc({{ settings.logo_width }}px * 0.5), 92px);
+      max-width: var(--header-mobile-logo-max);
     }
 
     .header__heading-logo {
-      width: clamp(80px, 28vw, 110px) !important;
+      width: clamp(var(--header-mobile-logo-min), 38vw, var(--header-mobile-logo-max)) !important;
     }
 
     .header__icon,

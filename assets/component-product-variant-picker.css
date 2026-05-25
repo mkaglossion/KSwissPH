@@ -59,12 +59,10 @@ variant-selects {
 /* Custom styles for Pill display type */
 .product-form__input--pill {
   display: flex !important;
-  flex-wrap: nowrap !important;
+  flex-wrap: wrap !important;
   gap: 0.5rem !important;
-  overflow-x: auto !important;
+  overflow-x: visible !important;
   overflow-y: hidden !important;
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
   width: 100% !important;
 }
 
@@ -93,6 +91,15 @@ variant-selects {
   cursor: pointer;
   position: relative;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  .product-form__input--pill {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
 }
 
 .product-form__input--pill input[type='radio'] + label:before {

@@ -13,16 +13,26 @@ class CartDrawer extends HTMLElement {
 
     cartLink.setAttribute('role', 'button');
     cartLink.setAttribute('aria-haspopup', 'dialog');
+    cartLink.setAttribute('aria-expanded', 'false');
     cartLink.addEventListener('click', (event) => {
       event.preventDefault();
-      this.open(cartLink);
+      this.toggle(cartLink);
     });
     cartLink.addEventListener('keydown', (event) => {
-      if (event.code.toUpperCase() === 'SPACE') {
+      const code = event.code.toUpperCase();
+      if (code === 'SPACE' || code === 'ENTER') {
         event.preventDefault();
-        this.open(cartLink);
+        this.toggle(cartLink);
       }
     });
+  }
+
+  toggle(triggeredBy) {
+    if (this.classList.contains('active')) {
+      this.close();
+      return;
+    }
+    this.open(triggeredBy);
   }
 
   open(triggeredBy) {
@@ -47,12 +57,16 @@ class CartDrawer extends HTMLElement {
     );
 
     document.body.classList.add('overflow-hidden');
+    const cartLink = document.querySelector('#cart-icon-bubble');
+    if (cartLink) cartLink.setAttribute('aria-expanded', 'true');
   }
 
   close() {
     this.classList.remove('active');
     removeTrapFocus(this.activeElement);
     document.body.classList.remove('overflow-hidden');
+    const cartLink = document.querySelector('#cart-icon-bubble');
+    if (cartLink) cartLink.setAttribute('aria-expanded', 'false');
   }
 
   setSummaryAccessibility(cartDrawerNote) {

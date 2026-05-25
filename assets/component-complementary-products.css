@@ -159,3 +159,16 @@ product-recommendations.is-accordion + .accordion {
     font-size: 1.3rem;
   }
 }
+
+@media screen and (max-width: 749px) {
+  .complementary-slider.slider--everywhere {
+    margin-bottom: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .complementary-slider.slider--everywhere::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
+}

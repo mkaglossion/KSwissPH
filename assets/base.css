@@ -159,6 +159,25 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   z-index: 0;
 }
 
+@media screen and (max-width: 749px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    position: relative;
+  }
+
+  #MainContent,
+  .shopify-section,
+  .page-width {
+    max-width: 100%;
+  }
+}
+
 .section + .section {
   margin-top: var(--spacing-sections-mobile);
 }

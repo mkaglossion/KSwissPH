@@ -78,6 +78,11 @@
     <div class="modern-product__layout product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="modern-product__media-wrapper grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
+        <div class="modern-gallery-counter" id="ModernGalleryCounter-{{ section.id }}" aria-live="polite">
+          <span data-current>1</span>
+          <span aria-hidden="true">/</span>
+          <span data-total>{{ product.media.size }}</span>
+        </div>
       </div>
       <div class="modern-product__info-wrapper product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -481,6 +486,15 @@
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
+                <div class="modern-product__variant-chip" id="ModernVariantChip-{{ section.id }}" role="status" aria-live="polite">
+                  {%- unless product.has_only_default_variant -%}
+                    {%- for option in product.options_with_values -%}
+                      {{ option.name }}: {{ option.selected_value }}{% unless forloop.last %} | {% endunless %}
+                    {%- endfor -%}
+                  {%- else -%}
+                    {{ product.selected_or_first_available_variant.title }}
+                  {%- endunless -%}
+                </div>
                 {%- render 'buy-buttons',
                   block: block,
                   product: product,
@@ -701,6 +715,26 @@
       </div>
     </div>
 
+    <div class="modern-sticky-atc medium-hide large-up-hide" id="ModernStickyAtc-{{ section.id }}">
+      <div class="modern-sticky-atc__meta">
+        <p class="modern-sticky-atc__price" id="ModernStickyAtcPrice-{{ section.id }}">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </p>
+        <p class="modern-sticky-atc__variant" id="ModernStickyAtcVariant-{{ section.id }}">
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              {{ option.name }}: {{ option.selected_value }}{% unless forloop.last %} | {% endunless %}
+            {%- endfor -%}
+          {%- else -%}
+            {{ product.selected_or_first_available_variant.title }}
+          {%- endunless -%}
+        </p>
+      </div>
+      <button class="modern-sticky-atc__button button button--primary" id="ModernStickyAtcButton-{{ section.id }}" type="button">
+        {{ 'products.product.add_to_cart' | t }}
+      </button>
+    </div>
+
     {% render 'product-media-modal', variant_images: variant_images %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
@@ -751,6 +785,174 @@
 
     <script type="application/ld+json">
       {{ product | structured_data }}
+    </script>
+    <script>
+      (() => {
+        const sectionId = '{{ section.id }}';
+        const root = document.getElementById(`MainProduct-${sectionId}`);
+        if (!root) return;
+
+        const variantChip = root.querySelector(`#ModernVariantChip-${sectionId}`);
+        const stickyPrice = root.querySelector(`#ModernStickyAtcPrice-${sectionId}`);
+        const stickyVariant = root.querySelector(`#ModernStickyAtcVariant-${sectionId}`);
+        const stickyButton = root.querySelector(`#ModernStickyAtcButton-${sectionId}`);
+        const stickyBar = root.querySelector(`#ModernStickyAtc-${sectionId}`);
+        const galleryCounter = root.querySelector(`#ModernGalleryCounter-${sectionId}`);
+        const galleryList = root.querySelector(`#Slider-Gallery-${sectionId}`);
+        const cartDrawer = document.querySelector('cart-drawer');
+        let stickyHiddenUntil = 0;
+        let stickyRestoreTimer;
+
+        const isCartDrawerOpen = () => !!cartDrawer?.classList.contains('active');
+        const isStickyTemporarilyHidden = () => Date.now() < stickyHiddenUntil;
+
+        const syncStickyVisibility = () => {
+          if (!stickyBar) return;
+          const shouldHide = isCartDrawerOpen() || isStickyTemporarilyHidden();
+          stickyBar.classList.toggle('modern-sticky-atc--hidden', shouldHide);
+        };
+
+        const hideStickyTemporarily = (durationMs = 3200) => {
+          stickyHiddenUntil = Date.now() + durationMs;
+          window.clearTimeout(stickyRestoreTimer);
+          syncStickyVisibility();
+
+          stickyRestoreTimer = window.setTimeout(() => {
+            syncStickyVisibility();
+          }, durationMs + 50);
+        };
+
+        const getVariantSummary = () => {
+          const variantSelects = root.querySelector('variant-selects');
+          if (!variantSelects) return '';
+
+          const groups = variantSelects.querySelectorAll('.product-form__input');
+          const parts = [];
+
+          groups.forEach((group) => {
+            const isDropdown = group.classList.contains('product-form__input--dropdown');
+            let name = '';
+            let value = '';
+
+            if (isDropdown) {
+              name = group.querySelector('.form__label')?.textContent?.trim() || '';
+              value = group.querySelector('select')?.value?.trim() || '';
+            } else {
+              const legendText = group.querySelector('legend')?.textContent?.trim() || '';
+              name = legendText.split(':')[0].trim();
+              const checked = group.querySelector("input[type='radio']:checked");
+              value = checked?.value?.trim() || '';
+            }
+
+            if (name && value) parts.push(`${name}: ${value}`);
+          });
+
+          return parts.join(' | ');
+        };
+
+        const getDisplayedPrice = () => {
+          const priceRoot = root.querySelector(`#price-${sectionId}`);
+          if (!priceRoot) return '';
+
+          const salePrice = priceRoot.querySelector('.price-item--sale');
+          if (salePrice) return salePrice.textContent.trim();
+
+          const regularPrices = priceRoot.querySelectorAll('.price-item--regular');
+          if (regularPrices.length) return regularPrices[regularPrices.length - 1].textContent.trim();
+
+          return priceRoot.textContent.replace(/\s+/g, ' ').trim();
+        };
+
+        const syncAtcState = () => {
+          const mainSubmitButton = root.querySelector(`#ProductSubmitButton-${sectionId}`);
+          if (!mainSubmitButton || !stickyButton) return;
+
+          stickyButton.disabled = mainSubmitButton.disabled;
+          stickyButton.textContent = mainSubmitButton.querySelector('span')?.textContent?.trim() || '{{ "products.product.add_to_cart" | t }}';
+        };
+
+        const syncVariantInfo = () => {
+          const summary = getVariantSummary();
+          if (summary) {
+            if (variantChip) variantChip.textContent = summary;
+            if (stickyVariant) stickyVariant.textContent = summary;
+          }
+
+          const displayedPrice = getDisplayedPrice();
+          if (displayedPrice && stickyPrice) stickyPrice.textContent = displayedPrice;
+
+          syncAtcState();
+        };
+
+        const syncGalleryCounter = () => {
+          if (!galleryCounter || !galleryList) return;
+
+          const items = Array.from(galleryList.querySelectorAll('li[data-media-id]'));
+          const currentEl = galleryCounter.querySelector('[data-current]');
+          const totalEl = galleryCounter.querySelector('[data-total]');
+          if (!currentEl || !totalEl || !items.length) return;
+
+          totalEl.textContent = String(items.length);
+          const activeIndex = items.findIndex((item) => item.classList.contains('is-active'));
+          currentEl.textContent = String(activeIndex >= 0 ? activeIndex + 1 : 1);
+        };
+
+        stickyButton?.addEventListener('click', () => {
+          const mainSubmitButton = root.querySelector(`#ProductSubmitButton-${sectionId}`);
+          if (!mainSubmitButton || mainSubmitButton.disabled) return;
+          mainSubmitButton.click();
+        });
+
+        if (typeof subscribe === 'function') {
+          subscribe('cart-update', (payload) => {
+            if (!payload || payload.source !== 'product-form') return;
+            const currentVariantId = root.querySelector(`#product-form-${sectionId} input[name='id']`)?.value;
+            if (currentVariantId && String(payload.productVariantId) !== String(currentVariantId)) return;
+            hideStickyTemporarily();
+          });
+        }
+
+        if (cartDrawer) {
+          const drawerObserver = new MutationObserver(() => {
+            syncStickyVisibility();
+          });
+          drawerObserver.observe(cartDrawer, {
+            attributes: true,
+            attributeFilter: ['class'],
+          });
+        }
+
+        root.addEventListener('change', syncVariantInfo);
+        galleryList?.addEventListener('scroll', syncGalleryCounter, { passive: true });
+        syncVariantInfo();
+        syncGalleryCounter();
+        syncStickyVisibility();
+
+        const syncObserver = new MutationObserver(() => {
+          syncVariantInfo();
+          syncGalleryCounter();
+        });
+
+        syncObserver.observe(root.querySelector('variant-selects') || root, {
+          subtree: true,
+          childList: true,
+          attributes: true,
+          attributeFilter: ['checked', 'selected'],
+        });
+
+        syncObserver.observe(root.querySelector(`#price-${sectionId}`) || root, {
+          subtree: true,
+          childList: true,
+          characterData: true,
+        });
+
+        syncObserver.observe(galleryList || root, {
+          subtree: true,
+          childList: true,
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      })();
     </script>
   </div>
 </product-info>
