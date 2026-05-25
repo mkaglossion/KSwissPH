@@ -842,7 +842,10 @@
           if (sectionsPayload && applyCartBubbleHtml(sectionsPayload['cart-icon-bubble'])) return;
           if (cartBubbleSyncPending) return;
 
-          cartBubbleSyncPending = fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+          const sectionsUrl = new URL(window.location.href);
+          sectionsUrl.searchParams.set('sections', 'cart-icon-bubble');
+
+          cartBubbleSyncPending = fetch(sectionsUrl.toString(), {
             credentials: 'same-origin',
           })
             .then((response) => response.json())

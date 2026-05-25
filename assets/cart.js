@@ -155,7 +155,7 @@ class CartItems extends HTMLElement {
       line,
       quantity,
       sections: this.getSectionsToRender().map((section) => section.section),
-      sections_url: window.location.pathname,
+      sections_url: `${window.location.pathname}${window.location.search}`,
     });
 
     fetch(`${routes.cart_change_url}`, { ...fetchConfig(), ...{ body } })
@@ -175,7 +175,6 @@ class CartItems extends HTMLElement {
             this.updateLiveRegions(line, parsedState.errors);
             this.renderHeaderCartBubble(parsedState);
             this.syncHeaderCartBubbleFromServer();
-            this.forceRefreshOnAvailabilityLimit(parsedState.errors);
             return;
           }
 
@@ -249,7 +248,10 @@ class CartItems extends HTMLElement {
     const cartLink = document.getElementById('cart-icon-bubble');
     if (!cartLink || this.cartBubbleSyncPending) return;
 
-    this.cartBubbleSyncPending = fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+    const sectionsUrl = new URL(window.location.href);
+    sectionsUrl.searchParams.set('sections', 'cart-icon-bubble');
+
+    this.cartBubbleSyncPending = fetch(sectionsUrl.toString(), {
       credentials: 'same-origin',
     })
       .then((res) => res.json())
@@ -268,19 +270,6 @@ class CartItems extends HTMLElement {
       .finally(() => {
         this.cartBubbleSyncPending = null;
       });
-  }
-
-  forceRefreshOnAvailabilityLimit(message) {
-    if (!message || typeof message !== 'string') return;
-
-    const isAvailabilityLimit = /only\s+\d+.*added|due to availability|out of stock|not enough|available/i.test(
-      message
-    );
-    if (!isAvailabilityLimit) return;
-
-    window.setTimeout(() => {
-      window.location.reload();
-    }, 250);
   }
 
   updateLiveRegions(line, message) {

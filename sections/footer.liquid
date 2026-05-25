@@ -1037,7 +1037,7 @@
                   {%- form 'customer' -%}
                     {{ form.errors | default_errors }}
                     {%- if form.posted_successfully? -%}
-                      <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                      <p class="form-success">{{ 'newsletter.success' | t }}</p>
                     {%- else -%}
                       <input type="hidden" name="contact[tags]" value="newsletter">
                       {%- if block.settings.subheading != blank -%}

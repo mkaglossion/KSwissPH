@@ -37,7 +37,7 @@ if (!customElements.get('product-form')) {
             'sections',
             this.cart.getSectionsToRender().map((section) => section.id)
           );
-          formData.append('sections_url', window.location.pathname);
+          formData.append('sections_url', `${window.location.pathname}${window.location.search}`);
           this.cart.setActiveElement(document.activeElement);
         }
         config.body = formData;
@@ -48,7 +48,6 @@ if (!customElements.get('product-form')) {
             if (response.status) {
               this.renderCartIconBubble(response);
               this.syncCartIconBubbleFromServer();
-              this.forceRefreshOnAvailabilityLimit(response.errors || response.description || response.message);
               publish(PUB_SUB_EVENTS.cartError, {
                 source: 'product-form',
                 productVariantId: formData.get('id'),
@@ -131,7 +130,10 @@ if (!customElements.get('product-form')) {
         const cartLink = document.getElementById('cart-icon-bubble');
         if (!cartLink) return;
 
-        fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+        const sectionsUrl = new URL(window.location.href);
+        sectionsUrl.searchParams.set('sections', 'cart-icon-bubble');
+
+        fetch(sectionsUrl.toString(), {
           credentials: 'same-origin',
         })
           .then((res) => res.json())
@@ -147,19 +149,6 @@ if (!customElements.get('product-form')) {
             cartLink.innerHTML = nextHtml;
           })
           .catch(() => {});
-      }
-
-      forceRefreshOnAvailabilityLimit(message) {
-        if (!message || typeof message !== 'string') return;
-
-        const isAvailabilityLimit = /only\s+\d+.*added|due to availability|out of stock|not enough|available/i.test(
-          message
-        );
-        if (!isAvailabilityLimit) return;
-
-        window.setTimeout(() => {
-          window.location.reload();
-        }, 250);
       }
 
       handleErrorMessage(errorMessage = false) {
