@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="modern-product-page section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="modern-product-page{% if section.settings.enable_mobile_sticky_atc %} modern-product-page--has-sticky-atc{% endif %} section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -715,25 +715,27 @@
       </div>
     </div>
 
-    <div class="modern-sticky-atc medium-hide large-up-hide" id="ModernStickyAtc-{{ section.id }}">
-      <div class="modern-sticky-atc__meta">
-        <p class="modern-sticky-atc__price" id="ModernStickyAtcPrice-{{ section.id }}">
-          {{ product.selected_or_first_available_variant.price | money }}
-        </p>
-        <p class="modern-sticky-atc__variant" id="ModernStickyAtcVariant-{{ section.id }}">
-          {%- unless product.has_only_default_variant -%}
-            {%- for option in product.options_with_values -%}
-              {{ option.name }}: {{ option.selected_value }}{% unless forloop.last %} | {% endunless %}
-            {%- endfor -%}
-          {%- else -%}
-            {{ product.selected_or_first_available_variant.title }}
-          {%- endunless -%}
-        </p>
+    {%- if section.settings.enable_mobile_sticky_atc -%}
+      <div class="modern-sticky-atc medium-hide large-up-hide" id="ModernStickyAtc-{{ section.id }}">
+        <div class="modern-sticky-atc__meta">
+          <p class="modern-sticky-atc__price" id="ModernStickyAtcPrice-{{ section.id }}">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </p>
+          <p class="modern-sticky-atc__variant" id="ModernStickyAtcVariant-{{ section.id }}">
+            {%- unless product.has_only_default_variant -%}
+              {%- for option in product.options_with_values -%}
+                {{ option.name }}: {{ option.selected_value }}{% unless forloop.last %} | {% endunless %}
+              {%- endfor -%}
+            {%- else -%}
+              {{ product.selected_or_first_available_variant.title }}
+            {%- endunless -%}
+          </p>
+        </div>
+        <button class="modern-sticky-atc__button button button--primary" id="ModernStickyAtcButton-{{ section.id }}" type="button">
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
       </div>
-      <button class="modern-sticky-atc__button button button--primary" id="ModernStickyAtcButton-{{ section.id }}" type="button">
-        {{ 'products.product.add_to_cart' | t }}
-      </button>
-    </div>
+    {%- endif -%}
 
     {% render 'product-media-modal', variant_images: variant_images %}
 
@@ -802,6 +804,7 @@
         const cartDrawer = document.querySelector('cart-drawer');
         let stickyHiddenUntil = 0;
         let stickyRestoreTimer;
+        let cartBubbleSyncPending = null;
 
         const isCartDrawerOpen = () => !!cartDrawer?.classList.contains('active');
         const isStickyTemporarilyHidden = () => Date.now() < stickyHiddenUntil;
@@ -820,6 +823,36 @@
           stickyRestoreTimer = window.setTimeout(() => {
             syncStickyVisibility();
           }, durationMs + 50);
+        };
+
+        const syncHeaderCartBubble = async (sectionsPayload) => {
+          const cartLink = document.getElementById('cart-icon-bubble');
+          if (!cartLink) return;
+
+          const applyCartBubbleHtml = (html) => {
+            if (!html) return false;
+            const parsed = new DOMParser().parseFromString(html, 'text/html');
+            const sectionNode = parsed.querySelector('.shopify-section');
+            const nextHtml = sectionNode ? sectionNode.innerHTML : html;
+            if (!nextHtml) return false;
+            cartLink.innerHTML = nextHtml;
+            return true;
+          };
+
+          if (sectionsPayload && applyCartBubbleHtml(sectionsPayload['cart-icon-bubble'])) return;
+          if (cartBubbleSyncPending) return;
+
+          cartBubbleSyncPending = fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+            credentials: 'same-origin',
+          })
+            .then((response) => response.json())
+            .then((sections) => {
+              applyCartBubbleHtml(sections?.['cart-icon-bubble']);
+            })
+            .catch(() => {})
+            .finally(() => {
+              cartBubbleSyncPending = null;
+            });
         };
 
         const getVariantSummary = () => {
@@ -904,11 +937,14 @@
         });
 
         if (typeof subscribe === 'function') {
-          subscribe('cart-update', (payload) => {
+          const cartUpdateEvent = window.PUB_SUB_EVENTS?.cartUpdate || 'cart-update';
+
+          subscribe(cartUpdateEvent, (payload) => {
             if (!payload || payload.source !== 'product-form') return;
             const currentVariantId = root.querySelector(`#product-form-${sectionId} input[name='id']`)?.value;
             if (currentVariantId && String(payload.productVariantId) !== String(currentVariantId)) return;
             hideStickyTemporarily();
+            syncHeaderCartBubble(payload.cartData?.sections);
           });
         }
 
@@ -2313,6 +2349,12 @@
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_sticky_atc",
+      "default": true,
+      "label": "Enable sticky mobile add to cart"
     },
     {
       "type": "color_scheme",

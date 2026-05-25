@@ -46,6 +46,9 @@ if (!customElements.get('product-form')) {
           .then((response) => response.json())
           .then((response) => {
             if (response.status) {
+              this.renderCartIconBubble(response);
+              this.syncCartIconBubbleFromServer();
+              this.forceRefreshOnAvailabilityLimit(response.errors || response.description || response.message);
               publish(PUB_SUB_EVENTS.cartError, {
                 source: 'product-form',
                 productVariantId: formData.get('id'),
@@ -84,6 +87,7 @@ if (!customElements.get('product-form')) {
                   setTimeout(() => {
                     CartPerformance.measure("add:paint-updated-sections", () => {
                       this.cart.renderContents(response);
+                      this.renderCartIconBubble(response);
                     });
                   });
                 },
@@ -93,6 +97,7 @@ if (!customElements.get('product-form')) {
             } else {
               CartPerformance.measure("add:paint-updated-sections", () => {
                 this.cart.renderContents(response);
+                this.renderCartIconBubble(response);
               });
             }
           })
@@ -107,6 +112,54 @@ if (!customElements.get('product-form')) {
 
             CartPerformance.measureFromEvent("add:user-action", evt);
           });
+      }
+
+      renderCartIconBubble(response) {
+        const cartLink = document.getElementById('cart-icon-bubble');
+        const sectionHtml = response?.sections?.['cart-icon-bubble'];
+        if (!cartLink || !sectionHtml) return;
+
+        const parsed = new DOMParser().parseFromString(sectionHtml, 'text/html');
+        const sectionNode = parsed.querySelector('.shopify-section');
+        const nextHtml = sectionNode ? sectionNode.innerHTML : sectionHtml;
+        if (!nextHtml) return;
+
+        cartLink.innerHTML = nextHtml;
+      }
+
+      syncCartIconBubbleFromServer() {
+        const cartLink = document.getElementById('cart-icon-bubble');
+        if (!cartLink) return;
+
+        fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+          credentials: 'same-origin',
+        })
+          .then((res) => res.json())
+          .then((sections) => {
+            const sectionHtml = sections?.['cart-icon-bubble'];
+            if (!sectionHtml) return;
+
+            const parsed = new DOMParser().parseFromString(sectionHtml, 'text/html');
+            const sectionNode = parsed.querySelector('.shopify-section');
+            const nextHtml = sectionNode ? sectionNode.innerHTML : sectionHtml;
+            if (!nextHtml) return;
+
+            cartLink.innerHTML = nextHtml;
+          })
+          .catch(() => {});
+      }
+
+      forceRefreshOnAvailabilityLimit(message) {
+        if (!message || typeof message !== 'string') return;
+
+        const isAvailabilityLimit = /only\s+\d+.*added|due to availability|out of stock|not enough|available/i.test(
+          message
+        );
+        if (!isAvailabilityLimit) return;
+
+        window.setTimeout(() => {
+          window.location.reload();
+        }, 250);
       }
 
       handleErrorMessage(errorMessage = false) {

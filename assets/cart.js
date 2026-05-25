@@ -23,6 +23,7 @@ class CartItems extends HTMLElement {
     }, ON_CHANGE_DEBOUNCE_TIMER);
 
     this.addEventListener('change', debouncedOnChange.bind(this));
+    this.cartBubbleSyncPending = null;
   }
 
   cartUpdateUnsubscriber = undefined;
@@ -172,6 +173,9 @@ class CartItems extends HTMLElement {
           if (parsedState.errors) {
             quantityElement.value = quantityElement.getAttribute('value');
             this.updateLiveRegions(line, parsedState.errors);
+            this.renderHeaderCartBubble(parsedState);
+            this.syncHeaderCartBubbleFromServer();
+            this.forceRefreshOnAvailabilityLimit(parsedState.errors);
             return;
           }
 
@@ -226,6 +230,57 @@ class CartItems extends HTMLElement {
         this.disableLoading(line);
         CartPerformance.measureFromMarker(`${eventTarget}:user-action`, cartPerformanceUpdateMarker);
       });
+  }
+
+  renderHeaderCartBubble(parsedState) {
+    const cartLink = document.getElementById('cart-icon-bubble');
+    const sectionHtml = parsedState?.sections?.['cart-icon-bubble'];
+    if (!cartLink || !sectionHtml) return;
+
+    const parsed = new DOMParser().parseFromString(sectionHtml, 'text/html');
+    const sectionNode = parsed.querySelector('.shopify-section');
+    const nextHtml = sectionNode ? sectionNode.innerHTML : sectionHtml;
+    if (!nextHtml) return;
+
+    cartLink.innerHTML = nextHtml;
+  }
+
+  syncHeaderCartBubbleFromServer() {
+    const cartLink = document.getElementById('cart-icon-bubble');
+    if (!cartLink || this.cartBubbleSyncPending) return;
+
+    this.cartBubbleSyncPending = fetch(`${window.location.pathname}?sections=cart-icon-bubble`, {
+      credentials: 'same-origin',
+    })
+      .then((res) => res.json())
+      .then((sections) => {
+        const sectionHtml = sections?.['cart-icon-bubble'];
+        if (!sectionHtml) return;
+
+        const parsed = new DOMParser().parseFromString(sectionHtml, 'text/html');
+        const sectionNode = parsed.querySelector('.shopify-section');
+        const nextHtml = sectionNode ? sectionNode.innerHTML : sectionHtml;
+        if (!nextHtml) return;
+
+        cartLink.innerHTML = nextHtml;
+      })
+      .catch(() => {})
+      .finally(() => {
+        this.cartBubbleSyncPending = null;
+      });
+  }
+
+  forceRefreshOnAvailabilityLimit(message) {
+    if (!message || typeof message !== 'string') return;
+
+    const isAvailabilityLimit = /only\s+\d+.*added|due to availability|out of stock|not enough|available/i.test(
+      message
+    );
+    if (!isAvailabilityLimit) return;
+
+    window.setTimeout(() => {
+      window.location.reload();
+    }, 250);
   }
 
   updateLiveRegions(line, message) {

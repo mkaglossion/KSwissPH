@@ -636,10 +636,14 @@
 
   .modern-product-page {
     background: rgb(var(--color-background));
-    padding-bottom: calc(9.8rem + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  .modern-product-page.modern-product-page--has-sticky-atc {
+    padding-bottom: calc(9.8rem + env(safe-area-inset-bottom));
   }
 
   .modern-product-page .modern-product__shell,
