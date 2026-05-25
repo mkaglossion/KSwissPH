@@ -89,9 +89,6 @@
           >
             {% if card_product.featured_media %}
               <div class="custom-plp-card__media">
-                <!-- Swym dynamic wishlist button hook (real app-powered) -->
-                <div class="custom-plp-card__wishlist" data-swym-hook></div>
-
                 <img
                   srcset="
                     {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
