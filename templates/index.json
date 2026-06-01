@@ -15,9 +15,9 @@
         "slide_efhfLJ": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
-            "mobile_image": "shopify://shop_images/may_promo_socmed.jpg",
-            "slideshow_link": "shopify://collections/k-swiss-may-2026-v1",
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_pickleball.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_95089128-cb83-4794-acba-a0ab012c5dfb.jpg",
+            "slideshow_link": "shopify://collections/pickleball",
             "image_overlay_opacity": 0,
             "force_image_only": false,
             "heading": "",
