@@ -35,6 +35,7 @@
         },
         "slide_efhfLJ": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
             "mobile_image": "shopify://shop_images/may_promo_socmed.jpg",
@@ -56,6 +57,7 @@
         },
         "slide_Qhpq3g": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
             "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
@@ -81,7 +83,6 @@
         "slide_efhfLJ",
         "slide_Qhpq3g"
       ],
-      "disabled": true,
       "name": "Dawn Slideshow v2",
       "settings": {
         "layout": "full_bleed",
