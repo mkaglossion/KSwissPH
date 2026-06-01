@@ -12,6 +12,27 @@
     "slideshow_v2_gjVHbw": {
       "type": "slideshow-v2",
       "blocks": {
+        "slide_7NYc73": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_pickleball.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_95089128-cb83-4794-acba-a0ab012c5dfb.jpg",
+            "slideshow_link": "shopify://collections/pickleball",
+            "image_overlay_opacity": 0,
+            "force_image_only": false,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
         "slide_efhfLJ": {
           "type": "slide",
           "settings": {
@@ -56,6 +77,7 @@
         }
       },
       "block_order": [
+        "slide_7NYc73",
         "slide_efhfLJ",
         "slide_Qhpq3g"
       ],
