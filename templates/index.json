@@ -71,6 +71,69 @@
         "accessibility_info": "Promotional slideshow"
       }
     },
+    "slideshow_v2_UegyWN": {
+      "type": "slideshow-v2",
+      "blocks": {
+        "slide_Wc3TWb": {
+          "type": "slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_pickleball.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_95089128-cb83-4794-acba-a0ab012c5dfb.jpg",
+            "slideshow_link": "shopify://collections/pickleball",
+            "image_overlay_opacity": 0,
+            "force_image_only": false,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_VBD3Cb": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
+            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
+            "slideshow_link": "shopify://collections/tempo66-collection",
+            "image_overlay_opacity": 0,
+            "force_image_only": false,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Wc3TWb",
+        "slide_VBD3Cb"
+      ],
+      "name": "Dawn Slideshow v2",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Promotional slideshow"
+      }
+    },
     "slideshow_a8Xym4": {
       "type": "slideshow",
       "blocks": {
@@ -241,9 +304,8 @@
         },
         "column_MVdJLq": {
           "type": "column",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/CATEGORY_BANNERS_3.jpg",
+            "image": "shopify://shop_images/CATEGORY_BANNERS_3_19c4dc4f-c518-461d-8bf0-fdef39fbe8b8.jpg",
             "title": "ACCESSORIES",
             "text": "",
             "link_label": "",
@@ -267,7 +329,7 @@
         "image_ratio": "portrait",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 2,
+        "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
@@ -640,6 +702,7 @@
   },
   "order": [
     "slideshow_v2_gjVHbw",
+    "slideshow_v2_UegyWN",
     "slideshow_a8Xym4",
     "image_banner_fTQr8y",
     "featured_collection",
