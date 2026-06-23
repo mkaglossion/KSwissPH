@@ -234,7 +234,7 @@
       "settings": {
         "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_53bbde42-0dcd-4ce3-8fb8-215b6a403152.jpg",
         "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_724220a1-bc04-49e8-b7ce-cda0c7b3bc43.jpg",
-        "banner_link": "shopify://collections/pickleball",
+        "banner_link": "shopify://collections/pickleball-footwear",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "image_behavior": "none",
