@@ -2332,6 +2332,7 @@ input[type='checkbox'] {
 }
 
 .shopify-section-header-sticky {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }

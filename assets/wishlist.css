@@ -36,6 +36,11 @@
   color: #ffffff;
 }
 
+.wishlist-count-badge[hidden],
+[data-wishlist-count][hidden] {
+  display: none !important;
+}
+
 .header__icon--wishlist.is-active {
   color: rgb(var(--color-foreground));
 }

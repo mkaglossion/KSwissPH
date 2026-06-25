@@ -57,8 +57,9 @@
     });
 
     document.querySelectorAll('[data-wishlist-count]').forEach((counter) => {
-      counter.textContent = String(items.length);
-      counter.hidden = items.length === 0;
+      const hasItems = items.length > 0;
+      counter.textContent = hasItems ? String(items.length) : '';
+      counter.hidden = !hasItems;
     });
 
     document.querySelectorAll('[data-wishlist-link]').forEach((link) => {
