@@ -43,6 +43,117 @@
     available: element.dataset.wishlistAvailable !== 'false',
   });
 
+  const getProductInfo = (element) => element?.closest('product-info');
+
+  const getSectionId = (element) => element?.dataset?.wishlistSectionId || getProductInfo(element)?.dataset?.section || '';
+
+  const readText = (element) => element?.textContent?.replace(/\s+/g, ' ').trim() || '';
+
+  const getSelectedVariant = (productInfo) => {
+    const selectedVariant = productInfo?.querySelector('variant-selects [data-selected-variant]')?.textContent;
+    if (!selectedVariant) return null;
+
+    try {
+      return JSON.parse(selectedVariant);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const getProductPriceData = (productInfo, sectionId) => {
+    const priceContainer = productInfo?.querySelector(`#price-${sectionId}`);
+    if (!priceContainer) return { price: '', compareAtPrice: '' };
+
+    const salePrice = readText(priceContainer.querySelector('.price__sale .price-item--last'));
+    const regularPrice = readText(priceContainer.querySelector('.price__regular .price-item--regular'));
+    const compareAtPrice = readText(priceContainer.querySelector('.price__sale .price-item--regular, .variant-item__old-price'));
+
+    return {
+      price: salePrice || regularPrice,
+      compareAtPrice,
+    };
+  };
+
+  const getProductImageData = (productInfo, variant) => {
+    const activeImage =
+      productInfo?.querySelector('.product__media-item.is-active img') ||
+      productInfo?.querySelector('media-gallery img');
+    const variantImage = variant?.featured_media?.preview_image?.src || variant?.featured_image?.src || '';
+
+    return {
+      image: variantImage || activeImage?.currentSrc || activeImage?.src || '',
+      imageAlt: activeImage?.getAttribute('alt') || '',
+    };
+  };
+
+  const getProductUrl = (productInfo, variant) => {
+    const baseUrl = productInfo?.dataset?.url || window.location.pathname;
+    return variant?.id ? `${baseUrl}?variant=${variant.id}` : baseUrl;
+  };
+
+  const updateWishlistButtonCopy = (button, saved) => {
+    const addLabel = button.dataset.wishlistLabelAdd || 'Add to wishlist';
+    const activeLabel = button.dataset.wishlistLabelActive || 'Saved to wishlist';
+    const label = saved ? activeLabel : addLabel;
+
+    button.dataset.wishlistState = saved ? 'saved' : 'default';
+    button.querySelectorAll('[data-wishlist-button-text]').forEach((element) => {
+      element.textContent = label;
+    });
+  };
+
+  const syncStoredItemFromToggle = (button) => {
+    const handle = getHandle(button);
+    if (!handle) return readWishlist();
+
+    const items = readWishlist();
+    const existingIndex = items.findIndex((item) => item.handle === handle);
+    if (existingIndex < 0) return items;
+
+    const nextItem = collectWishlistItem(button);
+    const currentItem = items[existingIndex];
+    const isSame = Object.keys(nextItem).every((key) => currentItem[key] === nextItem[key]);
+
+    if (isSame) return items;
+
+    items[existingIndex] = { ...currentItem, ...nextItem };
+    writeWishlist(items);
+    return items;
+  };
+
+  const syncProductWishlistButton = (button, variant = null) => {
+    if (!button) return readWishlist();
+
+    const productInfo = getProductInfo(button);
+    if (!productInfo) return readWishlist();
+
+    const activeVariant = variant || getSelectedVariant(productInfo);
+    const sectionId = getSectionId(button);
+    const { price, compareAtPrice } = getProductPriceData(productInfo, sectionId);
+    const { image, imageAlt } = getProductImageData(productInfo, activeVariant);
+
+    button.dataset.wishlistUrl = getProductUrl(productInfo, activeVariant);
+    button.dataset.wishlistVariantId = activeVariant?.id ? String(activeVariant.id) : '';
+    button.dataset.wishlistAvailable = activeVariant?.available === false ? 'false' : 'true';
+
+    if (price) button.dataset.wishlistPrice = price;
+    button.dataset.wishlistCompareAtPrice = compareAtPrice || '';
+    if (image) button.dataset.wishlistImage = image;
+    if (imageAlt) button.dataset.wishlistImageAlt = imageAlt;
+
+    return syncStoredItemFromToggle(button);
+  };
+
+  const syncProductWishlistButtons = () => {
+    let items = readWishlist();
+
+    document.querySelectorAll('[data-wishlist-product-button]').forEach((button) => {
+      items = syncProductWishlistButton(button);
+    });
+
+    return items;
+  };
+
   const syncToggleButtons = (items = readWishlist()) => {
     const handles = new Set(items.map((item) => item.handle));
 
@@ -54,6 +165,7 @@
       button.classList.toggle('is-active', saved);
       button.setAttribute('aria-pressed', saved ? 'true' : 'false');
       button.setAttribute('aria-label', saved ? `Remove ${title} from wishlist` : `Add ${title} to wishlist`);
+      updateWishlistButtonCopy(button, saved);
     });
 
     document.querySelectorAll('[data-wishlist-count]').forEach((counter) => {
@@ -239,7 +351,7 @@
   };
 
   const refreshWishlist = () => {
-    const items = readWishlist();
+    const items = syncProductWishlistButtons();
     syncToggleButtons(items);
     renderWishlistPage();
   };
@@ -340,6 +452,21 @@
       refreshWishlist();
     }
   });
+
+  if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+    subscribe(PUB_SUB_EVENTS.variantChange, ({ data }) => {
+      const sectionId = data?.sectionId;
+      if (!sectionId) return;
+
+      const toggle = document.querySelector(
+        `[data-wishlist-product-button][data-wishlist-section-id="${sectionId}"]`
+      );
+      if (!toggle) return;
+
+      const items = syncProductWishlistButton(toggle, data?.variant || null);
+      syncToggleButtons(items);
+    });
+  }
 
   document.addEventListener('DOMContentLoaded', refreshWishlist);
   window.addEventListener('load', refreshWishlist);
