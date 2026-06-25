@@ -162,6 +162,19 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding-right: 5.2rem;
 }
 
+.menu-drawer__menu-item-link {
+  display: block;
+  width: calc(100% - 2.8rem);
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-drawer__menu-item-link:hover,
+.menu-drawer__menu-item-link:focus-visible {
+  color: inherit;
+  text-decoration: none;
+}
+
 .menu-drawer__menu-item--active,
 .menu-drawer__menu-item:focus,
 .menu-drawer__close-button:focus,
