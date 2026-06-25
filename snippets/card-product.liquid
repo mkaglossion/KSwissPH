@@ -135,6 +135,31 @@
               </div>
             {% endif %}
           </a>
+
+          <button
+            type="button"
+            class="custom-plp-card__wishlist"
+            data-wishlist-toggle
+            data-wishlist-handle="{{ card_product.handle }}"
+            data-wishlist-title="{{ short_title | escape }}"
+            data-wishlist-url="{{ card_product.url }}"
+            data-wishlist-image="{% if card_product.featured_media %}{{ card_product.featured_media | image_url: width: 900 }}{% endif %}"
+            data-wishlist-image-alt="{{ card_product.featured_media.alt | default: card_product.title | escape }}"
+            data-wishlist-price="{{ current_variant.price | money | escape }}"
+            data-wishlist-compare-at-price="{{ current_variant.compare_at_price | money | escape }}"
+            data-wishlist-variant-id="{{ current_variant.id }}"
+            data-wishlist-vendor="{{ card_product.vendor | escape }}"
+            data-wishlist-available="{% if current_variant.available %}true{% else %}false{% endif %}"
+            aria-pressed="false"
+            aria-label="Add {{ short_title | escape }} to wishlist"
+          >
+            <span class="svg-wrapper custom-plp-card__wishlist-icon custom-plp-card__wishlist-icon--outline" aria-hidden="true">
+              {{ 'icon-heart-outline-thin.svg' | inline_asset_content }}
+            </span>
+            <span class="svg-wrapper custom-plp-card__wishlist-icon custom-plp-card__wishlist-icon--filled" aria-hidden="true">
+              {{ 'icon-heart-filled.svg' | inline_asset_content }}
+            </span>
+          </button>
         </div>
 
         <div class="custom-plp-card__content">

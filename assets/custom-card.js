@@ -11,6 +11,9 @@ document.addEventListener('touchstart', function(e) {
   const media = e.target.closest('.custom-plp-card__media');
   const image = e.target.closest('.custom-plp-card__main-image');
   const link = e.target.closest('.custom-plp-card__media-link');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
   
   if (mediaWrap || media || image || link) {
     e.stopPropagation();
@@ -26,6 +29,9 @@ document.addEventListener('touchmove', function(e) {
   const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
   const media = e.target.closest('.custom-plp-card__media');
   const image = e.target.closest('.custom-plp-card__main-image');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
   
   if (mediaWrap || media || image) {
     e.stopPropagation();
@@ -38,6 +44,9 @@ document.addEventListener('touchend', function(e) {
   const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
   const media = e.target.closest('.custom-plp-card__media');
   const image = e.target.closest('.custom-plp-card__main-image');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
   
   if (mediaWrap || media || image) {
     e.stopPropagation();
@@ -49,6 +58,9 @@ document.addEventListener('pointerdown', function(e) {
   const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
   const media = e.target.closest('.custom-plp-card__media');
   const image = e.target.closest('.custom-plp-card__main-image');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
   
   if (mediaWrap || media || image) {
     e.stopPropagation();
@@ -59,6 +71,9 @@ document.addEventListener('pointermove', function(e) {
   const mediaWrap = e.target.closest('.custom-plp-card__media-wrap');
   const media = e.target.closest('.custom-plp-card__media');
   const image = e.target.closest('.custom-plp-card__main-image');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
   
   if (mediaWrap || media || image) {
     e.stopPropagation();
@@ -128,6 +143,9 @@ document.addEventListener('click', function (e) {
   const swatchBtn = e.target.closest('.card-swatch');
   const arrowBtn = e.target.closest('.quick_atc_arrow');
   const colorArrowBtn = e.target.closest('.color_swatch_arrow');
+  const wishlistToggle = e.target.closest('.custom-plp-card__wishlist');
+
+  if (wishlistToggle) return;
 
   // Debug logging
   if (e.target.textContent && (e.target.textContent.match(/\d/) || e.target.closest('.quick_atc_grid'))) {

@@ -299,6 +299,7 @@
     </style>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'wishlist.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -340,6 +341,7 @@
       }
     </script>
     <script src="{{ 'custom-card.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
   
   {% render 'shogun-head' %}
 </head>
@@ -409,6 +411,9 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+
+      window.__wishlistHeartSvg = {{ 'icon-heart.svg' | inline_asset_content | json }};
+      window.__wishlistCloseSvg = {{ 'icon-close.svg' | inline_asset_content | json }};
     </script>
 
     {%- if settings.predictive_search_enabled -%}

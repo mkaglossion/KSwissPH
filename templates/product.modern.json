@@ -53,10 +53,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "wishlist_plus_advanced_pdp_button_4KJ8QL": {
-          "type": "shopify://apps/wishlist-plus/blocks/advanced-pdp-button/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
-          "settings": {}
-        },
         "description": {
           "type": "description",
           "settings": {}
@@ -76,7 +72,6 @@
         "inventory",
         "quantity_selector",
         "buy_buttons",
-        "wishlist_plus_advanced_pdp_button_4KJ8QL",
         "description",
         "share"
       ],

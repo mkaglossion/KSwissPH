@@ -387,6 +387,7 @@
   {%- liquid
     assign social_links = false
     assign localization_forms = false
+    assign wishlist_url = pages['wish-list'].url | default: pages.wishlist.url | default: '/pages/wish-list'
 
     if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank or settings.social_tiktok_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank
       assign social_links = true
@@ -509,6 +510,31 @@
       </div>
       {% render 'header-search', input_id: 'Search-In-Modal' %}
 
+      <a
+        href="{{ wishlist_url }}"
+        class="header__icon header__icon--wishlist link focus-inset"
+        data-wishlist-link
+        aria-label="Wishlist"
+      >
+        <span class="svg-wrapper" aria-hidden="true">{{ 'icon-heart-header.svg' | inline_asset_content }}</span>
+        <div class="cart-count-bubble wishlist-count-badge" data-wishlist-count hidden aria-hidden="true">0</div>
+      </a>
+
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" aria-label="{{ 'templates.cart.cart' | t }}{% if cart != empty %}: {{ cart.item_count }}{% endif %}">
+        {% if cart == empty %}
+          <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+        {% else %}
+          <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+        {% endif %}
+        {%- if cart != empty -%}
+          <div class="cart-count-bubble" aria-hidden="true">
+            {%- if cart.item_count < 100 -%}
+              <span>{{ cart.item_count }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </a>
+
       {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -536,21 +562,6 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
-
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" aria-label="{{ 'templates.cart.cart' | t }}{% if cart != empty %}: {{ cart.item_count }}{% endif %}">
-        {% if cart == empty %}
-          <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-        {% else %}
-          <span class="svg-wrapper" aria-hidden="true">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-        {% endif %}
-        {%- if cart != empty -%}
-          <div class="cart-count-bubble" aria-hidden="true">
-            {%- if cart.item_count < 100 -%}
-              <span>{{ cart.item_count }}</span>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      </a>
     </div>
   </header>
 </{{ header_tag }}>

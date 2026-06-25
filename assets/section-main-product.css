@@ -375,38 +375,6 @@ a.product__text {
   width: 100%;
 }
 
-/* Swym Wishlist button on standard PDP - separate from Add to Cart */
-.product__info-container .product__app-block {
-  margin-top: 1rem;
-  width: 100%;
-  max-width: 44rem;
-}
-
-.product__info-container .product__app-block .swym-btn-container,
-.product__info-container .product__app-block .swym-button-bar {
-  width: 100% !important;
-}
-
-.product__info-container .product__app-block button.swym-button,
-.product__info-container .product__app-block .swym-button.swym-add-to-wishlist,
-.product__info-container .product__app-block .swym-button.swym-add-to-wishlist-view-product {
-  width: 100% !important;
-  min-height: 4.5rem !important;
-  padding: 0 1.6rem !important;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.2) !important;
-  border-radius: 0.6rem !important;
-  background: transparent !important;
-  color: rgb(var(--color-foreground)) !important;
-  font-weight: 600 !important;
-  box-shadow: none !important;
-}
-
-.product__info-container .product__app-block button.swym-button:hover,
-.product__info-container .product__app-block button.swym-button:focus {
-  background: rgba(var(--color-foreground), 0.04) !important;
-  border-color: rgba(var(--color-foreground), 0.4) !important;
-}
-
 .product--no-media .product__info-container > modal-opener {
   display: block;
   text-align: center;

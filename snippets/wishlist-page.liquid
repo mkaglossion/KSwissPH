@@ -1,0 +1,54 @@
+<section class="wishlist-page section-{{ section.id }}-padding">
+  <div class="page-width wishlist-page__inner">
+    <header class="wishlist-page__hero">
+      <div class="wishlist-page__hero-copy">
+        <p class="wishlist-page__eyebrow">Saved for later</p>
+        <h1 class="wishlist-page__title">{{ page.title | default: 'Wishlist' | escape }}</h1>
+        {%- if page.content != blank -%}
+          <div class="wishlist-page__description rte">
+            {{ page.content }}
+          </div>
+        {%- else -%}
+          <div class="wishlist-page__description">
+            Keep the pieces you love in one place. Compare, review, and remove items without losing track.
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="wishlist-page__summary" aria-live="polite">
+        <span class="wishlist-page__summary-label">Items saved</span>
+        <div class="wishlist-page__summary-value">
+          <span class="js-wishlist-page-count">0</span>
+          <small>products</small>
+        </div>
+        <p class="wishlist-page__summary-note">Saved on this device so you can come back and review later.</p>
+      </div>
+    </header>
+
+    <div class="wishlist-page__body">
+      <div class="wishlist-page__actions">
+        <a href="/collections/all" class="button button--primary wishlist-page__action">Continue shopping</a>
+        <a href="/search" class="button button--secondary wishlist-page__action">Search products</a>
+      </div>
+
+      <div class="wishlist-page__bulk" aria-label="Wishlist bulk actions">
+        <div class="wishlist-page__bulk-left">
+          <label class="wishlist-page__select-all">
+            <input type="checkbox" class="js-wishlist-select-all">
+            <span>Select all</span>
+          </label>
+          <span class="wishlist-page__selected-count">
+            <strong class="js-wishlist-selected-count">0</strong> selected
+          </span>
+        </div>
+        <div class="wishlist-page__bulk-actions">
+          <button type="button" class="button button--secondary wishlist-page__bulk-button js-wishlist-bulk-remove" disabled>Remove selected</button>
+          <button type="button" class="button button--primary wishlist-page__bulk-button js-wishlist-bulk-cart" disabled>Add selected to cart</button>
+          <button type="button" class="button button--secondary wishlist-page__bulk-button js-wishlist-bulk-checkout" disabled>Checkout selected</button>
+        </div>
+      </div>
+
+      <div class="js-wishlist-content wishlist-page__grid" aria-live="polite"></div>
+    </div>
+  </div>
+</section>

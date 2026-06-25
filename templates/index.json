@@ -15,9 +15,9 @@
         "slide_efhfLJ": {
           "type": "slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
-            "mobile_image": "shopify://shop_images/may_promo_socmed.jpg",
-            "slideshow_link": "shopify://collections/k-swiss-may-2026-v1",
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_pickleball.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_95089128-cb83-4794-acba-a0ab012c5dfb.jpg",
+            "slideshow_link": "shopify://collections/pickleball",
             "image_overlay_opacity": 0,
             "force_image_only": false,
             "heading": "",
@@ -35,10 +35,11 @@
         },
         "slide_Qhpq3g": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
             "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
-            "slideshow_link": "shopify://collections/avenue-collection",
+            "slideshow_link": "shopify://collections/tempo66-collection",
             "image_overlay_opacity": 0,
             "force_image_only": false,
             "heading": "",
@@ -132,90 +133,6 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "image_banner_fTQr8y": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_7Mc9Xe": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
-          }
-        },
-        "text_zw8aVY": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_cRDTXK": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_7Mc9Xe",
-        "text_zw8aVY",
-        "buttons_cRDTXK"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/MAIN_BANNER_9c0079bb-501e-44ee-866b-dddbdd53b41f.jpg",
-        "image_mobile": "shopify://shop_images/may_promo_socmed.jpg",
-        "banner_link": "shopify://collections/all-sale-shoes-apparel-more",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "",
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "multicolumn_fbNdPX": {
       "type": "multicolumn",
       "blocks": {
@@ -236,14 +153,13 @@
             "title": "PERFORMANCE",
             "text": "",
             "link_label": "",
-            "link": "shopify://collections/performance-shoes-men"
+            "link": "shopify://collections/performance"
           }
         },
         "column_MVdJLq": {
           "type": "column",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/CATEGORY_BANNERS_3.jpg",
+            "image": "shopify://shop_images/CATEGORY_BANNERS_3_19c4dc4f-c518-461d-8bf0-fdef39fbe8b8.jpg",
             "title": "ACCESSORIES",
             "text": "",
             "link_label": "",
@@ -264,10 +180,10 @@
         "title": "",
         "heading_size": "h1",
         "image_width": "full",
-        "image_ratio": "portrait",
+        "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 2,
+        "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "",
@@ -275,6 +191,59 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "image_banner_qLdnaT": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_RXzmxn": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Shop Now",
+            "heading_size": "h1"
+          }
+        },
+        "text_R7NML4": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Discover our latest collection",
+            "text_style": "body"
+          }
+        },
+        "buttons_CwfPVq": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Learn More",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RXzmxn",
+        "text_R7NML4",
+        "buttons_CwfPVq"
+      ],
+      "name": "Pickleball",
+      "settings": {
+        "image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_53bbde42-0dcd-4ce3-8fb8-215b6a403152.jpg",
+        "image_mobile": "shopify://shop_images/OWN_WEB_MOBILE_724220a1-bc04-49e8-b7ce-cda0c7b3bc43.jpg",
+        "banner_link": "shopify://collections/pickleball-footwear",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "mobile_content_alignment": "center",
+        "show_text_below": true
       }
     },
     "featured_collection_ay7ytH": {
@@ -641,9 +610,8 @@
   "order": [
     "slideshow_v2_gjVHbw",
     "slideshow_a8Xym4",
-    "image_banner_fTQr8y",
-    "featured_collection",
     "multicolumn_fbNdPX",
+    "image_banner_qLdnaT",
     "featured_collection_ay7ytH",
     "image_banner_aKC9ek",
     "multicolumn_XP6NxE",

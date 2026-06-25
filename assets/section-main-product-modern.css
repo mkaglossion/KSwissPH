@@ -319,50 +319,6 @@
   color: #ffffff;
 }
 
-.modern-product-page .modern-product__app-block {
-  width: 100%;
-}
-
-.modern-product-page .modern-product__app-block :is(a, button, [role='button']) {
-  width: auto;
-  min-height: 4.2rem;
-  border-radius: 999px;
-}
-
-/* Wishlist Plus/Swym button on PDP: keep it dynamic + white background */
-.modern-product-page .modern-product__app-block .swym-btn-container,
-.modern-product-page .modern-product__app-block .swym-button-bar {
-  width: auto !important;
-}
-
-.modern-product-page .modern-product__app-block button.swym-button,
-.modern-product-page .modern-product__app-block .swym-button.swym-add-to-wishlist,
-.modern-product-page .modern-product__app-block .swym-button.swym-add-to-wishlist-view-product {
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  min-height: 4.2rem !important;
-  padding: 0 1.4rem !important;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.16) !important;
-  border-radius: 999px !important;
-  background: #ffffff !important;
-  color: rgb(var(--color-foreground)) !important;
-  box-shadow: none !important;
-  letter-spacing: 0 !important;
-  font-weight: 700 !important;
-  text-transform: none !important;
-}
-
-.modern-product-page .modern-product__app-block button.swym-button:hover,
-.modern-product-page .modern-product__app-block button.swym-button:focus,
-.modern-product-page .modern-product__app-block button.swym-button:focus-visible {
-  background: #ffffff !important;
-  color: rgb(var(--color-foreground)) !important;
-  border-color: rgba(var(--color-foreground), 0.3) !important;
-  box-shadow: none !important;
-  outline: 0 !important;
-}
-
 .modern-product-page .product__description {
   padding-top: 1.6rem;
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.1);
