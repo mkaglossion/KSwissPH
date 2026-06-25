@@ -319,7 +319,7 @@
                       {%- if shop.customer_accounts_enabled -%}
                         <a
                           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                          class="menu-drawer__account link focus-inset h5"
+                          class="menu-drawer__account link focus-inset"
                           rel="nofollow"
                         >
                           {%- if section.settings.enable_customer_avatar -%}
@@ -348,7 +348,7 @@
                       {%- endif -%}
                       <a
                         href="{{ wishlist_url }}"
-                        class="menu-drawer__wishlist link focus-inset h5"
+                        class="menu-drawer__wishlist link focus-inset"
                         data-wishlist-link
                         aria-label="Wishlist"
                       >

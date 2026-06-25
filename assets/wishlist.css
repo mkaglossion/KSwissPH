@@ -31,6 +31,18 @@
   height: 2.5rem;
 }
 
+@media screen and (min-width: 990px) {
+  .header__icon--wishlist .icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .header__icon--wishlist .svg-wrapper {
+    width: 4.4rem;
+    height: 4.4rem;
+  }
+}
+
 .cart-count-bubble {
   background: #c32033;
   color: #ffffff;

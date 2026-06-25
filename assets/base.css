@@ -2582,6 +2582,23 @@ input[type='checkbox'] {
   margin-right: -1.2rem;
 }
 
+@media screen and (min-width: 990px) {
+  .header__icons {
+    gap: 0.35rem;
+    padding-right: 0;
+  }
+
+  .header__icon {
+    width: 4.4rem;
+    height: 4.4rem;
+    flex: 0 0 4.4rem;
+  }
+
+  .header__icon--cart {
+    margin-right: 0;
+  }
+}
+
 .header__icon--menu[aria-expanded='true']::before {
   content: '';
   top: 100%;

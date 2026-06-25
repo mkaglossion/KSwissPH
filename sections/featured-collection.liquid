@@ -24,11 +24,63 @@
   <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- liquid
+  assign use_full_width_layout = false
+  if section.settings.full_width == true or section.settings.full_width == 'full-width'
+    assign use_full_width_layout = true
+  endif
+
+  assign use_contained_grid_layout = false
+  if use_full_width_layout == false
+    assign use_contained_grid_layout = true
+  endif
+-%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+
+  {%- if request.page_type == 'index' and use_full_width_layout -%}
+    @media screen and (min-width: 990px) {
+      #collection-{{ section.id }} {
+        --grid-desktop-horizontal-spacing: 2rem;
+        --grid-desktop-vertical-spacing: 2rem;
+      }
+
+      #collection-{{ section.id }} slider-component.slider-component-full-width {
+        padding-left: 2.4rem;
+        padding-right: 2.4rem;
+      }
+    }
+  {%- endif -%}
+
+  {%- if request.page_type == 'index' and use_contained_grid_layout -%}
+    @media screen and (min-width: 990px) {
+      #collection-{{ section.id }} {
+        --grid-desktop-horizontal-spacing: 1.8rem;
+        --grid-desktop-vertical-spacing: 2rem;
+      }
+
+      #collection-{{ section.id }} slider-component {
+        display: block;
+        max-width: 138rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      #collection-{{ section.id }} .product-grid {
+        justify-content: center;
+      }
+
+      #collection-{{ section.id }} .product-grid .grid__item {
+        flex-grow: 0;
+      }
+    }
+  {%- endif -%}
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
@@ -68,7 +120,7 @@
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
   <div
-    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if use_full_width_layout %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
@@ -92,7 +144,7 @@
       {%- endif -%}
     </div>
 
-    <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <slider-component class="slider-mobile-gutter{% if use_full_width_layout %} slider-component-full-width{% endif %}{% if show_mobile_slider == false and use_full_width_layout == false %} page-width{% endif %}{% if show_desktop_slider == false and use_full_width_layout == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
         id="Slider-{{ section.id }}"
         data-id="{{ section.id }}"
@@ -326,10 +378,20 @@
       "default": false
     },
     {
-      "type": "checkbox",
+      "type": "select",
       "id": "full_width",
-      "label": "t:sections.featured-collection.settings.full_width.label",
-      "default": false
+      "label": "Layout Style",
+      "default": "contained-grid",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "contained-grid",
+          "label": "Contained (Grid)"
+        }
+      ]
     },
     {
       "type": "checkbox",
