@@ -621,6 +621,21 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "17829694225aed4586": {
+      "type": "apps",
+      "blocks": {
+        "s_store_locator_storeify_storelocator_cgbGwC": {
+          "type": "shopify://apps/s-store-locator/blocks/storeify-storelocator/e7003487-cc51-4321-9488-2c47c07a5b17",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "s_store_locator_storeify_storelocator_cgbGwC"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -636,6 +651,7 @@
     "image_banner_htg8Pq",
     "featured_collection_hqiVgH",
     "1776759950053936f8",
-    "1782969043fac4d25d"
+    "1782969043fac4d25d",
+    "17829694225aed4586"
   ]
 }
