@@ -1366,3 +1366,64 @@ class CartPerformance {
     );
   }
 }
+
+function assignOtpFieldIdentifiers(root = document) {
+  const otpInputs = root.querySelectorAll('.oxi-otp-input-box');
+  if (!otpInputs.length) return;
+
+  const groupIndexes = new Map();
+  let nextGroupIndex = 0;
+
+  otpInputs.forEach((input, position) => {
+    const form = input.closest('form');
+    const group = input.closest('[class*="otp"], [id*="otp"], [data-otp], [class*="verification"], [id*="verification"]');
+    const groupKey = group || form || input.closest('body');
+
+    if (!groupIndexes.has(groupKey)) {
+      groupIndexes.set(groupKey, nextGroupIndex);
+      nextGroupIndex += 1;
+    }
+
+    const groupIndex = groupIndexes.get(groupKey);
+    const inputIndex = input.dataset.otpIndex || position;
+    const baseId = `oxi-otp-${groupIndex}-${inputIndex}`;
+
+    if (!input.id) {
+      input.id = baseId;
+    }
+
+    if (!input.name) {
+      input.name = `otp_digit_${inputIndex}`;
+    }
+  });
+}
+
+function assignAutocompleteAttributes(root = document) {
+  root.querySelectorAll('input[type="email"]:not([autocomplete])').forEach((input) => {
+    input.setAttribute('autocomplete', 'email');
+  });
+}
+
+assignOtpFieldIdentifiers();
+assignAutocompleteAttributes();
+
+const otpFieldObserver = new MutationObserver((mutations) => {
+  const shouldRefresh = mutations.some((mutation) =>
+    Array.from(mutation.addedNodes).some((node) => {
+      if (!(node instanceof Element)) return false;
+      return (
+        node.matches?.('.oxi-otp-input-box, input[type="email"]:not([autocomplete])')
+        || node.querySelector?.('.oxi-otp-input-box, input[type="email"]:not([autocomplete])')
+      );
+    })
+  );
+
+  if (shouldRefresh) {
+    assignOtpFieldIdentifiers();
+    assignAutocompleteAttributes();
+  }
+});
+
+if (document.body) {
+  otpFieldObserver.observe(document.body, { childList: true, subtree: true });
+}

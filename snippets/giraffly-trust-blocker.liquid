@@ -1,0 +1,83 @@
+<script>
+  (function () {
+    if (window.__girafflyTrustBlockerInstalled) return;
+    window.__girafflyTrustBlockerInstalled = true;
+
+    var blockedPattern = /\/apps\/giraffly-trust\//i;
+    var originalSetAttribute = Element.prototype.setAttribute;
+    var originalAppendChild = Node.prototype.appendChild;
+    var originalInsertBefore = Node.prototype.insertBefore;
+    var originalReplaceChild = Node.prototype.replaceChild;
+    var scriptSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+
+    function isBlockedValue(value) {
+      return typeof value === 'string' && blockedPattern.test(value);
+    }
+
+    function markBlockedScript(script, value) {
+      if (!(script instanceof HTMLScriptElement)) return;
+
+      script.__girafflyTrustBlocked = true;
+      originalSetAttribute.call(script, 'data-blocked-src', value);
+
+      if (script.hasAttribute('src')) {
+        script.removeAttribute('src');
+      }
+
+      script.type = 'application/x-blocked-script';
+    }
+
+    Element.prototype.setAttribute = function (name, value) {
+      if (this instanceof HTMLScriptElement && String(name).toLowerCase() === 'src' && isBlockedValue(String(value))) {
+        markBlockedScript(this, String(value));
+        return;
+      }
+
+      return originalSetAttribute.call(this, name, value);
+    };
+
+    if (scriptSrcDescriptor && scriptSrcDescriptor.get && scriptSrcDescriptor.set) {
+      Object.defineProperty(HTMLScriptElement.prototype, 'src', {
+        configurable: true,
+        enumerable: scriptSrcDescriptor.enumerable,
+        get: function () {
+          return scriptSrcDescriptor.get.call(this);
+        },
+        set: function (value) {
+          if (isBlockedValue(String(value))) {
+            markBlockedScript(this, String(value));
+            return String(value);
+          }
+
+          return scriptSrcDescriptor.set.call(this, value);
+        },
+      });
+    }
+
+    function shouldBlockNode(node) {
+      if (!(node instanceof HTMLScriptElement)) return false;
+
+      return Boolean(
+        node.__girafflyTrustBlocked
+          || isBlockedValue(node.getAttribute('src') || '')
+          || isBlockedValue(node.getAttribute('data-blocked-src') || '')
+          || isBlockedValue(node.src || '')
+      );
+    }
+
+    Node.prototype.appendChild = function (node) {
+      if (shouldBlockNode(node)) return node;
+      return originalAppendChild.call(this, node);
+    };
+
+    Node.prototype.insertBefore = function (node, child) {
+      if (shouldBlockNode(node)) return node;
+      return originalInsertBefore.call(this, node, child);
+    };
+
+    Node.prototype.replaceChild = function (node, child) {
+      if (shouldBlockNode(node)) return child;
+      return originalReplaceChild.call(this, node, child);
+    };
+  })();
+</script>

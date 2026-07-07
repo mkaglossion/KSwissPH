@@ -48,13 +48,9 @@
                         id="HeaderDrawer-{{ link.handle }}"
                         class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       >
-                        <a
-                          href="{{ link.url }}"
-                          class="menu-drawer__menu-item-link link link--text"
-                          onclick="event.stopPropagation();"
-                        >
+                        <span class="menu-drawer__menu-item-link">
                           {{ link.title | escape }}
-                        </a>
+                        </span>
                         <span class="svg-wrapper">
                           {{- 'icon-arrow.svg' | inline_asset_content -}}
                         </span>
@@ -75,6 +71,18 @@
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                            <li>
+                              <a
+                                id="HeaderDrawer-{{ link.handle }}-parent"
+                                href="{{ link.url }}"
+                                class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
+                                {% if link.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ link.title | escape }}
+                              </a>
+                            </li>
                             {%- for childlink in link.links -%}
                               <li>
                                 {%- if childlink.links == blank -%}
@@ -94,13 +102,9 @@
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
-                                      <a
-                                        href="{{ childlink.url }}"
-                                        class="menu-drawer__menu-item-link link link--text"
-                                        onclick="event.stopPropagation();"
-                                      >
+                                      <span class="menu-drawer__menu-item-link">
                                         {{ childlink.title | escape }}
-                                      </a>
+                                      </span>
                                       <span class="svg-wrapper">
                                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                                       </span>
@@ -126,6 +130,18 @@
                                         role="list"
                                         tabindex="-1"
                                       >
+                                        <li>
+                                          <a
+                                            id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-parent"
+                                            href="{{ childlink.url }}"
+                                            class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                            {% if childlink.current %}
+                                              aria-current="page"
+                                            {% endif %}
+                                          >
+                                            {{ childlink.title | escape }}
+                                          </a>
+                                        </li>
                                         {%- for grandchildlink in childlink.links -%}
                                           <li>
                                             <a

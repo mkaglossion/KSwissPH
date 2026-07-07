@@ -24,19 +24,9 @@
                 id="HeaderMenu-{{ link.handle }}"
                 class="header__menu-item list-menu__item link focus-inset"
               >
-                <a
-                  href="{{ link.url }}"
-                  class="header__menu-parent-link link link--text"
-                  onclick="event.stopPropagation();"
-                >
-                  <span
-                    {%- if link.child_active %}
-                      class="header__active-menu-item"
-                    {% endif %}
-                  >
-                    {{- link.title | escape -}}
-                  </span>
-                </a>
+                <span class="header__menu-parent-link{% if link.child_active %} header__active-menu-item{% endif %}">
+                  {{- link.title | escape -}}
+                </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
               <ul
@@ -45,6 +35,18 @@
                 role="list"
                 tabindex="-1"
               >
+                 <li>
+                   <a
+                     id="HeaderMenu-{{ link.handle }}-parent"
+                     href="{{ link.url }}"
+                     class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if link.current %} list-menu__item--active{% endif %}"
+                     {% if link.current %}
+                       aria-current="page"
+                     {% endif %}
+                   >
+                     {{ link.title | escape }}
+                   </a>
+                 </li>
                  {%- for childlink in link.links -%}
                    <li>
                      {%- if childlink.links == blank -%}

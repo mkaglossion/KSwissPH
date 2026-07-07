@@ -103,6 +103,10 @@
     color var(--duration-short) ease;
 }
 
+.product-form__wishlist + .shopify-payment-button {
+  margin-top: 2.2rem;
+}
+
 .product-form__wishlist:hover,
 .product-form__wishlist:focus-visible {
   border-color: rgb(var(--color-foreground));
