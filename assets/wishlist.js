@@ -329,22 +329,44 @@
   const addItemsToCart = async (items, redirectUrl) => {
     if (!items.length) return;
 
-    const variantIds = [...new Set(items.map((item) => item.variantId).filter(Boolean))];
+    const variantIds = [...new Set(items.map((item) => Number(item.variantId)).filter(Boolean))];
     if (!variantIds.length) return;
 
-    const response = await fetch(window.routes?.cart_add_url || '/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        items: variantIds.map((id) => ({ id: Number(id), quantity: 1 })),
-      }),
-    });
+    const cartUrl = window.routes?.cart_url || '/cart';
+    const cartJsonUrl = cartUrl.endsWith('.js') ? cartUrl : `${cartUrl}.js`;
+    let variantIdsToAdd = variantIds;
 
-    if (!response.ok) {
-      throw new Error('Unable to add wishlist items to cart');
+    try {
+      const cartResponse = await fetch(cartJsonUrl, {
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (cartResponse.ok) {
+        const cart = await cartResponse.json();
+        const cartVariantIds = new Set((cart.items || []).map((item) => Number(item.variant_id)).filter(Boolean));
+        variantIdsToAdd = variantIds.filter((id) => !cartVariantIds.has(id));
+      }
+    } catch (error) {
+      console.warn('Unable to read current cart before wishlist add', error);
+    }
+
+    if (variantIdsToAdd.length) {
+      const response = await fetch(window.routes?.cart_add_url || '/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          items: variantIdsToAdd.map((id) => ({ id, quantity: 1 })),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to add wishlist items to cart');
+      }
     }
 
     window.location.href = redirectUrl;
