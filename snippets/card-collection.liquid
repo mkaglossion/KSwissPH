@@ -97,14 +97,6 @@
                 {%- else -%}
                   {{ 'onboarding.collection_title' | t }}
                 {%- endif -%}
-<<<<<<< Updated upstream
-=======
-                {%- if card_collection.description == blank -%}
-                  <span class="icon-wrap">
-                    {{- 'icon-arrow.svg' | inline_asset_content -}}
-                  </span>
-                {%- endif %}
->>>>>>> Stashed changes
               </a>
             </h3>
             {%- if card_collection.description != blank -%}
@@ -136,14 +128,6 @@
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
-<<<<<<< Updated upstream
-=======
-              {%- if card_collection.featured_image or card_collection.description == blank -%}
-                <span class="icon-wrap">
-                  {{- 'icon-arrow.svg' | inline_asset_content -}}
-                </span>
-              {%- endif %}
->>>>>>> Stashed changes
             </a>
           </h3>
           {%- if card_collection.featured_image == null and card_collection.description != blank -%}
