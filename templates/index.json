@@ -603,7 +603,7 @@
         "h2 {font-weight: bold;}"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": false
       }
     }
   },
