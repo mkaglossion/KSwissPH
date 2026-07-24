@@ -781,6 +781,34 @@
       observer.observe(menuDrawer, { childList: true, subtree: true });
     }
   });
+
+  // ============================================
+  // HANDLE CLICK ON SUMMARY WITH DATA-URL
+  // Navigate to the URL when clicking the text area (not the caret)
+  // ============================================
+  document.addEventListener('click', function(e) {
+    var summary = e.target.closest('summary[data-url]');
+    if (summary) {
+      var details = summary.closest('details');
+      if (details) {
+        var isOpen = details.hasAttribute('open');
+        var caret = summary.querySelector('.icon-caret');
+        
+        // Check if click was on the caret or the text
+        if (caret && caret.contains(e.target)) {
+          // Click on caret - let default toggle behavior happen
+          return;
+        }
+        
+        // Click on text area
+        if (isOpen) {
+          // If menu is already open, navigate to the URL
+          window.location.href = summary.getAttribute('data-url');
+        }
+        // If menu is closed, let default toggle behavior happen
+      }
+    }
+  });
 {% endjavascript %}
 
 <script type="application/ld+json">

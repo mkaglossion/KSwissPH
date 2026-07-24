@@ -163,7 +163,6 @@ product-recommendations.is-accordion + .accordion {
 @media screen and (max-width: 749px) {
   .complementary-slider.slider--everywhere {
     margin-bottom: 0;
-    scrollbar-width: none;
     -ms-overflow-style: none;
   }
 

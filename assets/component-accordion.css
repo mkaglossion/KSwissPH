@@ -3,7 +3,9 @@
   position: relative;
   line-height: 1;
   padding: 1.5rem 0;
+  cursor: pointer;
 }
+
 
 .accordion .summary__title {
   display: flex;
