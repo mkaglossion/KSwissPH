@@ -160,6 +160,13 @@
         "settings": {
           "enabled_on_page": "account"
         }
+      },
+      "6038938367790878235": {
+        "type": "shopify://apps/oxi-apps/blocks/wishlist-settings/24ad60bc-8f09-42fa-807e-e5eda0fdae17",
+        "disabled": false,
+        "settings": {
+          "custom_css": ""
+        }
       }
     },
     "color_schemes": {
