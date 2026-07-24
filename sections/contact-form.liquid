@@ -1,9 +1,377 @@
 {{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  #shopify-section-{{ section.id }} {
+    --contact-blue: {{ section.settings.accent_color }};
+    --contact-blue-hover: {{ section.settings.button_hover_color }};
+    --contact-text: #17233b;
+    --contact-muted: #667085;
+    --contact-border: #d7dce4;
+    --contact-background: #ffffff;
+    --contact-field-background: #ffffff;
+    --contact-radius: 12px;
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact {
+    background: var(--contact-background);
+    color: var(--contact-text);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__container {
+    width: min(100% - 32px, 1120px);
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__header {
+    max-width: 1000px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__title {
+    margin: 0;
+    color: var(--contact-blue);
+    font-size: clamp(4rem, 6vw, 6.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__title-line {
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 24px auto 28px;
+    border-radius: 999px;
+    background: var(--contact-blue);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__intro {
+    max-width: 980px;
+    margin: 0 auto;
+    color: var(--contact-text);
+    font-size: 1.6rem;
+    line-height: 1.75;
+    text-align: left;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__intro p {
+    margin: 0 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__intro a {
+    color: var(--contact-blue);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__intro a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__banner {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__banner-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 1100px;
+    margin: 52px auto 68px;
+    overflow: hidden;
+    border: 1px solid var(--contact-border);
+    border-radius: 14px;
+    background: #ffffff;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 32px 40px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail + .ks-contact__detail {
+    border-left: 1px solid var(--contact-border);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail-icon {
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    margin-right: 20px;
+    color: var(--contact-blue);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail-content {
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--contact-text);
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__detail-value {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--contact-blue);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+
+  #shopify-section-{{ section.id }} .ks-contact__form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-status {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 28px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-status--success {
+    border: 1px solid #a7d7b5;
+    background: #f1fbf4;
+    color: #176b35;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-status--error {
+    border: 1px solid #f0b7b7;
+    background: #fff4f4;
+    color: #b42318;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-status .svg-wrapper {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-errors {
+    margin: -16px 0 28px;
+    padding-left: 22px;
+    color: #b42318;
+    font-size: 1.4rem;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__form-errors a {
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__field {
+    margin-bottom: 25px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__label {
+    display: block;
+    margin: 0 0 9px;
+    color: var(--contact-text);
+    font-size: 1.45rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__required {
+    color: var(--contact-blue);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input,
+  #shopify-section-{{ section.id }} .ks-contact__select,
+  #shopify-section-{{ section.id }} .ks-contact__textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    border: 1px solid var(--contact-border);
+    border-radius: var(--contact-radius);
+    background: var(--contact-field-background);
+    box-shadow: none;
+    color: var(--contact-text);
+    font-family: inherit;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input,
+  #shopify-section-{{ section.id }} .ks-contact__select {
+    min-height: 58px;
+    padding: 14px 18px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__select {
+    cursor: pointer;
+    appearance: none;
+    padding-right: 48px;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--contact-text) 50%),
+      linear-gradient(135deg, var(--contact-text) 50%, transparent 50%);
+    background-position:
+      calc(100% - 22px) 50%,
+      calc(100% - 16px) 50%;
+    background-size:
+      6px 6px,
+      6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__textarea {
+    min-height: 165px;
+    padding: 16px 18px;
+    resize: vertical;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input::placeholder,
+  #shopify-section-{{ section.id }} .ks-contact__textarea::placeholder {
+    color: #8a94a6;
+    opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input:hover,
+  #shopify-section-{{ section.id }} .ks-contact__select:hover,
+  #shopify-section-{{ section.id }} .ks-contact__textarea:hover {
+    border-color: #aeb6c2;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input:focus,
+  #shopify-section-{{ section.id }} .ks-contact__select:focus,
+  #shopify-section-{{ section.id }} .ks-contact__textarea:focus {
+    border-color: var(--contact-blue);
+    box-shadow: 0 0 0 3px rgba(12, 90, 134, 0.14);
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__input[aria-invalid='true'] {
+    border-color: #d92d20;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__field-error {
+    display: block;
+    margin-top: 8px;
+    color: #b42318;
+    font-size: 1.3rem;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__field-error .form__message {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__field-error .svg-wrapper {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__button {
+    margin-top: 34px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 58px;
+    padding: 16px 28px;
+    border: 1px solid var(--contact-blue);
+    border-radius: var(--contact-radius);
+    background: var(--contact-blue);
+    box-shadow: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__submit::before,
+  #shopify-section-{{ section.id }} .ks-contact__submit::after {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__submit:hover {
+    border-color: var(--contact-blue-hover);
+    background: var(--contact-blue-hover);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__submit:active {
+    transform: translateY(1px);
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__submit:focus-visible {
+    outline: 3px solid rgba(12, 90, 134, 0.3);
+    outline-offset: 3px;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__privacy-note {
+    margin: 16px 0 0;
+    color: var(--contact-muted);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .ks-contact__privacy-note a {
+    color: var(--contact-blue);
+    text-underline-offset: 3px;
   }
 
   @media screen and (min-width: 750px) {
@@ -12,206 +380,574 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .ks-contact__container {
+      width: min(100% - 30px, 1120px);
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__header {
+      margin-bottom: 36px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__title {
+      font-size: clamp(3.6rem, 13vw, 5rem);
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__title-line {
+      width: 48px;
+      height: 3px;
+      margin-top: 18px;
+      margin-bottom: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__intro {
+      font-size: 1.45rem;
+      line-height: 1.7;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__details {
+      grid-template-columns: 1fr;
+      margin-top: 36px;
+      margin-bottom: 48px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__detail {
+      padding: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__detail + .ks-contact__detail {
+      border-top: 1px solid var(--contact-border);
+      border-left: 0;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__detail-icon {
+      width: 34px;
+      height: 34px;
+      margin-right: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__field-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__input,
+    #shopify-section-{{ section.id }} .ks-contact__select {
+      min-height: 54px;
+    }
+
+    #shopify-section-{{ section.id }} .ks-contact__textarea {
+      min-height: 145px;
+    }
+  }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
-    {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.heading }}
-      </h2>
-    {%- else -%}
-      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
-    {%- endif -%}
-    {%- liquid
-      assign contact_form_class = 'isolate'
-      if settings.animations_reveal_on_scroll
-        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
-      endif
-    -%}
-    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
-      {%- if form.posted_successfully? -%}
-        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
-          {{- 'icon-success.svg' | inline_asset_content -}}
-          {{ 'templates.contact.form.post_success' | t }}
-        </h2>
-      {%- elsif form.errors -%}
-        <div class="form__message">
-          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
-            {{- 'icon-error.svg' | inline_asset_content -}}
-            {{ 'templates.contact.form.error_heading' | t }}
-          </h2>
-        </div>
-        <ul class="form-status-list caption-large" role="list">
-          <li>
-            <a href="#ContactForm-email" class="link">
-              {{ form.errors.translated_fields.email | capitalize }}
-              {{ form.errors.messages.email }}
-            </a>
-          </li>
-        </ul>
+<section class="ks-contact color-{{ section.settings.color_scheme }} gradient">
+  {%- if section.settings.banner_image != blank -%}
+    <div class="ks-contact__banner">
+      <img
+        src="{{ section.settings.banner_image | image_url: width: 1920 }}"
+        srcset="
+          {{ section.settings.banner_image | image_url: width: 750 }} 750w,
+          {{ section.settings.banner_image | image_url: width: 1100 }} 1100w,
+          {{ section.settings.banner_image | image_url: width: 1500 }} 1500w,
+          {{ section.settings.banner_image | image_url: width: 1920 }} 1920w
+        "
+        alt="{{ section.settings.banner_image.alt | escape }}"
+        loading="lazy"
+        class="ks-contact__banner-image"
+        width="{{ section.settings.banner_image.width }}"
+        height="{{ section.settings.banner_image.height }}"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="ks-contact__container section-{{ section.id }}-padding">
+    <header class="ks-contact__header">
+      {%- if section.settings.heading != blank -%}
+        <h1
+          class="ks-contact__title{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        >
+          {{ section.settings.heading }}
+        </h1>
+
+        <span class="ks-contact__title-line" aria-hidden="true"></span>
+      {%- else -%}
+        <h1 class="visually-hidden">
+          {{ 'templates.contact.form.title' | t }}
+        </h1>
       {%- endif -%}
-      <div class="contact__fields">
-        <div class="field">
-          <input
-            class="field__input"
-            autocomplete="name"
-            type="text"
-            id="ContactForm-name"
-            name="contact[{{ 'templates.contact.form.name' | t }}]"
-            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-            placeholder="{{ 'templates.contact.form.name' | t }}"
-          >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
-        </div>
-        <div class="field field--with-error">
-          <input
-            autocomplete="email"
-            type="email"
-            id="ContactForm-email"
-            class="field__input"
-            name="contact[email]"
-            spellcheck="false"
-            autocapitalize="off"
-            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-            aria-required="true"
-            {% if form.errors contains 'email' %}
-              aria-invalid="true"
-              aria-describedby="ContactForm-email-error"
-            {% endif %}
-            placeholder="{{ 'templates.contact.form.email' | t }}"
-          >
-          <label class="field__label" for="ContactForm-email">
-            {{- 'templates.contact.form.email' | t }}
-            <span aria-hidden="true">*</span></label
-          >
-          {%- if form.errors contains 'email' -%}
-            <small class="contact__field-error" id="ContactForm-email-error">
-              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
-              <span class="form__message">
-                <span class="svg-wrapper">
-                  {{- 'icon-error.svg' | inline_asset_content -}}
-                </span>
-                {{- form.errors.translated_fields.email | capitalize }}
-                {{ form.errors.messages.email -}}
-              </span>
-            </small>
+
+      {%- if section.settings.intro_text != blank or section.settings.secondary_text != blank -%}
+        <div class="ks-contact__intro">
+          {%- if section.settings.intro_text != blank -%}
+            <div>{{ section.settings.intro_text }}</div>
+          {%- endif -%}
+
+          {%- if section.settings.secondary_text != blank -%}
+            <div>{{ section.settings.secondary_text }}</div>
           {%- endif -%}
         </div>
+      {%- endif -%}
+    </header>
+
+    {%- if section.settings.contact_email != blank or section.settings.contact_phone != blank -%}
+      <div
+        class="ks-contact__details{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      >
+        {%- if section.settings.contact_email != blank -%}
+          <div class="ks-contact__detail">
+            <span class="ks-contact__detail-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6.75C3 5.784 3.784 5 4.75 5h14.5C20.216 5 21 5.784 21 6.75v10.5c0 .966-.784 1.75-1.75 1.75H4.75A1.75 1.75 0 0 1 3 17.25V6.75Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m4 7 7.02 5.37a1.6 1.6 0 0 0 1.96 0L20 7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+
+            <div class="ks-contact__detail-content">
+              <span class="ks-contact__detail-label">
+                {{ section.settings.email_label }}
+              </span>
+
+              <a
+                class="ks-contact__detail-value"
+                href="mailto:{{ section.settings.contact_email | escape }}"
+              >
+                {{ section.settings.contact_email }}
+              </a>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.contact_phone != blank -%}
+          <div class="ks-contact__detail">
+            <span class="ks-contact__detail-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.46 3.5H4.75A1.75 1.75 0 0 0 3 5.25C3 13.949 10.051 21 18.75 21a1.75 1.75 0 0 0 1.75-1.75v-2.71a1.5 1.5 0 0 0-1.11-1.448l-3.037-.813a1.5 1.5 0 0 0-1.56.506l-.67.837a1 1 0 0 1-1.18.286 12.02 12.02 0 0 1-5.65-5.65 1 1 0 0 1 .286-1.18l.837-.67a1.5 1.5 0 0 0 .506-1.56L8.908 4.61A1.5 1.5 0 0 0 7.46 3.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+
+            <div class="ks-contact__detail-content">
+              <span class="ks-contact__detail-label">
+                {{ section.settings.phone_label }}
+              </span>
+
+              <a
+                class="ks-contact__detail-value"
+                href="tel:{{ section.settings.contact_phone | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', '' }}"
+              >
+                {{ section.settings.contact_phone }}
+              </a>
+            </div>
+          </div>
+        {%- endif -%}
       </div>
-      <div class="field">
-        <input
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input"
-          autocomplete="tel"
-          name="contact[{{ 'templates.contact.form.phone' | t }}]"
-          pattern="[0-9\-]*"
-          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-          placeholder="{{ 'templates.contact.form.phone' | t }}"
-        >
-        <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
-      </div>
-      <div class="field">
-        <textarea
-          rows="10"
-          id="ContactForm-body"
-          class="text-area field__input"
-          name="contact[{{ 'templates.contact.form.comment' | t }}]"
-          placeholder="{{ 'templates.contact.form.comment' | t }}"
-        >
-          {{- form.body -}}
-        </textarea>
-        <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
-      </div>
-      <div class="contact__button">
-        <button type="submit" class="button">
-          {{ 'templates.contact.form.send' | t }}
-        </button>
-      </div>
-    {%- endform -%}
+    {%- endif -%}
+
+    <div class="ks-contact__form-wrapper">
+      {%- liquid
+        assign contact_form_class = 'ks-contact__form'
+
+        if settings.animations_reveal_on_scroll
+          assign contact_form_class = 'ks-contact__form scroll-trigger animate--slide-in'
+        endif
+      -%}
+
+      {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+        {%- if form.posted_successfully? -%}
+          <div
+            class="ks-contact__form-status ks-contact__form-status--success"
+            tabindex="-1"
+            autofocus
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-success.svg' | inline_asset_content -}}
+            </span>
+
+            <span>
+              {{ 'templates.contact.form.post_success' | t }}
+            </span>
+          </div>
+        {%- elsif form.errors -%}
+          <div
+            class="ks-contact__form-status ks-contact__form-status--error"
+            role="alert"
+            tabindex="-1"
+            autofocus
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-error.svg' | inline_asset_content -}}
+            </span>
+
+            <span>
+              {{ 'templates.contact.form.error_heading' | t }}
+            </span>
+          </div>
+
+          <ul class="ks-contact__form-errors" role="list">
+            {%- for field in form.errors -%}
+              <li>
+                {%- if field == 'form' -%}
+                  {{ form.errors.messages[field] }}
+                {%- else -%}
+                  <a href="#ContactForm-{{ field }}">
+                    {{ form.errors.translated_fields[field] | capitalize }}
+                    {{ form.errors.messages[field] }}
+                  </a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="ks-contact__field">
+          <label class="ks-contact__label" for="ContactForm-inquiry">
+            How can we help you?
+            <span class="ks-contact__required" aria-hidden="true">*</span>
+          </label>
+
+          <select
+            id="ContactForm-inquiry"
+            class="ks-contact__select"
+            name="contact[Inquiry type]"
+            required
+            aria-required="true"
+          >
+            <option value="" disabled>
+              Select an inquiry
+            </option>
+
+            <option value="Order Inquiry" selected>
+              Order Inquiry
+            </option>
+
+            <option value="Product Inquiry">
+              Product Inquiry
+            </option>
+
+            <option value="Shipping and Delivery">
+              Shipping and Delivery
+            </option>
+
+            <option value="Return or Refund">
+              Return or Refund
+            </option>
+
+            <option value="Payment Concern">
+              Payment Concern
+            </option>
+
+            <option value="Website Concern">
+              Website Concern
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+          </select>
+        </div>
+
+        <div class="ks-contact__field">
+          <label class="ks-contact__label" for="ContactForm-order-number">
+            Order number
+          </label>
+
+          <input
+            type="text"
+            id="ContactForm-order-number"
+            class="ks-contact__input"
+            name="contact[Order number]"
+            placeholder="Example: KSUS-12345"
+            autocapitalize="characters"
+          >
+        </div>
+
+        <div class="ks-contact__field-row">
+          <div class="ks-contact__field">
+            <label class="ks-contact__label" for="ContactForm-first-name">
+              First name
+              <span class="ks-contact__required" aria-hidden="true">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="ContactForm-first-name"
+              class="ks-contact__input"
+              name="contact[First name]"
+              autocomplete="given-name"
+              value="{% if customer %}{{ customer.first_name }}{% endif %}"
+              placeholder="First name"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <div class="ks-contact__field">
+            <label class="ks-contact__label" for="ContactForm-last-name">
+              Last name
+              <span class="ks-contact__required" aria-hidden="true">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="ContactForm-last-name"
+              class="ks-contact__input"
+              name="contact[Last name]"
+              autocomplete="family-name"
+              value="{% if customer %}{{ customer.last_name }}{% endif %}"
+              placeholder="Last name"
+              required
+              aria-required="true"
+            >
+          </div>
+        </div>
+
+        <div class="ks-contact__field-row">
+          <div class="ks-contact__field">
+            <label class="ks-contact__label" for="ContactForm-email">
+              Email
+              <span class="ks-contact__required" aria-hidden="true">*</span>
+            </label>
+
+            <input
+              type="email"
+              id="ContactForm-email"
+              class="ks-contact__input"
+              name="contact[email]"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              placeholder="Email address"
+              required
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+            >
+
+            {%- if form.errors contains 'email' -%}
+              <small
+                class="ks-contact__field-error"
+                id="ContactForm-email-error"
+              >
+                <span class="visually-hidden">
+                  {{ 'accessibility.error' | t }}
+                </span>
+
+                <span class="form__message">
+                  <span class="svg-wrapper">
+                    {{- 'icon-error.svg' | inline_asset_content -}}
+                  </span>
+
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </span>
+              </small>
+            {%- endif -%}
+          </div>
+
+          <div class="ks-contact__field">
+            <label class="ks-contact__label" for="ContactForm-phone">
+              Phone number
+            </label>
+
+            <input
+              type="tel"
+              id="ContactForm-phone"
+              class="ks-contact__input"
+              name="contact[Phone number]"
+              autocomplete="tel"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+              placeholder="Phone number"
+            >
+          </div>
+        </div>
+
+        <div class="ks-contact__field">
+          <label class="ks-contact__label" for="ContactForm-body">
+            Message
+            <span class="ks-contact__required" aria-hidden="true">*</span>
+          </label>
+
+          <textarea
+            rows="7"
+            id="ContactForm-body"
+            class="ks-contact__textarea"
+            name="contact[body]"
+            placeholder="Tell us how we can help you"
+            required
+            aria-required="true"
+          >{{ form.body }}</textarea>
+        </div>
+
+        <div class="ks-contact__button">
+          <button type="submit" class="ks-contact__submit">
+            {{ section.settings.button_label }}
+          </button>
+        </div>
+
+          <div class="ks-contact__privacy-note">
+            By submitting this form, you agree to our <a href="/pages/privacy-policy">Privacy Policy</a>.
+          </div>
+      {%- endform -%}
+    </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
-  "name": "t:sections.contact-form.name",
+  "name": "K-Swiss contact form",
   "tag": "section",
-  "class": "section",
+  "class": "section section-contact-form",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
   "settings": [
     {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "t:sections.contact-form.settings.title.default",
-      "label": "t:sections.contact-form.settings.title.label"
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image (full width horizontal)"
     },
     {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Contact Us",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "default": "<p>We're here to help! If you have questions or need assistance, please take a moment to fill out the form below. Our team strives to respond within 1 business day, but please allow extra time on weekends and major holidays. Rest assured, our team will get back to you as soon as possible.</p>",
+      "label": "Introduction"
+    },
+    {
+      "type": "richtext",
+      "id": "secondary_text",
+      "default": "<p>For immediate assistance, feel free to reach out to us through email or phone during our regular business hours.</p>",
+      "label": "Secondary text"
+    },
+    {
+      "type": "header",
+      "content": "Contact information"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "default": "Email us at",
+      "label": "Email label"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "default": "customerservice@k-swiss.com.ph",
+      "label": "Contact email"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "default": "Call us at",
+      "label": "Phone label"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "default": "+63 917 000 0000",
+      "label": "Contact phone"
+    },
+    {
+      "type": "header",
+      "content": "Form"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Submit",
+      "label": "Button label"
+    },
+    {
+      "type": "richtext",
+      "id": "privacy_note",
+      "default": "<p>By submitting this form, you agree to our <a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>.</p>",
+      "label": "Privacy note"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "default": "#0C5A86",
+      "label": "K-Swiss blue"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "default": "#084566",
+      "label": "Button hover color"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
+      "label": "Color scheme",
       "default": "scheme-1"
     },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Section spacing"
     },
     {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
+      "max": 160,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "label": "Top padding",
+      "default": 72
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
+      "max": 160,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "label": "Bottom padding",
+      "default": 96
     }
   ],
   "presets": [
     {
-      "name": "t:sections.contact-form.presets.name"
+      "name": "K-Swiss contact form"
     }
   ]
 }
