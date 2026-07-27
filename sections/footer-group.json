@@ -25,17 +25,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter_cgDdDh": {
-          "type": "newsletter",
-          "settings": {
-            "bg_new": "#f3f3f3",
-            "border_new": "#000000",
-            "title": "K-SWISS TEAM LOYALTY",
-            "subheading": "<p>Be the first to know about new product. By clicking on “Subscribe”, you agree to receive marketing emails and have read and agree to K-Swiss's Privacy and Terms of Use.</p>",
-            "enablesocial": false,
-            "width": "25%"
-          }
-        },
         "menu_maPETd": {
           "type": "menu",
           "settings": {
@@ -56,13 +45,24 @@
             "link_list": "footer",
             "width": "25%"
           }
+        },
+        "newsletter_cgDdDh": {
+          "type": "newsletter",
+          "settings": {
+            "bg_new": "#f3f3f3",
+            "border_new": "#000000",
+            "title": "K-SWISS TEAM LOYALTY",
+            "subheading": "<p>Be the first to know about new product. By clicking on “Subscribe”, you agree to receive marketing emails and have read and agree to K-Swiss's Privacy and Terms of Use.</p>",
+            "enablesocial": false,
+            "width": "25%"
+          }
         }
       },
       "block_order": [
-        "newsletter_cgDdDh",
         "menu_maPETd",
         "menu_rVa4mW",
-        "menu_4wbnjm"
+        "menu_4wbnjm",
+        "newsletter_cgDdDh"
       ],
       "settings": {
         "cssfooter": "",
