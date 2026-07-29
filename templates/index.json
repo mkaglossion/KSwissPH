@@ -35,11 +35,10 @@
         },
         "slide_Qhpq3g": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "desktop_image": "shopify://shop_images/MAIN_BANNER_48881a12-7255-410a-bddb-e8ab03b4b71f.jpg",
-            "mobile_image": "shopify://shop_images/MAIN_BANNER_6f8eb1a9-8ee0-441a-846f-909fc71c1faa.jpg",
-            "slideshow_link": "shopify://collections/tempo66-collection",
+            "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_cb43e676-3903-4c86-94e7-7dce18e8c401.jpg",
+            "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_2.jpg",
+            "slideshow_link": "shopify://collections/pickleball",
             "image_overlay_opacity": 0,
             "force_image_only": false,
             "heading": "",
