@@ -35,6 +35,7 @@
         },
         "slide_Qhpq3g": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "desktop_image": "shopify://shop_images/OWN_WEB_MAIN_BANNER_cb43e676-3903-4c86-94e7-7dce18e8c401.jpg",
             "mobile_image": "shopify://shop_images/OWN_WEB_MOBILE_2.jpg",
