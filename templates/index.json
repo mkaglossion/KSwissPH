@@ -409,7 +409,8 @@
         "column_NMdrXn"
       ],
       "custom_css": [
-        "h2 {text-align: center; width: 100%;}"
+        "h2 {text-align: center; width: 100%;}",
+        ".page-width {max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
@@ -471,7 +472,8 @@
         "featured_collection_8d3jhc"
       ],
       "custom_css": [
-        "h2 {text-align: center; width: 100%;}"
+        "h2 {text-align: center; width: 100%;}",
+        ".page-width {max-width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
