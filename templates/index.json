@@ -367,7 +367,6 @@
       "name": "Image Banner with Link",
       "settings": {
         "image": "shopify://shop_images/NEW_ARRIVAL_BANNER.jpg",
-        "image_mobile": "shopify://shop_images/NEW_ARRIVAL_BANNER_3a9fe31d-af07-4366-8484-3f15f83f793b.jpg",
         "banner_link": "shopify://collections/new-arrivals",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
